@@ -1,7 +1,7 @@
 //
 //  ImportantDayTableViewCell.swift
 //  JTAppleCalendar
-//
+// ImportantDayTableViewCell
 //  Created by 吉川椛 on 2020/05/11.
 //  Copyright © 2020 com.litech. All rights reserved.
 //
