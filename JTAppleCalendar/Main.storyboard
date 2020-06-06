@@ -190,6 +190,9 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
                                         <color key="value" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="titleWeekendColor">
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -228,11 +231,11 @@
             </objects>
             <point key="canvasLocation" x="3602" y="293"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--ホーム-->
         <scene sceneID="BbR-hA-2YK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6HH-g2-fOc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house.fill" catalog="system" id="cWw-vZ-Mb0"/>
+                    <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" id="cWw-vZ-Mb0"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YtO-FR-cHs">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
@@ -482,13 +485,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKk-lS-g0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4542" y="1725"/>
+            <point key="canvasLocation" x="4326" y="1840"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--大事な日-->
         <scene sceneID="IGh-Ns-H8c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dsl-Wt-SkG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="pMm-rN-wfD"/>
+                    <tabBarItem key="tabBarItem" title="大事な日" image="calendar" catalog="system" id="pMm-rN-wfD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cym-Rh-hHf">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="50"/>
@@ -675,20 +678,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="712" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGJ-Lq-rlR">
-                                                    <rect key="frame" x="20" y="0.0" width="984" height="87"/>
-                                                    <string key="text">勉強終了まであと
-HH:mm:ss</string>
-                                                    <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH:mm:ss" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGJ-Lq-rlR">
+                                                    <rect key="frame" x="20" y="0.0" width="672" height="87"/>
+                                                    <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="32"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vGJ-Lq-rlR" firstAttribute="leading" secondItem="cia-kk-qgT" secondAttribute="leading" constant="20" id="LIt-rD-XSU"/>
-                                                <constraint firstItem="vGJ-Lq-rlR" firstAttribute="top" secondItem="cia-kk-qgT" secondAttribute="top" id="Lol-We-xpj"/>
-                                                <constraint firstAttribute="bottom" secondItem="vGJ-Lq-rlR" secondAttribute="bottom" id="UKZ-4X-Q9w"/>
-                                                <constraint firstAttribute="trailing" secondItem="vGJ-Lq-rlR" secondAttribute="trailing" constant="20" id="jl4-mM-75Y"/>
+                                                <constraint firstItem="vGJ-Lq-rlR" firstAttribute="top" secondItem="cia-kk-qgT" secondAttribute="top" id="Faj-Y1-jhP"/>
+                                                <constraint firstAttribute="trailing" secondItem="vGJ-Lq-rlR" secondAttribute="trailing" constant="20" id="ODN-Ba-eHi"/>
+                                                <constraint firstAttribute="bottom" secondItem="vGJ-Lq-rlR" secondAttribute="bottom" id="TZ5-z7-aj6"/>
+                                                <constraint firstItem="vGJ-Lq-rlR" firstAttribute="leading" secondItem="cia-kk-qgT" secondAttribute="leading" constant="20" id="vW1-Jq-RJn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -704,17 +705,17 @@ HH:mm:ss</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="教科" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlX-nU-vR4">
-                                                    <rect key="frame" x="20" y="0.0" width="984" height="52"/>
+                                                    <rect key="frame" x="20" y="0.0" width="672" height="52"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="wlX-nU-vR4" secondAttribute="trailing" constant="20" id="6tN-Co-dm7"/>
-                                                <constraint firstItem="wlX-nU-vR4" firstAttribute="top" secondItem="W2N-8N-Dvc" secondAttribute="top" id="ZAG-zV-klw"/>
-                                                <constraint firstItem="wlX-nU-vR4" firstAttribute="leading" secondItem="W2N-8N-Dvc" secondAttribute="leading" constant="20" id="nkA-yz-VhD"/>
-                                                <constraint firstAttribute="bottom" secondItem="wlX-nU-vR4" secondAttribute="bottom" id="wUw-JC-01R"/>
+                                                <constraint firstAttribute="trailing" secondItem="wlX-nU-vR4" secondAttribute="trailing" constant="20" id="MOk-Cg-Efo"/>
+                                                <constraint firstAttribute="bottom" secondItem="wlX-nU-vR4" secondAttribute="bottom" id="S4b-Z2-9KA"/>
+                                                <constraint firstItem="wlX-nU-vR4" firstAttribute="leading" secondItem="W2N-8N-Dvc" secondAttribute="leading" constant="20" id="TqU-KC-u5J"/>
+                                                <constraint firstItem="wlX-nU-vR4" firstAttribute="top" secondItem="W2N-8N-Dvc" secondAttribute="top" id="mKF-2c-A3D"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -730,17 +731,17 @@ HH:mm:ss</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b79-Ic-xha">
-                                                    <rect key="frame" x="20" y="0.0" width="984" height="253"/>
+                                                    <rect key="frame" x="20" y="0.0" width="672" height="253"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="b79-Ic-xha" firstAttribute="leading" secondItem="OfA-Ma-vX1" secondAttribute="leading" constant="20" id="Mz6-0K-D76"/>
-                                                <constraint firstAttribute="bottom" secondItem="b79-Ic-xha" secondAttribute="bottom" id="fy9-lM-XDr"/>
-                                                <constraint firstItem="b79-Ic-xha" firstAttribute="top" secondItem="OfA-Ma-vX1" secondAttribute="top" id="nzM-f9-8wA"/>
-                                                <constraint firstAttribute="trailing" secondItem="b79-Ic-xha" secondAttribute="trailing" constant="20" id="vFb-it-IlL"/>
+                                                <constraint firstAttribute="trailing" secondItem="b79-Ic-xha" secondAttribute="trailing" constant="20" id="6No-TO-hHX"/>
+                                                <constraint firstItem="b79-Ic-xha" firstAttribute="leading" secondItem="OfA-Ma-vX1" secondAttribute="leading" constant="20" id="HgC-K3-bla"/>
+                                                <constraint firstAttribute="bottom" secondItem="b79-Ic-xha" secondAttribute="bottom" id="Igv-7w-Y4v"/>
+                                                <constraint firstItem="b79-Ic-xha" firstAttribute="top" secondItem="OfA-Ma-vX1" secondAttribute="top" id="bV1-R1-Sg6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

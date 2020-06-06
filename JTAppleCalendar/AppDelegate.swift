@@ -71,13 +71,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-        let content = UNMutableNotificationContent()
-        content.title = "勉強を始める時間です。"
-        content.body = ""
-        content.sound = UNNotificationSound.default
-        // 直ぐに通知を表示
-        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+//        let content = UNMutableNotificationContent()
+//        content.title = "勉強を始める時間です。"
+//        content.body = ""
+//        content.sound = UNNotificationSound.default
+//        // 直ぐに通知を表示
+//        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//    }
 }

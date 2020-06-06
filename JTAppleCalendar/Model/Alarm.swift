@@ -25,7 +25,7 @@ class Alarm{
     }
     
     @objc func updateTimer(){
-        if seconds != 0{
+        if seconds > 0{
             seconds -= 1
             
             print(seconds)

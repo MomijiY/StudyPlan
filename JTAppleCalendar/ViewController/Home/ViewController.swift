@@ -206,22 +206,6 @@ extension ViewController {
         if self.judgeHoliday(date){
             return UIColor.red
         }
-        //土日の判定を行う
-        let weekday = self.getWeekIdx(date)
-        let today = Date()
-
-        if weekday == 1, weekCalendar.today == today{
-            return UIColor.white
-        }
-        if weekday == 7, weekCalendar.today == today {
-            return UIColor.white
-        }
-        if weekday == 1, weekCalendar.today != today{
-            return UIColor.gray
-        }
-        if weekday == 7, weekCalendar.today != today {
-            return UIColor.gray
-        }
         return nil
     }
     
@@ -287,9 +271,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             let realm = try! Realm()
             try! realm.write {
-                var sleepTimer = alarm.sleepTimer
-                sleepTimer?.invalidate()
-                sleepTimer = nil
+                var timer = alarm.sleepTimer
+                timer?.invalidate()
+                timer = nil
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)
