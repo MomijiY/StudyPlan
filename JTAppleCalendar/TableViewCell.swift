@@ -31,6 +31,39 @@ class TableViewCell: UITableViewCell {
         contentLabel.text = content
     }
     
+    func setUpAccessaryCell(timeOne: String, timeTwo: String, subject: String, content: String) {
+        timeOneLabel.text = timeOne
+        timeTwoLabel.text = timeTwo
+        subjectLabel.text = subject
+        contentLabel.text = content
+        
+        let attriStrTimeOne: NSMutableAttributedString = NSMutableAttributedString(string: timeOne)
+        attriStrTimeOne.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 2,
+                                     range: NSMakeRange(0, attriStrTimeOne.length))
+        
+        let attriStrTimeTwo: NSMutableAttributedString = NSMutableAttributedString(string: timeTwo)
+        attriStrTimeTwo.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 2,
+                                     range: NSMakeRange(0, attriStrTimeTwo.length))
+        
+        let attriStrSubject: NSMutableAttributedString = NSMutableAttributedString(string: subject)
+        attriStrSubject.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 2,
+                                     range: NSMakeRange(0, attriStrSubject.length))
+        
+        let attriStrContent: NSMutableAttributedString = NSMutableAttributedString(string: content)
+        attriStrContent.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 2,
+                                     range: NSMakeRange(0, attriStrContent.length))
+        
+        timeOneLabel.attributedText = attriStrTimeOne
+        timeTwoLabel.attributedText = attriStrTimeTwo
+        subjectLabel.attributedText = attriStrSubject
+        contentLabel.attributedText = attriStrContent
+        
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

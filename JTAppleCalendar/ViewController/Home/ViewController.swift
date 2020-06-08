@@ -251,6 +251,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
         let memo = items[indexPath.row]
         cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+        if Alarm().seconds > 0 {
+            cell.setUpAccessaryCell(timeOne: memo.time1,
+                                    timeTwo: memo.time2,
+                                    subject: memo.subject,
+                                    content: memo.content)
+        }
         print("memo.content: \(memo.content)")
         return cell
     }
