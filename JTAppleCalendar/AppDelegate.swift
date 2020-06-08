@@ -69,6 +69,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         // 直ぐに通知を表示
         let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        print("appdelegate alarm.updatetimer")
     }
     
 //    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {

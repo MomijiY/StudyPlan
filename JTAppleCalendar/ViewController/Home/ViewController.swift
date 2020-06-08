@@ -277,7 +277,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             let realm = try! Realm()
             try! realm.write {
-                var timer = alarm.sleepTimer
+                var timer = alarm.studyTimer
                 timer?.invalidate()
                 timer = nil
                 print("削除")

@@ -98,7 +98,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                 print(events)
             }
             //AlarmにあるselectedWakeUpTimeにユーザーの入力した日付を代入
-            alarm.selectedWakeUpTime = timePicker.date
+            alarm.selectedBeginStudyTime = timePicker.date
 //            fishishAlarm.selectedFinishTime = timePicker2.date
             //AlarmのrunTimerを呼ぶ
             alarm.runTimer()

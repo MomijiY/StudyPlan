@@ -6,21 +6,21 @@
 //  Copyright © 2020 com.litech. All rights reserved.
 //
 
-import AVFoundation
+
 import UIKit
+import UserNotifications
 
 class Alarm{
     
-    var selectedWakeUpTime:Date?
-    var audioPlayer: AVAudioPlayer!
-    var sleepTimer: Timer?
+    var selectedBeginStudyTime:Date?
+    var studyTimer: Timer?
     var seconds = 0
     
     func runTimer(){
-        seconds = calculateInterval(userAwakeTime: selectedWakeUpTime!)
-        guard sleepTimer == nil else { return }
-        if sleepTimer == nil{
-            sleepTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        seconds = calculateInterval(userAwakeTime: selectedBeginStudyTime!)
+        guard studyTimer == nil else { return }
+        if studyTimer == nil{
+            studyTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         }
     }
     
@@ -30,26 +30,18 @@ class Alarm{
             
             print(seconds)
         }else{
-            sleepTimer?.invalidate()
-            sleepTimer = nil
-            let content = UNMutableNotificationContent()
-            content.title = "勉強を始める時間です。"
-            content.body = "勉強始めよう！"
-            content.sound = UNNotificationSound.default
-            // 直ぐに通知を表示
-            let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
-            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            stopTimer()
             print("勉強を開始！！！！！！！！！！！！！！！！！！！！！！！！！！")
         }
     }
     
     func stopTimer(){
-        if sleepTimer != nil {
-            sleepTimer!.invalidate()
-            sleepTimer = nil
+        if studyTimer != nil {
+            studyTimer!.invalidate()
+            studyTimer = nil
             let content = UNMutableNotificationContent()
             content.title = "勉強を始める時間です。"
-            content.body = ""
+            content.body = "勉強を始めましょう！"
             content.sound = UNNotificationSound.default
             // 直ぐに通知を表示
             let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
