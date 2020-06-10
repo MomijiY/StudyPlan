@@ -46,6 +46,7 @@ class Alarm{
             // 直ぐに通知を表示
             let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+            print("stoptimerの関数！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！")
         }
     }
     

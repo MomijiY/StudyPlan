@@ -257,7 +257,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                                     subject: memo.subject,
                                     content: memo.content)
         }
-        print("memo.content: \(memo.content)")
+//        print("memo.content: \(memo.content)")
         return cell
     }
     

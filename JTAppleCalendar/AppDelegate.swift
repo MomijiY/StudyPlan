@@ -26,12 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Realm.Configuration.defaultConfiguration = config
         // 通知許可の取得
         UNUserNotificationCenter.current().requestAuthorization(
-        options: [.alert, .sound, .badge]){
-            (granted, _) in
-            if granted{
-                UNUserNotificationCenter.current().delegate = self
-            }
+               options: [.alert, .sound, .badge]){
+                   (granted, _) in
+                   if granted{
+                       UNUserNotificationCenter.current().delegate = self
+                }
         }
+//        UNUserNotificationCenter.current().requestAuthorization(
+//        options: [.alert, .sound, .badge]){
+//            (granted, _) in
+//            if granted{
+//                UNUserNotificationCenter.current().delegate = self
+//            }
+//        }
         
         return true
     }
@@ -61,16 +68,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // 通知を受け取ったときの処理
 extension AppDelegate: UNUserNotificationCenterDelegate {
     //when iPhone was locked or the app was closed...
-    func userNotificationCenter(_ center: UNUserNotificationCenter,willPresent notification: UNNotification,withCompletionHandler completionHandler: @escaping(UNNotificationPresentationOptions) -> Void){
-        let content = UNMutableNotificationContent()
-        content.title = "勉強を始める時間です。"
-        content.body = ""
-        content.sound = UNNotificationSound.default
-        // 直ぐに通知を表示
-        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
-        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-        print("appdelegate alarm.updatetimer")
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // アプリ起動中でもアラートと音で通知
+        completionHandler([.alert, .sound])
+        
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+        
+    }
+//    func userNotificationCenter(_ center: UNUserNotificationCenter,willPresent notification: UNNotification,withCompletionHandler completionHandler: @escaping(UNNotificationPresentationOptions) -> Void){
+//        let content = UNMutableNotificationContent()
+//        content.title = "勉強を始める時間です。"
+//        content.body = ""
+//        content.sound = UNNotificationSound.default
+//        // 直ぐに通知を表示
+//        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
+//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//        print("appdelegate alarm.updatetimer")
+//    }
     
 //    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
 //        let content = UNMutableNotificationContent()
