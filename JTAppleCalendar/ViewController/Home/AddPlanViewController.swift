@@ -20,7 +20,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     
     //インスタンスを生成
     let alarm = Alarm()
-//    let fishishAlarm = AlarmFinish()
+    let fishishAlarm = FinishAlarm()
     
     var userdefdate = UserDefaults.standard.object(forKey: "date") as! String
     var items = Event()
@@ -103,10 +103,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             }
             //AlarmにあるselectedWakeUpTimeにユーザーの入力した日付を代入
             alarm.selectedBeginStudyTime = timePicker.date
-//            fishishAlarm.selectedFinishTime = timePicker2.date
+            fishishAlarm.selectedFinishStudyTime = timePicker2.date
             //AlarmのrunTimerを呼ぶ
             alarm.runTimer()
-//            fishishAlarm.runTimer()
+            fishishAlarm.runTimer()
             // 画面を閉じる
             self.navigationController?.popViewController(animated: true)
         }

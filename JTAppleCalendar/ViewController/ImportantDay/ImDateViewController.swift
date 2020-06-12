@@ -79,12 +79,12 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImportantDayTableViewCell.reuseIdentifier, for: indexPath) as! ImportantDayTableViewCell
         let selectionview = UIView()
-        selectionview.backgroundColor = UIColor(red: 0/255, green: 187/255, blue: 255/255, alpha: 0.2)
+        selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
         cell.selectedBackgroundView = selectionview
         let memo = dataSource[indexPath.row]
         cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: memo.pin)
         if memo.pin == true {
-            cell.backgroundColor = UIColor(red: 213/255, green: 242/255, blue: 255/255, alpha: 1.0)
+            cell.backgroundColor = UIColor(red: 173/255, green: 209/255, blue: 191/255, alpha: 0.4)
         }
         if memo.pin == false {
             cell.backgroundColor = UIColor.white

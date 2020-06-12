@@ -32,7 +32,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     var Item: Results<Event>!
     var items = [Event]()
     var currentTime = CurrentTime()
-//    var currentTimeFinish = CurrentTimeFinish()
+    var currentTimeFinish = FinishCurrentTime()
     let alarm = Alarm()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         self.setNeedsStatusBarAppearanceUpdate()
         
         currentTime.delegate = self
-//        currentTimeFinish.delegate = self
+        currentTimeFinish.delegate = self
         items = [Event]()
         weekCalendar.delegate = self
         weekCalendar.dataSource = self
@@ -251,7 +251,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
         let selectionview = UIView()
-        selectionview.backgroundColor = UIColor(red: 0/255, green: 187/255, blue: 255/255, alpha: 0.2)
+        selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
         cell.selectedBackgroundView = selectionview
         let memo = items[indexPath.row]
         cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)

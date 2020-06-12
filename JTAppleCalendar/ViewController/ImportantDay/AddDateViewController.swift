@@ -93,7 +93,6 @@ extension AddDateViewController {
 
 extension AddDateViewController{
     override func numberOfSections(in tableView: UITableView) -> Int {
-          //セクションの数
           return 4
       }
     
