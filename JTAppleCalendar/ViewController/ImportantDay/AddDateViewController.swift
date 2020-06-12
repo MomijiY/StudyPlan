@@ -98,7 +98,11 @@ extension AddDateViewController{
       }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let Pcell = tableView.dequeueReusableCell(withIdentifier: "Pdatecell")
+        let Lcell = tableView.dequeueReusableCell(withIdentifier: "Ldatecell")
         if section == 2 && isPicker == true {
+            Pcell?.setEditing(true, animated: true)
+            Lcell?.setEditing(true, animated: true)
             return 2
         } else {
             return 1

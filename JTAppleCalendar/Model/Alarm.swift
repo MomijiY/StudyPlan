@@ -31,14 +31,6 @@ class Alarm{
             print(seconds)
         }else{
             stopTimer()
-            print("勉強を開始！！！！！！！！！！！！！！！！！！！！！！！！！！")
-        }
-    }
-    
-    func stopTimer(){
-        if studyTimer != nil {
-            studyTimer!.invalidate()
-            studyTimer = nil
             let content = UNMutableNotificationContent()
             content.title = "勉強を始める時間です。"
             content.body = "勉強を始めましょう！"
@@ -46,7 +38,20 @@ class Alarm{
             // 直ぐに通知を表示
             let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            print("stoptimerの関数！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！")
+            print("勉強を開始")
+        }
+    }
+    
+    func stopTimer(){
+        if studyTimer != nil {
+            studyTimer!.invalidate()
+            studyTimer = nil
+        }
+    }
+    func stopNotification() {
+        if studyTimer != nil {
+            print("studyTimer != nil")
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["immediately"])
         }
     }
     

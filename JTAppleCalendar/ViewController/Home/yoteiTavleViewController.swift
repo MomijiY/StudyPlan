@@ -11,18 +11,18 @@ import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
 
-class yoteiTavleViewController: UIViewController{
+class yoteiTableViewController: UIViewController{
 
     @IBOutlet weak var yoteiTableView: UITableView!
     var tableView: UITableView!
-    @IBOutlet weak var scrollView: UIScrollView! {
-        didSet{
-            scrollView.delegate = self
-        }
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("スクロール中です。")
-    }
+//    @IBOutlet weak var scrollView: UIScrollView! {
+//        didSet{
+//            scrollView.delegate = self
+//        }
+//    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("スクロール中です。")
+//    }
     
     var Item: Results<Event>!
     var items = [Event]()
@@ -35,7 +35,7 @@ class yoteiTavleViewController: UIViewController{
     }
 }
 
-extension yoteiTavleViewController: UITableViewDataSource, UITableViewDelegate {
+extension yoteiTableViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         items.count
     }

@@ -11,6 +11,7 @@ import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
 import UserNotifications
+
 class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance, UIScrollViewDelegate, UIGestureRecognizerDelegate{
     @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
@@ -235,7 +236,6 @@ extension ViewController {
         for ev in results {
             if ev.date == date {
                 items.append(ev)
-                print(items)
             }
         }
         yoteiTableView.reloadData()
@@ -249,6 +249,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
+        let selectionview = UIView()
+        selectionview.backgroundColor = UIColor(red: 0/255, green: 187/255, blue: 255/255, alpha: 0.2)
+        cell.selectedBackgroundView = selectionview
         let memo = items[indexPath.row]
         cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
         if Alarm().seconds > 0 {
@@ -257,7 +260,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                                     subject: memo.subject,
                                     content: memo.content)
         }
-//        print("memo.content: \(memo.content)")
         return cell
     }
     
@@ -283,6 +285,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)
+//                alarm.stopNotification()
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["immediately"])
                 self.yoteiTableView.reloadData()
             }
         }

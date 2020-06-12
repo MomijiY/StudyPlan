@@ -93,6 +93,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                                             "subject": items.subject,
                                             "content": contentTextView.text!,
                                             "date": userdefdate])]
+                UserDefaults.standard.set(items.time1, forKey: "time1")
+                UserDefaults.standard.set(items.time2, forKey: "time2")
+                UserDefaults.standard.set(items.subject, forKey: "subject")
+                UserDefaults.standard.set(items.content, forKey: "content")
                 realm.add(events)
                 print("書き込み中")
                 print(events)

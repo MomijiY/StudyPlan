@@ -75,27 +75,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if #available(iOS 13.0, *) {
+            let initialViewController = storyboard.instantiateViewController(identifier: "studyingVC")
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            // Fallback on earlier versions
+        }
         completionHandler()
-        
     }
-//    func userNotificationCenter(_ center: UNUserNotificationCenter,willPresent notification: UNNotification,withCompletionHandler completionHandler: @escaping(UNNotificationPresentationOptions) -> Void){
-//        let content = UNMutableNotificationContent()
-//        content.title = "勉強を始める時間です。"
-//        content.body = ""
-//        content.sound = UNNotificationSound.default
-//        // 直ぐに通知を表示
-//        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//        print("appdelegate alarm.updatetimer")
-//    }
-    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
-//        let content = UNMutableNotificationContent()
-//        content.title = "勉強を始める時間です。"
-//        content.body = ""
-//        content.sound = UNNotificationSound.default
-//        // 直ぐに通知を表示
-//        let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
-//        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//    }
 }

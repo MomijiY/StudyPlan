@@ -73,7 +73,6 @@ extension ImDateViewController {
 extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("dataSource.count: \(dataSource.count)")
         return dataSource.count
     }
     
@@ -84,7 +83,6 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectedBackgroundView = selectionview
         let memo = dataSource[indexPath.row]
         cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: memo.pin)
-        print(memo)
         if memo.pin == true {
             cell.backgroundColor = UIColor(red: 213/255, green: 242/255, blue: 255/255, alpha: 1.0)
         }

@@ -38,6 +38,7 @@
 		797D0583246948C00035B7C8 /* ImportantDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797D0581246948C00035B7C8 /* ImportantDayTableViewCell.swift */; };
 		797D0584246948C00035B7C8 /* ImportantDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797D0582246948C00035B7C8 /* ImportantDayTableViewCell.xib */; };
 		797D0586246954470035B7C8 /* ImDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797D0585246954470035B7C8 /* ImDetailViewController.storyboard */; };
+		79DFBFEB24925808008A995F /* StudyingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFBFEA24925808008A995F /* StudyingTableViewController.swift */; };
 		79E0C122247A427E00078035 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0C121247A427E00078035 /* Alarm.swift */; };
 		79E0C124247A42B000078035 /* CurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E0C123247A42B000078035 /* CurrentTime.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,7 @@
 		797D0581246948C00035B7C8 /* ImportantDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantDayTableViewCell.swift; sourceTree = "<group>"; };
 		797D0582246948C00035B7C8 /* ImportantDayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportantDayTableViewCell.xib; sourceTree = "<group>"; };
 		797D0585246954470035B7C8 /* ImDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImDetailViewController.storyboard; sourceTree = "<group>"; };
+		79DFBFEA24925808008A995F /* StudyingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyingTableViewController.swift; sourceTree = "<group>"; };
 		79E0C121247A427E00078035 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		79E0C123247A42B000078035 /* CurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTime.swift; sourceTree = "<group>"; };
 		7DB285BBC0FC0119624F61EE /* Pods-JTAppleCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTAppleCalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-JTAppleCalendarTests/Pods-JTAppleCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				797D056E24693AEF0035B7C8 /* AddPlanViewController.swift */,
 				7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */,
 				7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */,
+				79DFBFEA24925808008A995F /* StudyingTableViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DFBFEB24925808008A995F /* StudyingTableViewController.swift in Sources */,
 				797D055224680A130035B7C8 /* ViewController.swift in Sources */,
 				797D056F24693AEF0035B7C8 /* AddPlanViewController.swift in Sources */,
 				797D0574246946F20035B7C8 /* ImDateViewController.swift in Sources */,
