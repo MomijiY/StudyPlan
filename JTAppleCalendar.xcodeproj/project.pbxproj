@@ -244,8 +244,6 @@
 		797D056B24693ADC0035B7C8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				79DFBFF02493AF87008A995F /* TabViewController.swift */,
-				7966433E2493B25B00711560 /* NavViewController.swift */,
 				797D055124680A130035B7C8 /* ViewController.swift */,
 				795DD704247391B0000C8DBB /* yoteiViewController.swift */,
 				795DD702247390AA000C8DBB /* yoteiTavleViewController.swift */,
@@ -253,6 +251,8 @@
 				7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */,
 				7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */,
 				79DFBFEA24925808008A995F /* StudyingTableViewController.swift */,
+				79DFBFF02493AF87008A995F /* TabViewController.swift */,
+				7966433E2493B25B00711560 /* NavViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";

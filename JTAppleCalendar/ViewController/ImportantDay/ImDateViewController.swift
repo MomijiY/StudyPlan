@@ -11,6 +11,8 @@ import UIKit
 final class ImDateViewController: UIViewController {
     // MARK: IBOutlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noneLabel: UILabel!
+    
     // MARK: Properties
     
     var topin = Int()
@@ -73,6 +75,11 @@ extension ImDateViewController {
 extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if dataSource.count == 0 {
+            noneLabel.isHidden = false
+        } else {
+            noneLabel.isHidden = true
+        }
         return dataSource.count
     }
     

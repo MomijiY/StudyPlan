@@ -179,7 +179,6 @@
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-NK-sSc" customClass="FSCalendar">
                                 <rect key="frame" x="20" y="50" width="984" height="639"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UJw-NK-sSc" secondAttribute="height" multiplier="328:213" id="cdf-QB-bPi"/>
@@ -202,16 +201,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXY-uu-CLq">
+                                <rect key="frame" x="60" y="725" width="916" height="104"/>
+                                <string key="text">勉強計画がまだありません。
+右上のプラスボタンから計画を追加しましょう。</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="aP6-yP-3MJ" secondAttribute="bottom" constant="20" id="0FW-Bv-q7e"/>
+                            <constraint firstItem="O5C-Ys-zvN" firstAttribute="bottom" secondItem="cXY-uu-CLq" secondAttribute="bottom" constant="487" id="EBH-ti-3wp"/>
+                            <constraint firstItem="cXY-uu-CLq" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="60" id="HdJ-hC-dcx"/>
                             <constraint firstItem="UJw-NK-sSc" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="JKp-7I-sFK"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="aP6-yP-3MJ" secondAttribute="trailing" constant="20" id="Jp2-2q-0I3"/>
                             <constraint firstItem="aP6-yP-3MJ" firstAttribute="top" secondItem="UJw-NK-sSc" secondAttribute="bottom" constant="8" id="OPy-bF-Ikw"/>
                             <constraint firstItem="aP6-yP-3MJ" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="OfX-IY-YGk"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="UJw-NK-sSc" secondAttribute="trailing" constant="20" id="PRo-H9-sM4"/>
+                            <constraint firstItem="cXY-uu-CLq" firstAttribute="top" secondItem="UJw-NK-sSc" secondAttribute="bottom" constant="36" id="TqH-qu-C3y"/>
                             <constraint firstItem="UJw-NK-sSc" firstAttribute="top" secondItem="O5C-Ys-zvN" secondAttribute="top" id="mYp-tO-qHU"/>
+                            <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="cXY-uu-CLq" secondAttribute="trailing" constant="48" id="suj-AM-2uG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O5C-Ys-zvN"/>
                     </view>
@@ -228,7 +239,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="calendarHeight" destination="cdf-QB-bPi" id="zAr-GN-aBM"/>
+                        <outlet property="calendarView" destination="UJw-NK-sSc" id="umZ-uf-aSh"/>
                         <outlet property="navItem" destination="vpW-Rk-aKc" id="n2M-7h-t98"/>
+                        <outlet property="noneLabel" destination="cXY-uu-CLq" id="hRT-W9-Nae"/>
                         <outlet property="scrollView" destination="CPN-GS-b5B" id="GYU-Em-Pwc"/>
                         <outlet property="tableViewHeight" destination="VYt-eO-vgh" id="IWh-E2-hPW"/>
                         <outlet property="weekCalendar" destination="UJw-NK-sSc" id="lOm-Me-b10"/>
@@ -239,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwX-TP-Icd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3602" y="293"/>
+            <point key="canvasLocation" x="3601.7578124999995" y="292.97218155197658"/>
         </scene>
         <!--ホーム-->
         <scene sceneID="BbR-hA-2YK">
@@ -308,6 +321,15 @@
                                     <outlet property="delegate" destination="sNc-Mj-9yG" id="Twn-s2-Pwj"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5S2-ba-mRV">
+                                <rect key="frame" x="20" y="50" width="984" height="193"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">大事な日が登録されていません。
+テストの日などを右上のプラスボタンから追加しましょう。</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -326,12 +348,20 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noneLabel" destination="5S2-ba-mRV" id="Zxa-IU-x2a"/>
                         <outlet property="tableView" destination="I5L-ip-kuY" id="9aE-o3-vuJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSj-xL-kf7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="htb-1h-7X8">
+                    <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </objects>
-            <point key="canvasLocation" x="3616" y="1840"/>
+            <point key="canvasLocation" x="3615.8203124999995" y="1839.970717423133"/>
         </scene>
         <!--Add Date View Controller-->
         <scene sceneID="Oid-SP-dkk">

@@ -19,6 +19,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     @IBOutlet weak var weekCalendar: FSCalendar!
     @IBOutlet weak var yoteiTableView: UITableView!
     @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet weak var calendarView: UIView!
+    @IBOutlet weak var noneLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet{
             scrollView.delegate = self
@@ -245,6 +247,11 @@ extension ViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if items.count == 0 {
+            noneLabel.isHidden = false
+        } else {
+            noneLabel.isHidden = true
+        }
         return items.count
     }
     
