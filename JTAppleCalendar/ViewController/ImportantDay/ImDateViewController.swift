@@ -57,6 +57,17 @@ extension ImDateViewController {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = ImportantDayTableViewCell.rowHeight
         tableView.register(ImportantDayTableViewCell.nib, forCellReuseIdentifier: ImportantDayTableViewCell.reuseIdentifier)
+        tableView.separatorColor = .white
+        tableView.backgroundColor = .clear
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        // 半透明の指定（デフォルト値）
+        self.navigationController?.navigationBar.isTranslucent = true
+        // 空の背景画像設定
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        // ナビゲーションバーの影画像（境界線の画像）を空に設定
+        self.navigationController!.navigationBar.shadowImage = UIImage()
     }
 }
 
@@ -91,10 +102,10 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
         let memo = dataSource[indexPath.row]
         cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: memo.pin)
         if memo.pin == true {
-            cell.backgroundColor = UIColor(red: 173/255, green: 209/255, blue: 191/255, alpha: 0.4)
+            cell.backgroundColor = UIColor(red: 163/255, green: 210/255, blue: 190/255, alpha: 0.8)
         }
         if memo.pin == false {
-            cell.backgroundColor = UIColor.white
+            cell.backgroundColor = UIColor.clear
         }
         return cell
     }

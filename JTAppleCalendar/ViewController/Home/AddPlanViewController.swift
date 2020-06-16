@@ -16,7 +16,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var timeTwoTextField: UITextField!
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
-    @IBOutlet weak var navItem: UINavigationItem!
+//    @IBOutlet weak var navItem: UINavigationItem!
     
     //インスタンスを生成
     let alarm = Alarm()
@@ -34,7 +34,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         
-        navItem.title = userdefdate
+//        navItem.title = userdefdate
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor(red: 0/255, green: 84/255, blue: 147/255, alpha: 1.0)
+        ]
         items = Event()
         
         subjectTextField.delegate = self
@@ -73,6 +76,12 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presentingViewController?.beginAppearanceTransition(true, animated: animated)
+        presentingViewController?.endAppearanceTransition()
+    }
+    
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
         if timeOneTextField.text == "" {
             alert(title: "空欄があります。", message: "勉強を始める時間を入力してください。")
@@ -108,7 +117,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             alarm.runTimer()
             fishishAlarm.runTimer()
             // 画面を閉じる
-            self.navigationController?.popViewController(animated: true)
+//            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

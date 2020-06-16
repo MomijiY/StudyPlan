@@ -39,6 +39,9 @@
 		797D0583246948C00035B7C8 /* ImportantDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797D0581246948C00035B7C8 /* ImportantDayTableViewCell.swift */; };
 		797D0584246948C00035B7C8 /* ImportantDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797D0582246948C00035B7C8 /* ImportantDayTableViewCell.xib */; };
 		797D0586246954470035B7C8 /* ImDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797D0585246954470035B7C8 /* ImDetailViewController.storyboard */; };
+		797E3EAC2494DDF60059748D /* NewHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797E3EAB2494DDF60059748D /* NewHomeViewController.swift */; };
+		797E3EAE2494DE640059748D /* SemiModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797E3EAD2494DE640059748D /* SemiModalViewController.swift */; };
+		797E3EB02494F5FD0059748D /* ReNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797E3EAF2494F5FD0059748D /* ReNewViewController.swift */; };
 		79DFBFEB24925808008A995F /* StudyingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFBFEA24925808008A995F /* StudyingTableViewController.swift */; };
 		79DFBFED24938DD2008A995F /* FinishCurrentTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFBFEC24938DD2008A995F /* FinishCurrentTime.swift */; };
 		79DFBFEF24938DE4008A995F /* FinishAlarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFBFEE24938DE4008A995F /* FinishAlarm.swift */; };
@@ -104,6 +107,9 @@
 		797D0581246948C00035B7C8 /* ImportantDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantDayTableViewCell.swift; sourceTree = "<group>"; };
 		797D0582246948C00035B7C8 /* ImportantDayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportantDayTableViewCell.xib; sourceTree = "<group>"; };
 		797D0585246954470035B7C8 /* ImDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImDetailViewController.storyboard; sourceTree = "<group>"; };
+		797E3EAB2494DDF60059748D /* NewHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeViewController.swift; sourceTree = "<group>"; };
+		797E3EAD2494DE640059748D /* SemiModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemiModalViewController.swift; sourceTree = "<group>"; };
+		797E3EAF2494F5FD0059748D /* ReNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReNewViewController.swift; sourceTree = "<group>"; };
 		79DFBFEA24925808008A995F /* StudyingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyingTableViewController.swift; sourceTree = "<group>"; };
 		79DFBFEC24938DD2008A995F /* FinishCurrentTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishCurrentTime.swift; sourceTree = "<group>"; };
 		79DFBFEE24938DE4008A995F /* FinishAlarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishAlarm.swift; sourceTree = "<group>"; };
@@ -244,6 +250,9 @@
 		797D056B24693ADC0035B7C8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				797E3EAF2494F5FD0059748D /* ReNewViewController.swift */,
+				797E3EAB2494DDF60059748D /* NewHomeViewController.swift */,
+				797E3EAD2494DE640059748D /* SemiModalViewController.swift */,
 				797D055124680A130035B7C8 /* ViewController.swift */,
 				795DD704247391B0000C8DBB /* yoteiViewController.swift */,
 				795DD702247390AA000C8DBB /* yoteiTavleViewController.swift */,
@@ -569,11 +578,13 @@
 				79DFBFED24938DD2008A995F /* FinishCurrentTime.swift in Sources */,
 				797D055224680A130035B7C8 /* ViewController.swift in Sources */,
 				797D056F24693AEF0035B7C8 /* AddPlanViewController.swift in Sources */,
+				797E3EB02494F5FD0059748D /* ReNewViewController.swift in Sources */,
 				797D0574246946F20035B7C8 /* ImDateViewController.swift in Sources */,
 				79DFBFF12493AF87008A995F /* TabViewController.swift in Sources */,
 				797D057F246947A40035B7C8 /* AddDate.swift in Sources */,
 				7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */,
 				797D0579246947300035B7C8 /* ImDetailViewController.swift in Sources */,
+				797E3EAE2494DE640059748D /* SemiModalViewController.swift in Sources */,
 				797D05632469305D0035B7C8 /* TableViewCell.swift in Sources */,
 				795DD705247391B0000C8DBB /* yoteiViewController.swift in Sources */,
 				795BD8AB24697E6C00600D29 /* AddPlan.swift in Sources */,
@@ -589,6 +600,7 @@
 				7966433F2493B25B00711560 /* NavViewController.swift in Sources */,
 				797D0566246930DB0035B7C8 /* Event.swift in Sources */,
 				794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */,
+				797E3EAC2494DDF60059748D /* NewHomeViewController.swift in Sources */,
 				79DFBFEF24938DE4008A995F /* FinishAlarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

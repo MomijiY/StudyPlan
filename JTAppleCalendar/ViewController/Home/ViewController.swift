@@ -53,6 +53,12 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         yoteiTableView.tableFooterView = UIView()
 
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.titleTextAttributes = [
+            .foregroundColor: UIColor.white
+        ]
+        
         // Realmからデータを取得
             //タップされた日付を生成してます
         let formatter = DateFormatter()
@@ -208,7 +214,7 @@ extension ViewController {
     // 土日や祝日の日の文字色を変える
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if self.judgeHoliday(date){
-            return UIColor.red
+            return UIColor.yellow
         }
         return nil
     }

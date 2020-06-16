@@ -33,6 +33,12 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
         dateDone()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presentingViewController?.beginAppearanceTransition(true, animated: animated)
+        presentingViewController?.endAppearanceTransition()
+    }
+    
     @IBAction func topSwitchTapped(_ sender: UISwitch) {
         if sender.isOn {
             //トップに固定する時
@@ -66,18 +72,12 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
 extension AddDateViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "datecell", for: indexPath)
-        if cell.isSelected == true {
-            
-        }
         
         switch indexPath.section {
         case 2:
             if isPicker == true {
-                cell.backgroundColor = UIColor(red: 0/255, green: 187/255, blue: 255/255, alpha: 1.0)
                 isPicker = false
             } else {
-                cell.backgroundColor = UIColor(red: 0/255, green: 187/255, blue: 255/255, alpha: 1.0)
                 isPicker = true
             }
             dateDone()
@@ -93,15 +93,11 @@ extension AddDateViewController {
 
 extension AddDateViewController{
     override func numberOfSections(in tableView: UITableView) -> Int {
-          return 4
+          return 5
       }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let Pcell = tableView.dequeueReusableCell(withIdentifier: "Pdatecell")
-        let Lcell = tableView.dequeueReusableCell(withIdentifier: "Ldatecell")
         if section == 2 && isPicker == true {
-            Pcell?.setEditing(true, animated: true)
-            Lcell?.setEditing(true, animated: true)
             return 2
         } else {
             return 1
@@ -154,7 +150,7 @@ extension AddDateViewController {
                 model.saveMemos([importantDay])
             }
             print([importantDay])
-            navigationController?.popViewController(animated: true)
+//            navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
 
         }
