@@ -21,6 +21,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var calendarView: UIView!
     @IBOutlet weak var noneLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView! {
         didSet{
             scrollView.delegate = self
@@ -52,8 +53,10 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         yoteiTableView.dataSource = self
         yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         yoteiTableView.tableFooterView = UIView()
-
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        yoteiTableView.separatorColor = .white
+        self.navigationController!
+            .navigationBar
+            .setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
@@ -62,11 +65,11 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // Realmからデータを取得
             //タップされた日付を生成してます
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy年MM月dd日"
+        formatter.dateFormat = "M/d日"
         let date = Date()
         let dateStr = formatter.string(from: date)
-        navItem.title = dateStr
-        UserDefaults.standard.set(navItem.title, forKey: "date")
+        dateLabel.text = dateStr
+        UserDefaults.standard.set(dateLabel.text, forKey: "date")
         let realm = try! Realm()
         let results = realm.objects(Event.self)
         items = [Event]()
@@ -154,11 +157,11 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         super.viewWillAppear(animated)
             //タップされた日付を生成してます
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy年MM月dd日"
+        formatter.dateFormat = "M/d"
         let date = Date()
         let dateStr = formatter.string(from: date)
-        navItem.title = dateStr
-        UserDefaults.standard.set(navItem.title, forKey: "date")
+        dateLabel.text = dateStr
+        UserDefaults.standard.set(dateLabel.text, forKey: "date")
         let realm = try! Realm()
         let results = realm.objects(Event.self)
         items = [Event]()
@@ -235,10 +238,10 @@ extension ViewController {
         UserDefaults.standard.set(day, forKey: "day")
             //タップされた日付を生成してます
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy年MM月dd日"
+        formatter.dateFormat = "M/d"
         let date = formatter.string(from: date)
-        navItem.title = date
-        UserDefaults.standard.set(navItem.title, forKey: "date")
+        dateLabel.text = date
+        UserDefaults.standard.set(dateLabel.text, forKey: "date")
         let realm = try! Realm()
         let results = realm.objects(Event.self)
         items = [Event]()
