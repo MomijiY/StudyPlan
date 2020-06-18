@@ -29,6 +29,7 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "datecell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "pincell")
         tableView.tableFooterView = UIView()
         dateDone()
     }

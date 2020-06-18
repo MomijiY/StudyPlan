@@ -49,6 +49,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         weekCalendar.dataSource = self
         weekCalendar.scope = .month
         weekCalendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        self.weekCalendar.appearance.weekdayFont = UIFont(name: "Futura", size: 18)
+        self.weekCalendar.appearance.titleFont = UIFont(name: "Helvetica Neue", size: 16)
         yoteiTableView.delegate = self
         yoteiTableView.dataSource = self
         yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
