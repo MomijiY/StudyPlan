@@ -78,8 +78,14 @@ extension AddDateViewController {
         case 2:
             if isPicker == true {
                 isPicker = false
+                self.tableView.beginUpdates()
+                self.tableView.deleteRows(at: [IndexPath(row: 0, section: 2)], with: .automatic)
+                self.tableView.endUpdates()
             } else {
                 isPicker = true
+                self.tableView.beginUpdates()
+                self.tableView.insertRows(at: [IndexPath(row: 0, section: 2)], with: .automatic)
+                self.tableView.endUpdates()
             }
             dateDone()
             tableView.reloadData()

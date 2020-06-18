@@ -273,12 +273,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectedBackgroundView = selectionview
         let memo = items[indexPath.row]
         cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
-        if Alarm().seconds > 0 {
-            cell.setUpAccessaryCell(timeOne: memo.time1,
-                                    timeTwo: memo.time2,
-                                    subject: memo.subject,
-                                    content: memo.content)
-        }
         return cell
     }
     
