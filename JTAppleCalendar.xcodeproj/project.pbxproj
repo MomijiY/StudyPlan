@@ -10,8 +10,8 @@
 		1714A17B80890194255FD634 /* Pods_JTAppleCalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */; };
 		1D81A493DB931C1784B4BF60 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCAD3B558475D0DA5C67B7 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework */; };
 		73E3D9A30FED3ED658AA403D /* Pods_JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E18887C19DF65A374410D5 /* Pods_JTAppleCalendar.framework */; };
-		79120499249976EC006935A8 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79120497249976EC006935A8 /* CalendarCell.swift */; };
-		7912049A249976EC006935A8 /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79120498249976EC006935A8 /* CalendarCell.xib */; };
+		7943AF8A249C5985006CB4A2 /* Disclosure.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7943AF89249C5985006CB4A2 /* Disclosure.pdf */; };
+		7943AF8C249C7D7D006CB4A2 /* 名称未設定.001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7943AF8B249C7D7D006CB4A2 /* 名称未設定.001.jpeg */; };
 		7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */; };
 		794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */; };
 		794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794DBF6224750FD800C698D5 /* Tutorial.storyboard */; };
@@ -71,8 +71,8 @@
 		652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E18887C19DF65A374410D5 /* Pods_JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		740F8FC03BD545A0F20B93D0 /* Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig"; path = "Target Support Files/Pods-JTAppleCalendar-JTAppleCalendarUITests/Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		79120497249976EC006935A8 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
-		79120498249976EC006935A8 /* CalendarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarCell.xib; sourceTree = "<group>"; };
+		7943AF89249C5985006CB4A2 /* Disclosure.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Disclosure.pdf; sourceTree = "<group>"; };
+		7943AF8B249C7D7D006CB4A2 /* 名称未設定.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "名称未設定.001.jpeg"; sourceTree = "<group>"; };
 		7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOneViewController.swift; sourceTree = "<group>"; };
 		794DBF6224750FD800C698D5 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -193,6 +193,8 @@
 		797D051B246809D60035B7C8 /* JTAppleCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				7943AF89249C5985006CB4A2 /* Disclosure.pdf */,
+				7943AF8B249C7D7D006CB4A2 /* 名称未設定.001.jpeg */,
 				797D051C246809D60035B7C8 /* AppDelegate.swift */,
 				797D05612469305D0035B7C8 /* TableViewCell.swift */,
 				797D05622469305D0035B7C8 /* TableViewCell.xib */,
@@ -308,8 +310,6 @@
 			children = (
 				797D0581246948C00035B7C8 /* ImportantDayTableViewCell.swift */,
 				797D0582246948C00035B7C8 /* ImportantDayTableViewCell.xib */,
-				79120497249976EC006935A8 /* CalendarCell.swift */,
-				79120498249976EC006935A8 /* CalendarCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -438,11 +438,12 @@
 			files = (
 				797D0586246954470035B7C8 /* ImDetailViewController.storyboard in Resources */,
 				797D052C246809D70035B7C8 /* LaunchScreen.storyboard in Resources */,
-				7912049A249976EC006935A8 /* CalendarCell.xib in Resources */,
 				797D05642469305D0035B7C8 /* TableViewCell.xib in Resources */,
 				797D0529246809D70035B7C8 /* Preview Assets.xcassets in Resources */,
+				7943AF8A249C5985006CB4A2 /* Disclosure.pdf in Resources */,
 				797D0584246948C00035B7C8 /* ImportantDayTableViewCell.xib in Resources */,
 				797D0526246809D70035B7C8 /* Assets.xcassets in Resources */,
+				7943AF8C249C7D7D006CB4A2 /* 名称未設定.001.jpeg in Resources */,
 				794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */,
 				797D055024680A080035B7C8 /* Main.storyboard in Resources */,
 			);
@@ -583,7 +584,6 @@
 				797D0579246947300035B7C8 /* ImDetailViewController.swift in Sources */,
 				797D05632469305D0035B7C8 /* TableViewCell.swift in Sources */,
 				795DD705247391B0000C8DBB /* yoteiViewController.swift in Sources */,
-				79120499249976EC006935A8 /* CalendarCell.swift in Sources */,
 				795BD8AB24697E6C00600D29 /* AddPlan.swift in Sources */,
 				797D0583246948C00035B7C8 /* ImportantDayTableViewCell.swift in Sources */,
 				79E0C124247A42B000078035 /* CurrentTime.swift in Sources */,

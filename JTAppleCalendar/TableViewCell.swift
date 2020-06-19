@@ -72,4 +72,24 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    fileprivate func commonInit() {
+
+    }
+
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if let indicatorButton = allSubviews.compactMap({ $0 as? UIButton }).last {
+            let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
+            indicatorButton.setBackgroundImage(image, for: .normal)
+            indicatorButton.tintColor = .white
+         }
+      }
+    
+}
+
+extension UIView {
+   var allSubviews: [UIView] {
+      return subviews.flatMap { [$0] + $0.allSubviews }
+   }
 }
