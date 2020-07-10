@@ -42,6 +42,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.backgroundImage = UIImage()
+        UITabBar.appearance().tintColor = .white
         currentTime.delegate = self
         currentTimeFinish.delegate = self
         items = [Event]()

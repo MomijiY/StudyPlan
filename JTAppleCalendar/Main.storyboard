@@ -186,10 +186,10 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Q54-Sm-LUo"/>
                             </scrollView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aP6-yP-3MJ">
-                                <rect key="frame" x="20" y="697" width="984" height="649"/>
+                                <rect key="frame" x="20" y="697" width="984" height="619"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="aP6-yP-3MJ" secondAttribute="height" multiplier="984:649" id="VYt-eO-vgh"/>
+                                    <constraint firstAttribute="width" secondItem="aP6-yP-3MJ" secondAttribute="height" multiplier="984:619" id="YCo-Yi-3BY"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableViewCell" rowHeight="100" id="ONG-cH-Lu2" customClass="TableViewCell" customModule="JTAppleCalendar" customModuleProvider="target">
@@ -256,18 +256,18 @@
                         <color key="backgroundColor" red="0.2034413757198795" green="0.33499641279990039" blue="0.42616005311624361" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="aP6-yP-3MJ" secondAttribute="bottom" constant="20" id="0FW-Bv-q7e"/>
                             <constraint firstItem="6DU-5i-GBW" firstAttribute="top" secondItem="O5C-Ys-zvN" secondAttribute="top" id="3Hy-cy-Zvb"/>
+                            <constraint firstItem="aP6-yP-3MJ" firstAttribute="bottom" secondItem="O5C-Ys-zvN" secondAttribute="bottom" id="3ku-2D-Cie"/>
+                            <constraint firstItem="aP6-yP-3MJ" firstAttribute="top" secondItem="UJw-NK-sSc" secondAttribute="bottom" constant="8" id="4Vs-ny-l3z"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="6DU-5i-GBW" secondAttribute="trailing" constant="20" id="GWJ-sC-yhY"/>
                             <constraint firstItem="UJw-NK-sSc" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="JKp-7I-sFK"/>
-                            <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="aP6-yP-3MJ" secondAttribute="trailing" constant="20" id="Jp2-2q-0I3"/>
                             <constraint firstItem="JT9-85-QKu" firstAttribute="top" secondItem="UJw-NK-sSc" secondAttribute="bottom" constant="36" id="MCV-Xt-mYa"/>
-                            <constraint firstItem="aP6-yP-3MJ" firstAttribute="top" secondItem="UJw-NK-sSc" secondAttribute="bottom" constant="8" id="OPy-bF-Ikw"/>
                             <constraint firstItem="6DU-5i-GBW" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="ObM-iY-MeX"/>
-                            <constraint firstItem="aP6-yP-3MJ" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="OfX-IY-YGk"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="UJw-NK-sSc" secondAttribute="trailing" constant="20" id="PRo-H9-sM4"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="JT9-85-QKu" secondAttribute="trailing" constant="20" id="PwW-OD-9qv"/>
                             <constraint firstItem="JT9-85-QKu" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="QWc-g4-0vM"/>
+                            <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="aP6-yP-3MJ" secondAttribute="trailing" constant="20" id="eHT-iX-EAb"/>
+                            <constraint firstItem="aP6-yP-3MJ" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="m5q-U4-oz6"/>
                             <constraint firstItem="UJw-NK-sSc" firstAttribute="top" secondItem="O5C-Ys-zvN" secondAttribute="top" id="mYp-tO-qHU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O5C-Ys-zvN"/>
@@ -290,7 +290,7 @@
                         <outlet property="navItem" destination="vpW-Rk-aKc" id="n2M-7h-t98"/>
                         <outlet property="noneLabel" destination="JT9-85-QKu" id="lOT-S2-n2X"/>
                         <outlet property="scrollView" destination="CPN-GS-b5B" id="GYU-Em-Pwc"/>
-                        <outlet property="tableViewHeight" destination="VYt-eO-vgh" id="IWh-E2-hPW"/>
+                        <outlet property="tableViewHeight" destination="YCo-Yi-3BY" id="hn1-23-r5c"/>
                         <outlet property="weekCalendar" destination="UJw-NK-sSc" id="lOm-Me-b10"/>
                         <outlet property="yoteiTableView" destination="aP6-yP-3MJ" id="bhf-uH-heu"/>
                         <segue destination="dQa-bY-bb0" kind="show" identifier="toPlanDetail" id="exP-aL-q8m"/>
@@ -329,6 +329,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fk6-GW-9Co">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <outlet property="tabbar" destination="fk6-GW-9Co" id="ASP-Sq-REb"/>
@@ -629,7 +631,7 @@
         <!--Plan Detail View Controller-->
         <scene sceneID="ffY-kb-56v">
             <objects>
-                <tableViewController storyboardIdentifier="PlanDetailVC" id="dQa-bY-bb0" customClass="PlanDetailViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="pdVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dQa-bY-bb0" customClass="PlanDetailViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="b6w-3v-QG8">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
