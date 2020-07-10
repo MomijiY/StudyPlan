@@ -42,7 +42,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         
         subjectTextField.delegate = self
         //picker
-        timePicker.datePickerMode = UIDatePicker.Mode.time
+        timePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         timePicker.timeZone = NSTimeZone.local
         timePicker.locale = Locale.current
         timeOneTextField.inputView = timePicker
@@ -110,7 +110,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                 print("書き込み中")
                 print(events)
             }
-            //AlarmにあるselectedWakeUpTimeにユーザーの入力した日付を代入
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            let date = formatter.date(from: userdefdate)
+            print(date?.description ?? "nilですよ")
             alarm.selectedBeginStudyTime = timePicker.date
             fishishAlarm.selectedFinishStudyTime = timePicker2.date
             //AlarmのrunTimerを呼ぶ
@@ -125,14 +128,14 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     @objc func done() {
         timeOneTextField.endEditing(true)
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "\(userdefdate)　HH:mm"
         timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
     }
     
     @objc func done2() {
         timeTwoTextField.endEditing(true)
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = "\(userdefdate)　HH:mm"
         timeTwoTextField.text = "\(formatter.string(from: timePicker2.date))"
     }
 

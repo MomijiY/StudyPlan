@@ -41,7 +41,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         super.viewDidLoad()
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
-        
+        self.tabBarController?.tabBar.backgroundImage = UIImage()
         currentTime.delegate = self
         currentTimeFinish.delegate = self
         items = [Event]()
@@ -56,6 +56,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         yoteiTableView.tableFooterView = UIView()
         yoteiTableView.separatorColor = .white
+        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().shadowImage = UIImage()
         self.navigationController!
             .navigationBar
             .setBackgroundImage(UIImage(), for: .default)
@@ -292,14 +294,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             let realm = try! Realm()
             try! realm.write {
-                var timer = alarm.studyTimer
-                timer?.invalidate()
-                timer = nil
+                Alarm().stopNotification()
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)
 //                alarm.stopNotification()
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["immediately"])
+                
                 self.yoteiTableView.reloadData()
             }
         }

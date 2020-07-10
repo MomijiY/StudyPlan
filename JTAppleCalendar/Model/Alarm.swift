@@ -38,6 +38,7 @@ class Alarm{
             // 直ぐに通知を表示
             let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+//            ViewController().dismiss(animated: true, completion: nil)
             print("勉強を開始")
         }
     }
@@ -51,6 +52,11 @@ class Alarm{
     func stopNotification() {
         if studyTimer != nil {
             print("studyTimer != nil")
+            studyTimer!.invalidate()
+            studyTimer = nil
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["immediately"])
+        } else {
+            studyTimer = nil
             UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["immediately"])
         }
     }

@@ -37,7 +37,8 @@ class FinishAlarm{
             // 直ぐに通知を表示
             let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-            print("勉強を開始")
+            PlanDetailViewController().dismiss(animated: true, completion: nil)
+            print("勉強を終了")
         }
     }
     

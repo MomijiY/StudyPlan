@@ -173,7 +173,7 @@
         <!--View Controller-->
         <scene sceneID="de4-YY-Toz">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="js0-yJ-6A5" customClass="ViewController" customModule="JTAppleCalendar" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="js0-yJ-6A5" customClass="ViewController" customModule="JTAppleCalendar" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t4d-g1-Elx">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,8 +244,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6/16" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DU-5i-GBW">
-                                <rect key="frame" x="20" y="50" width="984" height="74"/>
-                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="36"/>
+                                <rect key="frame" x="20" y="50" width="984" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="pjO-gY-uOs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -254,18 +257,17 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="aP6-yP-3MJ" secondAttribute="bottom" constant="20" id="0FW-Bv-q7e"/>
-                            <constraint firstItem="6DU-5i-GBW" firstAttribute="top" secondItem="O5C-Ys-zvN" secondAttribute="top" id="8jj-Tl-3eW"/>
-                            <constraint firstItem="CPN-GS-b5B" firstAttribute="top" secondItem="6DU-5i-GBW" secondAttribute="bottom" constant="573" id="EIE-Hd-a8g"/>
+                            <constraint firstItem="6DU-5i-GBW" firstAttribute="top" secondItem="O5C-Ys-zvN" secondAttribute="top" id="3Hy-cy-Zvb"/>
+                            <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="6DU-5i-GBW" secondAttribute="trailing" constant="20" id="GWJ-sC-yhY"/>
                             <constraint firstItem="UJw-NK-sSc" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="JKp-7I-sFK"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="aP6-yP-3MJ" secondAttribute="trailing" constant="20" id="Jp2-2q-0I3"/>
                             <constraint firstItem="JT9-85-QKu" firstAttribute="top" secondItem="UJw-NK-sSc" secondAttribute="bottom" constant="36" id="MCV-Xt-mYa"/>
                             <constraint firstItem="aP6-yP-3MJ" firstAttribute="top" secondItem="UJw-NK-sSc" secondAttribute="bottom" constant="8" id="OPy-bF-Ikw"/>
+                            <constraint firstItem="6DU-5i-GBW" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="ObM-iY-MeX"/>
                             <constraint firstItem="aP6-yP-3MJ" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="OfX-IY-YGk"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="UJw-NK-sSc" secondAttribute="trailing" constant="20" id="PRo-H9-sM4"/>
                             <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="JT9-85-QKu" secondAttribute="trailing" constant="20" id="PwW-OD-9qv"/>
                             <constraint firstItem="JT9-85-QKu" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="QWc-g4-0vM"/>
-                            <constraint firstItem="6DU-5i-GBW" firstAttribute="leading" secondItem="O5C-Ys-zvN" secondAttribute="leading" constant="20" id="fRl-qu-4Y6"/>
-                            <constraint firstItem="O5C-Ys-zvN" firstAttribute="trailing" secondItem="6DU-5i-GBW" secondAttribute="trailing" constant="20" id="hEF-Hk-MgO"/>
                             <constraint firstItem="UJw-NK-sSc" firstAttribute="top" secondItem="O5C-Ys-zvN" secondAttribute="top" id="mYp-tO-qHU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="O5C-Ys-zvN"/>
@@ -292,7 +294,6 @@
                         <outlet property="weekCalendar" destination="UJw-NK-sSc" id="lOm-Me-b10"/>
                         <outlet property="yoteiTableView" destination="aP6-yP-3MJ" id="bhf-uH-heu"/>
                         <segue destination="dQa-bY-bb0" kind="show" identifier="toPlanDetail" id="exP-aL-q8m"/>
-                        <segue destination="q1f-0U-yvc" kind="show" identifier="toStudying" id="vtG-7M-2RS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwX-TP-Icd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -304,7 +305,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6HH-g2-fOc" customClass="NavViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" id="cWw-vZ-Mb0">
-                        <color key="badgeColor" red="0.0" green="0.32941176470588235" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YtO-FR-cHs">
@@ -323,13 +324,11 @@
         <!--Home Tab View Controller-->
         <scene sceneID="lYt-bd-D5z">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="AGL-gS-cWT" customClass="HomeTabViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AGL-gS-cWT" customClass="HomeTabViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fk6-GW-9Co">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.0" green="0.3294117647" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <outlet property="tabbar" destination="fk6-GW-9Co" id="ASP-Sq-REb"/>
@@ -611,7 +610,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dsl-Wt-SkG" customClass="NavViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="大事な日" image="calendar" catalog="system" id="pMm-rN-wfD">
-                        <color key="badgeColor" red="0.0" green="0.3294117647" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cym-Rh-hHf">
@@ -630,7 +629,7 @@
         <!--Plan Detail View Controller-->
         <scene sceneID="ffY-kb-56v">
             <objects>
-                <tableViewController id="dQa-bY-bb0" customClass="PlanDetailViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PlanDetailVC" id="dQa-bY-bb0" customClass="PlanDetailViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="b6w-3v-QG8">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -646,19 +645,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH:mm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmq-tF-3my">
-                                                    <rect key="frame" x="20" y="0.0" width="307" height="51"/>
+                                                    <rect key="frame" x="20" y="0.0" width="463" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH:mm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5FY-Cz-8Lq">
-                                                    <rect key="frame" x="385" y="0.0" width="307" height="51"/>
+                                                    <rect key="frame" x="541" y="0.0" width="463" height="51"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ve9-AE-UxM">
-                                                    <rect key="frame" x="335" y="0.0" width="42" height="51"/>
+                                                    <rect key="frame" x="491" y="0.0" width="42" height="51"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="42" id="yvU-Jd-6gw"/>
                                                     </constraints>
@@ -694,7 +693,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yy1-1U-Nmm">
-                                                    <rect key="frame" x="20" y="0.0" width="672" height="51.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="984" height="51.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -720,7 +719,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXO-yI-wGp">
-                                                    <rect key="frame" x="20" y="15" width="672" height="233"/>
+                                                    <rect key="frame" x="20" y="15" width="984" height="233"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -773,7 +772,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HH:mm:ss" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGJ-Lq-rlR">
-                                                    <rect key="frame" x="20" y="0.0" width="672" height="52"/>
+                                                    <rect key="frame" x="20" y="0.0" width="984" height="52"/>
                                                     <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -799,7 +798,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="教科" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wlX-nU-vR4">
-                                                    <rect key="frame" x="20" y="0.0" width="672" height="51.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="984" height="51.5"/>
                                                     <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -825,7 +824,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b79-Ic-xha">
-                                                    <rect key="frame" x="20" y="0.0" width="672" height="253"/>
+                                                    <rect key="frame" x="20" y="0.0" width="984" height="253"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -859,7 +858,6 @@
                         <outlet property="contentLabel" destination="b79-Ic-xha" id="Cf7-Me-zzL"/>
                         <outlet property="subjectLabel" destination="wlX-nU-vR4" id="lfg-Lt-LaV"/>
                         <outlet property="timeLabel" destination="vGJ-Lq-rlR" id="l63-Hj-gew"/>
-                        <segue destination="js0-yJ-6A5" kind="presentation" identifier="toHome" id="LV9-Bm-TJ6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sYc-Zu-j67" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -978,9 +976,6 @@
             <point key="canvasLocation" x="5779.6875" y="-682.13762811127378"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="r26-27-ai2"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
