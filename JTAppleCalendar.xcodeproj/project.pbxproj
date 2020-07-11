@@ -10,14 +10,13 @@
 		1714A17B80890194255FD634 /* Pods_JTAppleCalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */; };
 		1D81A493DB931C1784B4BF60 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCAD3B558475D0DA5C67B7 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework */; };
 		73E3D9A30FED3ED658AA403D /* Pods_JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E18887C19DF65A374410D5 /* Pods_JTAppleCalendar.framework */; };
-		7943AF8A249C5985006CB4A2 /* Disclosure.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 7943AF89249C5985006CB4A2 /* Disclosure.pdf */; };
-		7943AF8C249C7D7D006CB4A2 /* Disclosure-white.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7943AF8B249C7D7D006CB4A2 /* Disclosure-white.jpeg */; };
+		793331F824B98523005AFC0A /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331F724B98523005AFC0A /* ContentViewController.swift */; };
+		793331FA24B9990B005AFC0A /* CustomFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331F924B9990B005AFC0A /* CustomFloatingPanel.swift */; };
+		793331FF24B99E29005AFC0A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331FE24B99E29005AFC0A /* UIColor.swift */; };
 		7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */; };
 		794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */; };
 		794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794DBF6224750FD800C698D5 /* Tutorial.storyboard */; };
 		795BD8AB24697E6C00600D29 /* AddPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BD8AA24697E6C00600D29 /* AddPlan.swift */; };
-		795DD703247390AA000C8DBB /* yoteiTavleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795DD702247390AA000C8DBB /* yoteiTavleViewController.swift */; };
-		795DD705247391B0000C8DBB /* yoteiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795DD704247391B0000C8DBB /* yoteiViewController.swift */; };
 		7966433F2493B25B00711560 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7966433E2493B25B00711560 /* NavViewController.swift */; };
 		7976E2CD24724A87002E5D45 /* PlanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */; };
 		797D051D246809D60035B7C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797D051C246809D60035B7C8 /* AppDelegate.swift */; };
@@ -71,14 +70,13 @@
 		652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E18887C19DF65A374410D5 /* Pods_JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		740F8FC03BD545A0F20B93D0 /* Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig"; path = "Target Support Files/Pods-JTAppleCalendar-JTAppleCalendarUITests/Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		7943AF89249C5985006CB4A2 /* Disclosure.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Disclosure.pdf; sourceTree = "<group>"; };
-		7943AF8B249C7D7D006CB4A2 /* Disclosure-white.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Disclosure-white.jpeg"; sourceTree = "<group>"; };
+		793331F724B98523005AFC0A /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		793331F924B9990B005AFC0A /* CustomFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingPanel.swift; sourceTree = "<group>"; };
+		793331FE24B99E29005AFC0A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOneViewController.swift; sourceTree = "<group>"; };
 		794DBF6224750FD800C698D5 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
 		795BD8AA24697E6C00600D29 /* AddPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlan.swift; sourceTree = "<group>"; };
-		795DD702247390AA000C8DBB /* yoteiTavleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yoteiTavleViewController.swift; sourceTree = "<group>"; };
-		795DD704247391B0000C8DBB /* yoteiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yoteiViewController.swift; sourceTree = "<group>"; };
 		7966433E2493B25B00711560 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailViewController.swift; sourceTree = "<group>"; };
 		797D0519246809D60035B7C8 /* JTAppleCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JTAppleCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +157,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		793331FB24B99914005AFC0A /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				797D055124680A130035B7C8 /* ViewController.swift */,
+				793331F724B98523005AFC0A /* ContentViewController.swift */,
+				793331F924B9990B005AFC0A /* CustomFloatingPanel.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		793331FC24B99925005AFC0A /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				797D056E24693AEF0035B7C8 /* AddPlanViewController.swift */,
+				7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		793331FD24B99949005AFC0A /* else */ = {
+			isa = PBXGroup;
+			children = (
+				793331FE24B99E29005AFC0A /* UIColor.swift */,
+				7966433E2493B25B00711560 /* NavViewController.swift */,
+				79DFBFF02493AF87008A995F /* HomeTabViewController.swift */,
+				7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */,
+				79DFBFEA24925808008A995F /* StudyingTableViewController.swift */,
+			);
+			path = else;
+			sourceTree = "<group>";
+		};
 		794DBF5F24750FB700C698D5 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,8 +222,6 @@
 		797D051B246809D60035B7C8 /* JTAppleCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				7943AF89249C5985006CB4A2 /* Disclosure.pdf */,
-				7943AF8B249C7D7D006CB4A2 /* Disclosure-white.jpeg */,
 				797D051C246809D60035B7C8 /* AppDelegate.swift */,
 				797D05612469305D0035B7C8 /* TableViewCell.swift */,
 				797D05622469305D0035B7C8 /* TableViewCell.xib */,
@@ -250,15 +277,9 @@
 		797D056B24693ADC0035B7C8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				797D055124680A130035B7C8 /* ViewController.swift */,
-				795DD704247391B0000C8DBB /* yoteiViewController.swift */,
-				795DD702247390AA000C8DBB /* yoteiTavleViewController.swift */,
-				797D056E24693AEF0035B7C8 /* AddPlanViewController.swift */,
-				7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */,
-				7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */,
-				79DFBFEA24925808008A995F /* StudyingTableViewController.swift */,
-				79DFBFF02493AF87008A995F /* HomeTabViewController.swift */,
-				7966433E2493B25B00711560 /* NavViewController.swift */,
+				793331FB24B99914005AFC0A /* Main */,
+				793331FC24B99925005AFC0A /* Plan */,
+				793331FD24B99949005AFC0A /* else */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -440,10 +461,8 @@
 				797D052C246809D70035B7C8 /* LaunchScreen.storyboard in Resources */,
 				797D05642469305D0035B7C8 /* TableViewCell.xib in Resources */,
 				797D0529246809D70035B7C8 /* Preview Assets.xcassets in Resources */,
-				7943AF8A249C5985006CB4A2 /* Disclosure.pdf in Resources */,
 				797D0584246948C00035B7C8 /* ImportantDayTableViewCell.xib in Resources */,
 				797D0526246809D70035B7C8 /* Assets.xcassets in Resources */,
-				7943AF8C249C7D7D006CB4A2 /* Disclosure-white.jpeg in Resources */,
 				794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */,
 				797D055024680A080035B7C8 /* Main.storyboard in Resources */,
 			);
@@ -578,22 +597,23 @@
 				797D055224680A130035B7C8 /* ViewController.swift in Sources */,
 				797D056F24693AEF0035B7C8 /* AddPlanViewController.swift in Sources */,
 				797D0574246946F20035B7C8 /* ImDateViewController.swift in Sources */,
+				793331FA24B9990B005AFC0A /* CustomFloatingPanel.swift in Sources */,
 				79DFBFF12493AF87008A995F /* HomeTabViewController.swift in Sources */,
 				797D057F246947A40035B7C8 /* AddDate.swift in Sources */,
 				7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */,
+				793331FF24B99E29005AFC0A /* UIColor.swift in Sources */,
 				797D0579246947300035B7C8 /* ImDetailViewController.swift in Sources */,
 				797D05632469305D0035B7C8 /* TableViewCell.swift in Sources */,
-				795DD705247391B0000C8DBB /* yoteiViewController.swift in Sources */,
 				795BD8AB24697E6C00600D29 /* AddPlan.swift in Sources */,
 				797D0583246948C00035B7C8 /* ImportantDayTableViewCell.swift in Sources */,
 				79E0C124247A42B000078035 /* CurrentTime.swift in Sources */,
 				797D0576246947060035B7C8 /* AddDateViewController.swift in Sources */,
 				797D057C246947740035B7C8 /* UserDefalutsModel.swift in Sources */,
+				793331F824B98523005AFC0A /* ContentViewController.swift in Sources */,
 				79E0C122247A427E00078035 /* Alarm.swift in Sources */,
 				7976E2CD24724A87002E5D45 /* PlanDetailViewController.swift in Sources */,
 				797D051D246809D60035B7C8 /* AppDelegate.swift in Sources */,
 				797D0522246809D60035B7C8 /* JTAppleCalendar.xcdatamodeld in Sources */,
-				795DD703247390AA000C8DBB /* yoteiTavleViewController.swift in Sources */,
 				7966433F2493B25B00711560 /* NavViewController.swift in Sources */,
 				797D0566246930DB0035B7C8 /* Event.swift in Sources */,
 				794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */,

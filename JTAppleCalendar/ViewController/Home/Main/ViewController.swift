@@ -12,21 +12,15 @@ import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
 import UserNotifications
+import FloatingPanel
 
 class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance, UIScrollViewDelegate, UIGestureRecognizerDelegate{
-    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
-    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+//    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak var weekCalendar: FSCalendar!
-    @IBOutlet weak var yoteiTableView: UITableView!
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var calendarView: UIView!
-    @IBOutlet weak var noneLabel: UILabel!
+//    @IBOutlet weak var noneLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView! {
-        didSet{
-            scrollView.delegate = self
-        }
-    }
     
     let cellHeight: CGFloat = 100
     let width = UIScreen.main.bounds.size.width
@@ -37,12 +31,16 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     var currentTime = CurrentTime()
     var currentTimeFinish = FinishCurrentTime()
     let alarm = Alarm()
+    
+    var fpc = FloatingPanelController()
+    let contentVC = ContentViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.backgroundImage = UIImage()
-        UITabBar.appearance().tintColor = .white
+//        UITabBar.appearance().tintColor = .white
         currentTime.delegate = self
         currentTimeFinish.delegate = self
         items = [Event]()
@@ -52,11 +50,18 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         weekCalendar.appearance.headerMinimumDissolvedAlpha = 0.0
         self.weekCalendar.appearance.weekdayFont = UIFont(name: "Futura", size: 18)
         self.weekCalendar.appearance.titleFont = UIFont(name: "Helvetica Neue", size: 16)
-        yoteiTableView.delegate = self
-        yoteiTableView.dataSource = self
-        yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
-        yoteiTableView.tableFooterView = UIView()
-        yoteiTableView.separatorColor = .white
+//        yoteiTableView.delegate = self
+//        yoteiTableView.dataSource = self
+//        yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+//        yoteiTableView.tableFooterView = UIView()
+//        yoteiTableView.separatorColor = .white
+        fpc.delegate = self
+        fpc.set(contentViewController: contentVC)
+        fpc.addPanel(toParent: self)
+        fpc.track(scrollView: contentVC.tableView)
+        contentVC.tableView.delegate = self
+        contentVC.tableView.dataSource = self
+        contentVC.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().shadowImage = UIImage()
         self.navigationController!
@@ -83,81 +88,81 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                 items.append(ev)
             }
         }
-        yoteiTableView.reloadData()
+        contentVC.tableView.reloadData()
         
-        // gesture settings
-        let swipeUpGesture:UISwipeGestureRecognizer = UISwipeGestureRecognizer(
-            target: self,
-            action: #selector(ViewController.swipeUp))
-        swipeUpGesture.direction = .up
-        let swipeDownGesture:UISwipeGestureRecognizer = UISwipeGestureRecognizer(
-            target: self,
-            action: #selector(swipeDown))
-        swipeDownGesture.direction = .down
-        swipeUpGesture.delegate = self
-        swipeDownGesture.delegate = self
-        self.weekCalendar.addGestureRecognizer(swipeUpGesture)
-        self.weekCalendar.addGestureRecognizer(swipeDownGesture)
-        
-    }
-    // MARK: -- gesture Recognition
-    @objc func swipeUp() {
-        print("swiped up")
-        self.weekCalendar.setScope(.week, animated: true)
-        if width == 320.0 && height == 480.0 { //iPhone1,3G,3GS,4,4s
-            tableViewHeight.constant = -300
-        }
-        else if width == 320.0 && height == 568.0 { //iPhone5,5s,5c,SE --OK
-            tableViewHeight.constant = -300
-        }
-        else if width == 375.0 && height == 667.0 { //iPhone6,6s,7,8 --OK
-            tableViewHeight.constant = -300
-        }
-        else if width == 414.0 && height == 736.0 { //iPhone6,6s,7,8 plus --OK
-            tableViewHeight.constant = -350
-        }
-        else if width == 375.0 && height == 812.0 { //iPhoneX,XS,11Pro --OK
-            tableViewHeight.constant = -450
-        }
-        else if width == 414.0 && height == 896.0 { //iPhone XR,11 --OK
-            tableViewHeight.constant = -500
-        }
-        else if width == 414.0 && height == 896.0 { //iPhone XS,11Pro Max --OK
-            tableViewHeight.constant = -500
-        }
-        else { //iPad
-            tableViewHeight.constant = -500
-        }
+//        // gesture settings
+//        let swipeUpGesture:UISwipeGestureRecognizer = UISwipeGestureRecognizer(
+//            target: self,
+//            action: #selector(ViewController.swipeUp))
+//        swipeUpGesture.direction = .up
+//        let swipeDownGesture:UISwipeGestureRecognizer = UISwipeGestureRecognizer(
+//            target: self,
+//            action: #selector(swipeDown))
+//        swipeDownGesture.direction = .down
+//        swipeUpGesture.delegate = self
+//        swipeDownGesture.delegate = self
+//        self.weekCalendar.addGestureRecognizer(swipeUpGesture)
+//        self.weekCalendar.addGestureRecognizer(swipeDownGesture)
         
     }
-    @objc func swipeDown() {
-        print("swiped down")
-        self.weekCalendar.setScope(.month, animated: true)
-        if width == 320.0 && height == 480.0 { //iPhone1,3G,3GS,4,4s
-            tableViewHeight.constant = 50
-        }
-        else if width == 320.0 && height == 568.0 { //iPhone5,5s,5c,SE --OK
-            tableViewHeight.constant = 50
-        }
-        else if width == 375.0 && height == 667.0 { //iPhone6,6s,7,8 --OK
-            tableViewHeight.constant = 50
-        }
-        else if width == 414.0 && height == 736.0 { //iPhone6,6s,7,8 plus --OK
-            tableViewHeight.constant = 50
-        }
-        else if width == 375.0 && height == 812.0 { //iPhoneX,XS,11Pro --OK
-            tableViewHeight.constant = 50
-        }
-        else if width == 414.0 && height == 896.0 { //iPhone XR,11 --OK
-            tableViewHeight.constant = 50
-        }
-        else if width == 414.0 && height == 896.0 { //iPhone XS,11Pro Max --OK
-            tableViewHeight.constant = 50
-        }
-        else { //iPad
-            tableViewHeight.constant = 50
-        }
-    }
+//    // MARK: -- gesture Recognition
+//    @objc func swipeUp() {
+//        print("swiped up")
+//        self.weekCalendar.setScope(.week, animated: true)
+//        if width == 320.0 && height == 480.0 { //iPhone1,3G,3GS,4,4s
+//            tableViewHeight.constant = -300
+//        }
+//        else if width == 320.0 && height == 568.0 { //iPhone5,5s,5c,SE --OK
+//            tableViewHeight.constant = -300
+//        }
+//        else if width == 375.0 && height == 667.0 { //iPhone6,6s,7,8 --OK
+//            tableViewHeight.constant = -300
+//        }
+//        else if width == 414.0 && height == 736.0 { //iPhone6,6s,7,8 plus --OK
+//            tableViewHeight.constant = -350
+//        }
+//        else if width == 375.0 && height == 812.0 { //iPhoneX,XS,11Pro --OK
+//            tableViewHeight.constant = -450
+//        }
+//        else if width == 414.0 && height == 896.0 { //iPhone XR,11 --OK
+//            tableViewHeight.constant = -500
+//        }
+//        else if width == 414.0 && height == 896.0 { //iPhone XS,11Pro Max --OK
+//            tableViewHeight.constant = -500
+//        }
+//        else { //iPad
+//            tableViewHeight.constant = -500
+//        }
+//
+//    }
+//    @objc func swipeDown() {
+//        print("swiped down")
+//        self.weekCalendar.setScope(.month, animated: true)
+//        if width == 320.0 && height == 480.0 { //iPhone1,3G,3GS,4,4s
+//            tableViewHeight.constant = 50
+//        }
+//        else if width == 320.0 && height == 568.0 { //iPhone5,5s,5c,SE --OK
+//            tableViewHeight.constant = 50
+//        }
+//        else if width == 375.0 && height == 667.0 { //iPhone6,6s,7,8 --OK
+//            tableViewHeight.constant = 50
+//        }
+//        else if width == 414.0 && height == 736.0 { //iPhone6,6s,7,8 plus --OK
+//            tableViewHeight.constant = 50
+//        }
+//        else if width == 375.0 && height == 812.0 { //iPhoneX,XS,11Pro --OK
+//            tableViewHeight.constant = 50
+//        }
+//        else if width == 414.0 && height == 896.0 { //iPhone XR,11 --OK
+//            tableViewHeight.constant = 50
+//        }
+//        else if width == 414.0 && height == 896.0 { //iPhone XS,11Pro Max --OK
+//            tableViewHeight.constant = 50
+//        }
+//        else { //iPad
+//            tableViewHeight.constant = 50
+//        }
+//    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
             //タップされた日付を生成してます
@@ -175,7 +180,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
                 items.append(ev)
             }
         }
-        yoteiTableView.reloadData()
+        contentVC.tableView.reloadData()
         
         
     }
@@ -222,14 +227,14 @@ extension ViewController {
     // 土日や祝日の日の文字色を変える
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if self.judgeHoliday(date){
-            return UIColor.yellow
+            return UIColor(red: 235/255, green: 53/255, blue: 127/255, alpha: 1.0)
         }
         return nil
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         print(bounds)
-        calendarHeight.constant = bounds.height
+//        calendarHeight.constant = bounds.height
         self.view.layoutIfNeeded()
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -255,17 +260,17 @@ extension ViewController {
                 items.append(ev)
             }
         }
-        yoteiTableView.reloadData()
+        contentVC.tableView.reloadData()
     }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if items.count == 0 {
-            noneLabel.isHidden = false
-        } else {
-            noneLabel.isHidden = true
-        }
+//        if items.count == 0 {
+//            noneLabel.isHidden = false
+//        } else {
+//            noneLabel.isHidden = true
+//        }
         return items.count
     }
     
@@ -301,8 +306,15 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 items.remove(at: indexPath.row)
 //                alarm.stopNotification()
                 
-                self.yoteiTableView.reloadData()
+                contentVC.tableView.reloadData()
             }
         }
+    }
+}
+
+
+extension ViewController: FloatingPanelControllerDelegate {
+    func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
+        return CustomFloatingPanel()
     }
 }
