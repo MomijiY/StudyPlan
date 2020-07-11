@@ -248,15 +248,30 @@ extension ViewController {
         UserDefaults.standard.set(day, forKey: "day")
             //タップされた日付を生成してます
         let formatter = DateFormatter()
-        formatter.dateFormat = "M/d"
-        let date = formatter.string(from: date)
-        dateLabel.text = date
+        formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "M/d", options: 0, locale: Locale(identifier: "ja_JP"))
+        let dateStr = formatter.string(from: date)
+        let now: Date = Date()
+        let justNow: Date = now
+        print("calendar justNow: \(justNow)")
+        if date < now {
+            let memo = items[IndexPath().row]
+            
+            let cell = contentVC.tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: IndexPath()) as! TableViewCell
+            cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+            print("過去の日付です")
+        } else if date == justNow {
+            print("今日の日付です")
+        } else {
+            print("未来の日付です")
+        }
+        dateLabel.text = dateStr
         UserDefaults.standard.set(dateLabel.text, forKey: "date")
+        print("calendar dateStr: \(dateStr)")
         let realm = try! Realm()
         let results = realm.objects(Event.self)
         items = [Event]()
         for ev in results {
-            if ev.date == date {
+            if ev.date == dateStr {
                 items.append(ev)
             }
         }
@@ -281,6 +296,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectedBackgroundView = selectionview
         let memo = items[indexPath.row]
         cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+//        let dateUdf = UserDefaults.standard.object(forKey: "date")
+//        let date = DateUtils.dateFromString(string: dateUdf as! String, format: "M/d")
+////        print(date)
+//        print("tableView dateUdf: \(String(describing: dateUdf))")
+//        let now = Date()
+//        print("tableView now: \(now)")
+//        if date > now {
+//            print("未来の日付です")
+//        } else if date < now {
+////            cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+//            print("過去の日付です")
+//        } else if date == now {
+//            print("今日の日付です")
+//        }
         return cell
     }
     

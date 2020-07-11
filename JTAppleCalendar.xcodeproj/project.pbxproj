@@ -13,6 +13,7 @@
 		793331F824B98523005AFC0A /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331F724B98523005AFC0A /* ContentViewController.swift */; };
 		793331FA24B9990B005AFC0A /* CustomFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331F924B9990B005AFC0A /* CustomFloatingPanel.swift */; };
 		793331FF24B99E29005AFC0A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331FE24B99E29005AFC0A /* UIColor.swift */; };
+		7933320124B9ADAA005AFC0A /* DateUtls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933320024B9ADAA005AFC0A /* DateUtls.swift */; };
 		7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */; };
 		794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */; };
 		794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794DBF6224750FD800C698D5 /* Tutorial.storyboard */; };
@@ -73,6 +74,7 @@
 		793331F724B98523005AFC0A /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		793331F924B9990B005AFC0A /* CustomFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingPanel.swift; sourceTree = "<group>"; };
 		793331FE24B99E29005AFC0A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		7933320024B9ADAA005AFC0A /* DateUtls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtls.swift; sourceTree = "<group>"; };
 		7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOneViewController.swift; sourceTree = "<group>"; };
 		794DBF6224750FD800C698D5 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				793331FE24B99E29005AFC0A /* UIColor.swift */,
+				7933320024B9ADAA005AFC0A /* DateUtls.swift */,
 				7966433E2493B25B00711560 /* NavViewController.swift */,
 				79DFBFF02493AF87008A995F /* HomeTabViewController.swift */,
 				7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */,
@@ -595,6 +598,7 @@
 				79DFBFEB24925808008A995F /* StudyingTableViewController.swift in Sources */,
 				79DFBFED24938DD2008A995F /* FinishCurrentTime.swift in Sources */,
 				797D055224680A130035B7C8 /* ViewController.swift in Sources */,
+				7933320124B9ADAA005AFC0A /* DateUtls.swift in Sources */,
 				797D056F24693AEF0035B7C8 /* AddPlanViewController.swift in Sources */,
 				797D0574246946F20035B7C8 /* ImDateViewController.swift in Sources */,
 				793331FA24B9990B005AFC0A /* CustomFloatingPanel.swift in Sources */,
