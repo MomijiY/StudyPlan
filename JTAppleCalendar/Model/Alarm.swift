@@ -15,7 +15,7 @@ class Alarm{
     var selectedBeginStudyTime:Date?
     var studyTimer: Timer?
     var seconds = 0
-    
+    let id = "immediately"
     func runTimer(){
         seconds = calculateInterval(userAwakeTime: selectedBeginStudyTime!)
         guard studyTimer == nil else { return }
@@ -36,7 +36,7 @@ class Alarm{
             content.body = "勉強を始めましょう！"
             content.sound = UNNotificationSound.default
             // 直ぐに通知を表示
-            let request = UNNotificationRequest(identifier: "immediately", content: content, trigger: nil)
+            let request = UNNotificationRequest(identifier: id, content: content, trigger: nil)
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
 //            ViewController().dismiss(animated: true, completion: nil)
             print("勉強を開始")
@@ -49,15 +49,18 @@ class Alarm{
             studyTimer = nil
         }
     }
+    //通知を削除する関数———ViewController.swiftの332行目で呼び出している。
     func stopNotification() {
-        if studyTimer != nil {
-            print("studyTimer != nil")
-            studyTimer!.invalidate()
-            studyTimer = nil
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["immediately"])
-        } else {
-            studyTimer = nil
-            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["immediately"])
+        print(#function)
+        studyTimer!.invalidate()
+        studyTimer = nil
+
+        // requestのIDで絞って消す
+        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+            let identifiers = requests
+                .filter { $0.identifier == self.id}
+                .map { $0.identifier }
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
         }
     }
     

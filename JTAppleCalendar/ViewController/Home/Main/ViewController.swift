@@ -13,12 +13,12 @@ import CalculateCalendarLogic
 import RealmSwift
 import UserNotifications
 import FloatingPanel
-
+import QuartzCore
 class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance, UIScrollViewDelegate, UIGestureRecognizerDelegate{
 //    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak var weekCalendar: FSCalendar!
     @IBOutlet weak var navItem: UINavigationItem!
-    @IBOutlet weak var calendarView: UIView!
+//    @IBOutlet weak var calendarView: UIView!
 //    @IBOutlet weak var noneLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -49,7 +49,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         weekCalendar.scope = .month
         weekCalendar.appearance.headerMinimumDissolvedAlpha = 0.0
         self.weekCalendar.appearance.weekdayFont = UIFont(name: "Futura", size: 18)
-        self.weekCalendar.appearance.titleFont = UIFont(name: "Helvetica Neue", size: 16)
+        self.weekCalendar.appearance.titleFont = UIFont(name: "Futura-light", size: 16)
 //        yoteiTableView.delegate = self
 //        yoteiTableView.dataSource = self
 //        yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
@@ -329,6 +329,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             let realm = try! Realm()
             try! realm.write {
+                //通知を削除する。
                 Alarm().stopNotification()
                 print("削除")
                 realm.delete(items[indexPath.row])
@@ -342,8 +343,32 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-extension ViewController: FloatingPanelControllerDelegate {
+extension ViewController: FloatingPanelControllerDelegate, FloatingPanelLayout {
+    
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        return CustomFloatingPanel()
+        return ViewController()
+    }
+    var initialPosition: FloatingPanelPosition {
+        return .tip
+    }
+    
+    func insetFor(position: FloatingPanelPosition) -> CGFloat? {
+        switch position {
+        case .full:
+//            self.weekCalendar.setScope(.week, animated: true)
+//            weekCalendar.scope = .week
+            return 16.0
+        case .half:
+//            weekCalendar.scope = .week
+            return 400.0
+        case .tip:
+//            weekCalendar.scope = .month
+            return 216.0
+        default: return nil
+        }
+    }
+    
+    var supportedPositions: Set<FloatingPanelPosition> {
+        return[.full, .half, .tip]
     }
 }
