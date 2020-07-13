@@ -81,14 +81,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
         if #available(iOS 13.0, *) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if Alarm().seconds == 0 {
+            if Alarm().seconds <= 0 {
+                print("Alarm.seconds == 0")
                 if  let planDetailVC = storyboard.instantiateViewController(withIdentifier: "pdVC") as? PlanDetailViewController,
                     let tabBarController = rootViewController as? UITabBarController,
                     let navController = tabBarController.selectedViewController as? UINavigationController {
                         navController.pushViewController(planDetailVC, animated: true)
                 }
             }
-            if FinishAlarm().seconds == 0 {
+            else if FinishAlarm().seconds <= 0{
+                print("FinishAlarm.seconds == 0")
                 PlanDetailViewController().dismiss(animated: true, completion: nil)
 
             }

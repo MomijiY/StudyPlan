@@ -28,7 +28,7 @@ class Alarm{
         if seconds > 0{
             seconds -= 1
             
-            print(seconds)
+            print("Alarm: \(seconds)")
         }else{
             stopTimer()
             let content = UNMutableNotificationContent()
@@ -52,7 +52,7 @@ class Alarm{
     //通知を削除する関数———ViewController.swiftの332行目で呼び出している。
     func stopNotification() {
         print(#function)
-        studyTimer!.invalidate()
+        studyTimer?.invalidate()
         studyTimer = nil
 
         // requestのIDで絞って消す

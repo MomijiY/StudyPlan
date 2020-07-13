@@ -27,7 +27,7 @@ class FinishAlarm{
         if seconds > 0{
             seconds -= 1
             
-            print(seconds)
+            print("FinishAlarm: \(seconds)")
         }else{
             stopTimer()
             let content = UNMutableNotificationContent()

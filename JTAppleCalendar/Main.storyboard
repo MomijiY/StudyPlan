@@ -288,6 +288,7 @@
                         <outlet property="tabbar" destination="fk6-GW-9Co" id="ASP-Sq-REb"/>
                         <segue destination="6HH-g2-fOc" kind="relationship" relationship="viewControllers" id="rpK-8c-GFW"/>
                         <segue destination="dsl-Wt-SkG" kind="relationship" relationship="viewControllers" id="zp3-zs-n8t"/>
+                        <segue destination="mug-1v-9EI" kind="relationship" relationship="viewControllers" id="H27-ev-PxV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2m-oX-Ch7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -708,9 +709,45 @@
             </objects>
             <point key="canvasLocation" x="5343" y="293"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="8Zv-UX-5wZ">
+            <objects>
+                <viewController id="zAl-Yb-J3x" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fpu-Ka-YDt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="oJa-9j-2Sa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4J4-i8-Ir3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ev0-NM-dGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4510.144927536232" y="1129.6875"/>
+        </scene>
+        <!--記録-->
+        <scene sceneID="OqT-Ux-26c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mug-1v-9EI" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="記録" image="chart.bar" catalog="system" id="SmE-0l-xXN"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="enW-Gh-Pbd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="zAl-Yb-J3x" kind="relationship" relationship="rootViewController" id="JYX-in-5eC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sPx-n3-q1h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3600.0000000000005" y="1129.6875"/>
+        </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
     </resources>

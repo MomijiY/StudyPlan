@@ -83,13 +83,16 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
+        if timePicker.date < Date() {
+            alert(title: "今と同じ又は過去の時間を設定することはできません。", message: "今より前の時間を選んでください。")
+        }
         if timeOneTextField.text == "" {
             alert(title: "空欄があります。", message: "勉強を始める時間を入力してください。")
         }
         if timeTwoTextField.text == "" {
             alert(title: "空欄があります。", message: "勉強を終了する時間を入力してください。")
         }
-        if timeOneTextField.text != "" && timeTwoTextField.text != "" {
+        if timeOneTextField.text != "" && timeTwoTextField.text != "" && timePicker.date > Date() {
             items.time1 = timeOneTextField.text!
             items.time2 = timeTwoTextField.text!
             items.subject = subjectTextField.text!
@@ -110,11 +113,33 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                 print("書き込み中")
                 print(events)
             }
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            let date = formatter.date(from: userdefdate)
-            print(date?.description ?? "nilですよ")
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+//            let date = formatter.date(from: userdefdate)
+//            print(date?.description ?? "nilですよ")
+            // 適当に開始時点のDateを用意する
+//            let date = Date()
+//            let startDate = date.addingTimeInterval(-180071.3325)
+//
+//            // 開始からの経過秒数を取得する
+//            let timeInterval = date.timeIntervalSince(startDate)
+//            let int = Int(timeInterval)
+//            // ロケール用のカレンダーを準備する
+//            var calendar = Calendar.current
+//            calendar.locale = Locale(identifier: "ja_JP")
+//
+//            let formatter = DateComponentsFormatter()
+//            formatter.calendar = calendar
+//            formatter.unitsStyle = .full
+//            formatter.allowedUnits = [.day, .hour, .minute, .second]
+//            formatter.zeroFormattingBehavior = [.dropLeading]
+
+//            let string = formatter.string(from: timeInterval)!
+
+            // 2日 2時間 1分 11秒
+//            print(int)
             alarm.selectedBeginStudyTime = timePicker.date
+//            alarm.seconds = int
             fishishAlarm.selectedFinishStudyTime = timePicker2.date
             //AlarmのrunTimerを呼ぶ
             alarm.runTimer()
