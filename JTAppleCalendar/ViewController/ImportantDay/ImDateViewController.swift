@@ -57,7 +57,8 @@ extension ImDateViewController {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = ImportantDayTableViewCell.rowHeight
         tableView.register(ImportantDayTableViewCell.nib, forCellReuseIdentifier: ImportantDayTableViewCell.reuseIdentifier)
-        tableView.separatorColor = .white
+        tableView.separatorColor = .clear
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white

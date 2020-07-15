@@ -11,7 +11,7 @@ import UIKit
 import FSCalendar
 import CalculateCalendarLogic
 import RealmSwift
-import UserNotifications
+import os
 import FloatingPanel
 import QuartzCore
 class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance, UIScrollViewDelegate, UIGestureRecognizerDelegate{
@@ -330,7 +330,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let realm = try! Realm()
             try! realm.write {
                 //通知を削除する。
-                Alarm().stopNotification()
+//                Alarm().stopNotification()
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotification"])
+                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotification"]))
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotificationFinish"])
+                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotificationFinish"]))
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)

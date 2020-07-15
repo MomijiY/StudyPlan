@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-import UserNotifications
+import os
 
 class AddPlanViewController: UITableViewController, UITextFieldDelegate {
 
@@ -19,8 +19,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
 //    @IBOutlet weak var navItem: UINavigationItem!
     
     //インスタンスを生成
-    let alarm = Alarm()
-    let fishishAlarm = FinishAlarm()
+//    let alarm = Alarm()
+//    let fishishAlarm = FinishAlarm()
     
     var userdefdate = UserDefaults.standard.object(forKey: "date") as! String
     var items = Event()
@@ -113,6 +113,78 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                 print("書き込み中")
                 print(events)
             }
+            
+            os_log("setButton")
+                   
+            // 日付フォーマット
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .medium
+            dateFormatter.dateStyle = .medium
+            dateFormatter.locale = Locale(identifier: "ja_JP")
+                   
+            let otherDate1 = timePicker.date
+            let timeInterval = otherDate1.timeIntervalSince(date)
+            print("date: \(date)")
+            print("timeInterval: \(timeInterval)")
+            // 通知の時間の設定
+            let date2 = Date(timeInterval: timeInterval, since: date)
+            let targetDate = Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute],
+                from: date2)
+                   
+            let dateString = dateFormatter.string(from: date2)
+            print(dateString)
+                   
+            // トリガーの作成
+            let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
+                   
+            // 通知コンテンツの作成
+            let content = UNMutableNotificationContent()
+            content.title = "勉強を始める時間です。"
+            content.body = dateString
+            content.sound = UNNotificationSound.default
+                   
+            // 通知リクエストの作成
+            request = UNNotificationRequest.init(
+                    identifier: "CalendarNotification",
+                    content: content,
+                    trigger: trigger)
+                   
+            
+                   // 通知リクエストの登録
+            let center = UNUserNotificationCenter.current()
+            center.add(request)
+            
+            let otherDate2 = timePicker2.date
+            let timeInterval2 = otherDate2.timeIntervalSince(date)
+            
+            print("date: \(date2)")
+            print("timeInterval: \(timeInterval2)")
+            // 通知の時間の設定
+            let Finishdate = Date(timeInterval: timeInterval2, since: date)
+            let FinishtargetDate = Calendar.current.dateComponents(
+                [.year, .month, .day, .hour, .minute],
+                from: Finishdate)
+                   
+            let FinishdateString = dateFormatter.string(from: Finishdate)
+            print(FinishdateString)
+                   
+            // トリガーの作成
+            let Finisgtrigger = UNCalendarNotificationTrigger.init(dateMatching: FinishtargetDate, repeats: false)
+                   
+            // 通知コンテンツの作成
+            let Finishcontent = UNMutableNotificationContent()
+            Finishcontent.title = "勉強を終了する時間です。"
+            Finishcontent.body = FinishdateString
+            Finishcontent.sound = UNNotificationSound.default
+                   
+            // 通知リクエストの作成
+            request = UNNotificationRequest.init(
+                    identifier: "CalendarNotificationFinish",
+                    content: Finishcontent,
+                    trigger: Finisgtrigger)
+            center.add(request)
 //            let formatter = DateFormatter()
 //            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
 //            let date = formatter.date(from: userdefdate)
@@ -138,12 +210,12 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
 
             // 2日 2時間 1分 11秒
 //            print(int)
-            alarm.selectedBeginStudyTime = timePicker.date
-//            alarm.seconds = int
-            fishishAlarm.selectedFinishStudyTime = timePicker2.date
-            //AlarmのrunTimerを呼ぶ
-            alarm.runTimer()
-            fishishAlarm.runTimer()
+//            alarm.selectedBeginStudyTime = timePicker.date
+////            alarm.seconds = int
+//            fishishAlarm.selectedFinishStudyTime = timePicker2.date
+//            //AlarmのrunTimerを呼ぶ
+//            alarm.runTimer()
+//            fishishAlarm.runTimer()
             // 画面を閉じる
 //            self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
