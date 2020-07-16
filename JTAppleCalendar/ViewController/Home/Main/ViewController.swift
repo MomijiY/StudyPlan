@@ -28,9 +28,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     var Item: Results<Event>!
     var items = [Event]()
-    var currentTime = CurrentTime()
-    var currentTimeFinish = FinishCurrentTime()
-    let alarm = Alarm()
     
     var fpc = FloatingPanelController()
     let contentVC = ContentViewController()
@@ -41,8 +38,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         self.setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.backgroundImage = UIImage()
 //        UITabBar.appearance().tintColor = .white
-        currentTime.delegate = self
-        currentTimeFinish.delegate = self
         items = [Event]()
         weekCalendar.delegate = self
         weekCalendar.dataSource = self
