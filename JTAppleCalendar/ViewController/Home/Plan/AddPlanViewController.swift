@@ -125,10 +125,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                    
             let otherDate1 = timePicker.date
             let timeInterval = otherDate1.timeIntervalSince(date)
-            print("date: \(date)")
+            print("date: \(otherDate1)")
             print("timeInterval: \(timeInterval)")
             // 通知の時間の設定
-            let date2 = Date(timeInterval: timeInterval, since: date)
+            let date2 = Date(timeInterval: timeInterval, since: otherDate1)
             let targetDate = Calendar.current.dateComponents(
                 [.year, .month, .day, .hour, .minute],
                 from: date2)
@@ -159,10 +159,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             let otherDate2 = timePicker2.date
             let timeInterval2 = otherDate2.timeIntervalSince(date)
             
-            print("date: \(date2)")
+            print("date: \(otherDate2)")
             print("timeInterval: \(timeInterval2)")
             // 通知の時間の設定
-            let Finishdate = Date(timeInterval: timeInterval2, since: date)
+            let Finishdate = Date(timeInterval: timeInterval2, since: otherDate2)
             let FinishtargetDate = Calendar.current.dateComponents(
                 [.year, .month, .day, .hour, .minute],
                 from: Finishdate)
