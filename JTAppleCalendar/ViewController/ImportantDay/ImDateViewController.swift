@@ -107,10 +107,17 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: memo.pin)
         if memo.pin == true {
 //            cell.backgroundColor = UIColor(red: 163/255, green: 210/255, blue: 190/255, alpha: 0.8)
-            mainBackgoundView.backgroundColor = UIColor(red: 163/255, green: 210/255, blue: 190/255, alpha: 0.8)
+            mainBackgoundView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+            cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.layoutSubviews()
         }
         if memo.pin == false {
             cell.backgroundColor = UIColor.clear
+            cell.titleLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+            cell.descriptionLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+            cell.dateLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
         }
         return cell
     }

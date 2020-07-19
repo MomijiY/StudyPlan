@@ -13,12 +13,13 @@ class ContentViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero)
-        tableView.backgroundColor = .white
+//        tableView.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 100
         tableView.contentInsetAdjustmentBehavior = .always
-        tableView.backgroundColor = UIColor(red: 172/255, green: 208/255, blue: 191/255, alpha: 1.0)
+//        tableView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 236/255, alpha: 1.0)
+        tableView.backgroundColor = UIColor(hex: "FFFAFA", alpha: 1.0)
 //        tableView.backgroundColor = UIColor(hex: "E8D454", alpha: 0.5)
         return tableView
     }()

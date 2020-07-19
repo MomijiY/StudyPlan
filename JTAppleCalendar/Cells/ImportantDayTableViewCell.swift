@@ -11,9 +11,9 @@ import UIKit
 class ImportantDayTableViewCell: UITableViewCell {
     
     // MARK: IBOutlet
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var descriptionLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: Static properties
     

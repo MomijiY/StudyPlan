@@ -55,17 +55,23 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         // 決定バーの生成
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        spacelItem.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        doneItem.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         toolbar.setItems([spacelItem, doneItem], animated: true)
 
         let toolbar2 = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem2 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        spacelItem2.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         let doneItem2 = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done2))
+        doneItem2.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         toolbar2.setItems([spacelItem2, doneItem2], animated: true)
         
         let toolbar3 = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem3 = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        spacelItem3.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         let doneItem3 = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done3))
+        doneItem3.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         toolbar3.setItems([spacelItem3, doneItem3], animated: true)
         
         timeOneTextField.inputView = timePicker
@@ -124,7 +130,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             dateFormatter.locale = Locale(identifier: "ja_JP")
                    
             let otherDate1 = timePicker.date
-            let timeInterval = otherDate1.timeIntervalSince(date)
+            let timeInterval = otherDate1.timeIntervalSince(otherDate1)
             print("date: \(otherDate1)")
             print("timeInterval: \(timeInterval)")
             // 通知の時間の設定

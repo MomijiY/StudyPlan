@@ -29,6 +29,31 @@ class TableViewCell: UITableViewCell {
         timeTwoLabel.text = timeTwo
         subjectLabel.text = subject
         contentLabel.text = content
+        
+        let attriStrTimeOne: NSMutableAttributedString = NSMutableAttributedString(string: timeOne)
+        attriStrTimeOne.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 0,
+                                     range: NSMakeRange(0, attriStrTimeOne.length))
+        
+        let attriStrTimeTwo: NSMutableAttributedString = NSMutableAttributedString(string: timeTwo)
+        attriStrTimeTwo.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 0,
+                                     range: NSMakeRange(0, attriStrTimeTwo.length))
+        
+        let attriStrSubject: NSMutableAttributedString = NSMutableAttributedString(string: subject)
+        attriStrSubject.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 0,
+                                     range: NSMakeRange(0, attriStrSubject.length))
+        
+        let attriStrContent: NSMutableAttributedString = NSMutableAttributedString(string: content)
+        attriStrContent.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                     value: 0,
+                                     range: NSMakeRange(0, attriStrContent.length))
+        
+        timeOneLabel.attributedText = attriStrTimeOne
+        timeTwoLabel.attributedText = attriStrTimeTwo
+        subjectLabel.attributedText = attriStrSubject
+        contentLabel.attributedText = attriStrContent
     }
     
     func setUpAccessaryCell(timeOne: String, timeTwo: String, subject: String, content: String) {
@@ -82,7 +107,7 @@ class TableViewCell: UITableViewCell {
         if let indicatorButton = allSubviews.compactMap({ $0 as? UIButton }).last {
             let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
             indicatorButton.setBackgroundImage(image, for: .normal)
-            indicatorButton.tintColor = .white
+            indicatorButton.tintColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
          }
       }
     

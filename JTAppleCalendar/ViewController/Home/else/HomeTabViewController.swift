@@ -17,7 +17,7 @@ class HomeTabViewController: UITabBarController {
         tabbar.accessibilityIdentifier = "tabBar"
         tabbar.layer.borderColor = UIColor.clear.cgColor
         tabbar.tintColor = UIColor(red: 0/255, green: 84/255, blue: 147/255, alpha: 1.0)
-        tabbar.backgroundColor = UIColor(red: 172/255, green: 208/255, blue: 191/255, alpha: 1.0)
+        tabbar.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
     }
 
 }
