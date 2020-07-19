@@ -18,6 +18,7 @@ class ContentViewController: UIViewController {
         tableView.delegate = self
         tableView.rowHeight = 100
         tableView.contentInsetAdjustmentBehavior = .always
+        tableView.makeUp()
 //        tableView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 236/255, alpha: 1.0)
         tableView.backgroundColor = UIColor(hex: "FFFAFA", alpha: 1.0)
 //        tableView.backgroundColor = UIColor(hex: "E8D454", alpha: 0.5)

@@ -18,6 +18,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
 //    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak var weekCalendar: FSCalendar!
     @IBOutlet weak var navItem: UINavigationItem!
+    @IBOutlet weak var plusButton: UIBarButtonItem!
 //    @IBOutlet weak var calendarView: UIView!
 //    @IBOutlet weak var noneLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -70,7 +71,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         // Realmからデータを取得
             //タップされた日付を生成してます
         let formatter = DateFormatter()
-        formatter.dateFormat = "M/d日"
+        formatter.dateFormat = "yyyy/M/d"
         let date = Date()
         let dateStr = formatter.string(from: date)
         dateLabel.text = dateStr
@@ -90,7 +91,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         super.viewWillAppear(animated)
             //タップされた日付を生成してます
         let formatter = DateFormatter()
-        formatter.dateFormat = "M/d"
+        formatter.dateFormat = "yyyy/M/d"
         let date = Date()
         let dateStr = formatter.string(from: date)
         dateLabel.text = dateStr
@@ -280,5 +281,14 @@ extension ViewController: FloatingPanelControllerDelegate, FloatingPanelLayout {
     
     var supportedPositions: Set<FloatingPanelPosition> {
         return[.full, .half, .tip]
+    }
+}
+extension UIView {
+    func makeUp(){
+//        self.layer.cornerRadius = 15
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 4, height: 4)
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowRadius = 4
     }
 }

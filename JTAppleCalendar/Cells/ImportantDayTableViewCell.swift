@@ -39,19 +39,36 @@ class ImportantDayTableViewCell: UITableViewCell {
         titleLabel.text = title
         descriptionLabel.text = content
         dateLabel.text = date
+        ImportantDayTableViewCell().makeUp()
     }
     
     fileprivate func commonInit() {
 
     }
 
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-
+//    open override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        if let indicatorButton = allSubviews.compactMap({ $0 as? UIButton }).last {
+//            let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
+//            indicatorButton.setBackgroundImage(image, for: .normal)
+//            indicatorButton.tintColor = .white
+//        }
+//    }
+    
+    func layoutIndicatorButtonAccesory() {
         if let indicatorButton = allSubviews.compactMap({ $0 as? UIButton }).last {
             let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
             indicatorButton.setBackgroundImage(image, for: .normal)
-            indicatorButton.tintColor = .white
+            indicatorButton.tintColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+        }
+    }
+    
+    func layoutIndicatorButtonNormal() {
+        if let indicatorButton = allSubviews.compactMap({ $0 as? UIButton }).last {
+            let image = indicatorButton.backgroundImage(for: .normal)?.withRenderingMode(.alwaysTemplate)
+            indicatorButton.setBackgroundImage(image, for: .normal)
+            indicatorButton.tintColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
         }
     }
     

@@ -15,7 +15,6 @@ final class ImDateViewController: UIViewController {
     
     // MARK: Properties
     
-    var topin = Int()
     private var adddate: AddDate!
     private let model = UserDefaultsModel()
     private var dataSource: [AddDate] = [AddDate]() {
@@ -101,23 +100,25 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
         let mainBackgoundView = UIView()
         selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
         cell.selectedBackgroundView = selectionview
+//        cell.makeUp()
         mainBackgoundView.layer.cornerRadius = 20
+        selectionview.layer.cornerRadius = 20
         cell.backgroundView = mainBackgoundView
         let memo = dataSource[indexPath.row]
         cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: memo.pin)
         if memo.pin == true {
-//            cell.backgroundColor = UIColor(red: 163/255, green: 210/255, blue: 190/255, alpha: 0.8)
             mainBackgoundView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
             cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
             cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
             cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-            cell.layoutSubviews()
+            cell.layoutIndicatorButtonAccesory()
         }
         if memo.pin == false {
             cell.backgroundColor = UIColor.clear
             cell.titleLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
             cell.descriptionLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
             cell.dateLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+            cell.layoutIndicatorButtonNormal()
         }
         return cell
     }
