@@ -42,7 +42,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         
         subjectTextField.delegate = self
         //picker
-        timePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
+        timePicker.datePickerMode = UIDatePicker.Mode.time
         timePicker.timeZone = NSTimeZone.local
         timePicker.locale = Locale.current
         timeOneTextField.inputView = timePicker
@@ -151,9 +151,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             content.body = dateString
             content.sound = UNNotificationSound.default
                    
+            let identifier = UUID().uuidString
             // 通知リクエストの作成
             request = UNNotificationRequest.init(
-                    identifier: "CalendarNotification",
+                    identifier: identifier,
                     content: content,
                     trigger: trigger)
                    
@@ -185,45 +186,13 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             Finishcontent.body = FinishdateString
             Finishcontent.sound = UNNotificationSound.default
                    
+            let finishIdentifier = UUID().uuidString
             // 通知リクエストの作成
             request = UNNotificationRequest.init(
-                    identifier: "CalendarNotificationFinish",
+                    identifier: finishIdentifier,
                     content: Finishcontent,
                     trigger: Finisgtrigger)
             center.add(request)
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-//            let date = formatter.date(from: userdefdate)
-//            print(date?.description ?? "nilですよ")
-            // 適当に開始時点のDateを用意する
-//            let date = Date()
-//            let startDate = date.addingTimeInterval(-180071.3325)
-//
-//            // 開始からの経過秒数を取得する
-//            let timeInterval = date.timeIntervalSince(startDate)
-//            let int = Int(timeInterval)
-//            // ロケール用のカレンダーを準備する
-//            var calendar = Calendar.current
-//            calendar.locale = Locale(identifier: "ja_JP")
-//
-//            let formatter = DateComponentsFormatter()
-//            formatter.calendar = calendar
-//            formatter.unitsStyle = .full
-//            formatter.allowedUnits = [.day, .hour, .minute, .second]
-//            formatter.zeroFormattingBehavior = [.dropLeading]
-
-//            let string = formatter.string(from: timeInterval)!
-
-            // 2日 2時間 1分 11秒
-//            print(int)
-//            alarm.selectedBeginStudyTime = timePicker.date
-////            alarm.seconds = int
-//            fishishAlarm.selectedFinishStudyTime = timePicker2.date
-//            //AlarmのrunTimerを呼ぶ
-//            alarm.runTimer()
-//            fishishAlarm.runTimer()
-            // 画面を閉じる
-//            self.navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
         }
     }

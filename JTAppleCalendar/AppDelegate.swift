@@ -89,34 +89,4 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         }
         completionHandler()
     }
-
-    
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-//        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        if #available(iOS 13.0, *) {
-//            if let planDetailVC = storyboard.instantiateViewController(withIdentifier: "PlanDetailVC") as? PlanDetailViewController, let tabBar = storyboard.instantiateViewController(withIdentifier: "tabBar") as? UITabBarController {
-//                let navigationController = UINavigationController(rootViewController: planDetailVC)
-//                tabBar.viewControllers = [navigationController]
-//                window?.rootViewController = tabBar
-//            }
-//
-////            if let initialViewController = storyboard.instantiateViewController(withIdentifier: "PlanDetailVC") as! PlanDetailViewController {
-////                self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "PlanDetailVC")
-////                self.window?.makeKeyAndVisible()
-////            }
-////            if Alarm().seconds == 0 {
-////
-////            }
-////            else if FinishAlarm().seconds == 0 {
-////                PlanDetailViewController().dismiss(animated: true, completion: nil)
-////                let initialViewController = storyboard.instantiateViewController(identifier: "Home")
-////                self.window?.rootViewController = initialViewController
-////                self.window?.makeKeyAndVisible()
-////            }
-//        } else {
-//            // Fallback on earlier versions
-//        }
-//        completionHandler()
-//    }
 }

@@ -106,6 +106,9 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         }
         contentVC.tableView.reloadData()
         
+        let dateUdf = UserDefaults.standard.object(forKey: "date")
+        let dateUtils = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
+        weekCalendar.select(dateUtils)
         
     }
     
@@ -187,16 +190,16 @@ extension ViewController {
             }
         }
         contentVC.tableView.reloadData()
+        
+        let dateUdf = UserDefaults.standard.object(forKey: "date")
+        let dateUtils = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
+        weekCalendar.select(dateUtils)
     }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if items.count == 0 {
-//            noneLabel.isHidden = false
-//        } else {
-//            noneLabel.isHidden = true
-//        }
+        
         return items.count
     }
     
