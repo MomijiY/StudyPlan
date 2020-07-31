@@ -17,6 +17,7 @@
 		7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */; };
 		794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */; };
 		794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794DBF6224750FD800C698D5 /* Tutorial.storyboard */; };
+		7957086F24D2DDC400269B76 /* DisclosureIndicator.img.001.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 7957086E24D2DDC400269B76 /* DisclosureIndicator.img.001.jpeg */; };
 		795BD8AB24697E6C00600D29 /* AddPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795BD8AA24697E6C00600D29 /* AddPlan.swift */; };
 		7966433F2493B25B00711560 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7966433E2493B25B00711560 /* NavViewController.swift */; };
 		7976E2CD24724A87002E5D45 /* PlanDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */; };
@@ -74,6 +75,7 @@
 		7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOneViewController.swift; sourceTree = "<group>"; };
 		794DBF6224750FD800C698D5 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
+		7957086E24D2DDC400269B76 /* DisclosureIndicator.img.001.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DisclosureIndicator.img.001.jpeg; sourceTree = "<group>"; };
 		795BD8AA24697E6C00600D29 /* AddPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlan.swift; sourceTree = "<group>"; };
 		7966433E2493B25B00711560 /* NavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
 		7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDetailViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				797D051C246809D60035B7C8 /* AppDelegate.swift */,
+				7957086E24D2DDC400269B76 /* DisclosureIndicator.img.001.jpeg */,
 				797D05612469305D0035B7C8 /* TableViewCell.swift */,
 				797D05622469305D0035B7C8 /* TableViewCell.xib */,
 				797D0580246948AB0035B7C8 /* Cells */,
@@ -449,6 +452,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				797D0586246954470035B7C8 /* ImDetailViewController.storyboard in Resources */,
+				7957086F24D2DDC400269B76 /* DisclosureIndicator.img.001.jpeg in Resources */,
 				797D052C246809D70035B7C8 /* LaunchScreen.storyboard in Resources */,
 				797D05642469305D0035B7C8 /* TableViewCell.xib in Resources */,
 				797D0529246809D70035B7C8 /* Preview Assets.xcassets in Resources */,

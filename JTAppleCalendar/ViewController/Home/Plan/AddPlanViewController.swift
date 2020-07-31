@@ -200,14 +200,14 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     @objc func done() {
         timeOneTextField.endEditing(true)
         let formatter = DateFormatter()
-        formatter.dateFormat = "\(userdefdate)　HH:mm"
+        formatter.dateFormat = "\(userdefdate) HH:mm"
         timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
     }
     
     @objc func done2() {
         timeTwoTextField.endEditing(true)
         let formatter = DateFormatter()
-        formatter.dateFormat = "\(userdefdate)　HH:mm"
+        formatter.dateFormat = "\(userdefdate) HH:mm"
         timeTwoTextField.text = "\(formatter.string(from: timePicker2.date))"
     }
 

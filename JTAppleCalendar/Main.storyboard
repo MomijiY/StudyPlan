@@ -250,7 +250,6 @@
                     <connections>
                         <outlet property="dateLabel" destination="6DU-5i-GBW" id="w4w-Wi-y0O"/>
                         <outlet property="navItem" destination="vpW-Rk-aKc" id="n2M-7h-t98"/>
-                        <outlet property="plusButton" destination="YWz-YI-vyo" id="H6h-Hw-cA0"/>
                         <outlet property="weekCalendar" destination="UJw-NK-sSc" id="yGQ-kE-uf4"/>
                         <segue destination="dQa-bY-bb0" kind="show" identifier="toPlanDetail" id="exP-aL-q8m"/>
                     </connections>
@@ -310,8 +309,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I5L-ip-kuY">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ImportantDayTableViewCell" id="hxq-QE-Fto" customClass="ImportantDayTableViewCell" customModule="JTAppleCalendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
@@ -338,14 +336,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20344137570000001" green="0.33499641279999998" blue="0.42616005309999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="I5L-ip-kuY" firstAttribute="top" secondItem="m05-5d-xiF" secondAttribute="top" id="67Q-Zy-A6T"/>
-                            <constraint firstItem="I5L-ip-kuY" firstAttribute="trailing" secondItem="m05-5d-xiF" secondAttribute="trailing" id="Kz6-Cc-S7m"/>
-                            <constraint firstItem="5S2-ba-mRV" firstAttribute="leading" secondItem="m05-5d-xiF" secondAttribute="leading" constant="20" id="T0Q-MH-tfI"/>
-                            <constraint firstItem="I5L-ip-kuY" firstAttribute="leading" secondItem="m05-5d-xiF" secondAttribute="leading" id="bi8-zM-1do"/>
-                            <constraint firstItem="m05-5d-xiF" firstAttribute="bottom" secondItem="5S2-ba-mRV" secondAttribute="bottom" constant="1073" id="d9j-JP-Bl1"/>
-                            <constraint firstItem="5S2-ba-mRV" firstAttribute="top" secondItem="m05-5d-xiF" secondAttribute="top" id="fWs-AJ-UOK"/>
-                            <constraint firstItem="m05-5d-xiF" firstAttribute="trailing" secondItem="5S2-ba-mRV" secondAttribute="trailing" constant="20" id="r5q-3q-WDj"/>
-                            <constraint firstItem="I5L-ip-kuY" firstAttribute="bottom" secondItem="m05-5d-xiF" secondAttribute="bottom" id="tLH-os-c68"/>
+                            <constraint firstItem="m05-5d-xiF" firstAttribute="trailing" secondItem="5S2-ba-mRV" secondAttribute="trailing" constant="20" id="GDZ-Cv-NOX"/>
+                            <constraint firstItem="I5L-ip-kuY" firstAttribute="leading" secondItem="m05-5d-xiF" secondAttribute="leading" id="GPk-d9-uGu"/>
+                            <constraint firstItem="I5L-ip-kuY" firstAttribute="bottom" secondItem="m05-5d-xiF" secondAttribute="bottom" id="NUq-TH-bQb"/>
+                            <constraint firstItem="I5L-ip-kuY" firstAttribute="trailing" secondItem="m05-5d-xiF" secondAttribute="trailing" id="SdX-Yf-hII"/>
+                            <constraint firstItem="5S2-ba-mRV" firstAttribute="leading" secondItem="m05-5d-xiF" secondAttribute="leading" constant="20" id="Zeo-5P-1yx"/>
+                            <constraint firstItem="m05-5d-xiF" firstAttribute="bottom" secondItem="5S2-ba-mRV" secondAttribute="bottom" constant="605.33000000000004" id="d2b-8H-dPU"/>
+                            <constraint firstItem="I5L-ip-kuY" firstAttribute="top" secondItem="m05-5d-xiF" secondAttribute="top" id="pCM-9p-pJM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m05-5d-xiF"/>
                     </view>
@@ -715,45 +712,9 @@
             </objects>
             <point key="canvasLocation" x="5343" y="293"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="8Zv-UX-5wZ">
-            <objects>
-                <viewController id="zAl-Yb-J3x" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Fpu-Ka-YDt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="oJa-9j-2Sa"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="4J4-i8-Ir3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ev0-NM-dGg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4510.144927536232" y="1129.6875"/>
-        </scene>
-        <!--記録-->
-        <scene sceneID="OqT-Ux-26c">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mug-1v-9EI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="記録" image="chart.bar" catalog="system" id="SmE-0l-xXN"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="enW-Gh-Pbd">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="zAl-Yb-J3x" kind="relationship" relationship="rootViewController" id="JYX-in-5eC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sPx-n3-q1h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3600.0000000000005" y="1129.6875"/>
-        </scene>
     </scenes>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
-        <image name="chart.bar" catalog="system" width="128" height="90"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="questionmark.circle" catalog="system" width="128" height="121"/>
     </resources>

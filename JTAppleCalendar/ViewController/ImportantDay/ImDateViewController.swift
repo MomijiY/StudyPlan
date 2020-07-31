@@ -56,7 +56,7 @@ extension ImDateViewController {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = ImportantDayTableViewCell.rowHeight
         tableView.register(ImportantDayTableViewCell.nib, forCellReuseIdentifier: ImportantDayTableViewCell.reuseIdentifier)
-        tableView.separatorColor = .clear
+//        tableView.separatorColor = .clear
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -97,32 +97,44 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ImportantDayTableViewCell.reuseIdentifier, for: indexPath) as! ImportantDayTableViewCell
         let selectionview = UIView()
-        let mainBackgoundView = UIView()
+//        let mainBackgoundView = UIView()
         selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
+        
         cell.selectedBackgroundView = selectionview
+        
+        cell.cellView.layer.cornerRadius = 20
 //        cell.makeUp()
-        mainBackgoundView.layer.cornerRadius = 20
-        selectionview.layer.cornerRadius = 20
-        cell.backgroundView = mainBackgoundView
+//        mainBackgoundView.layer.cornerRadius = 20
+        selectionview.layer.cornerRadius = cell.cellView.frame.height / 2
+//        cell.backgroundView = mainBackgoundView
         let memo = dataSource[indexPath.row]
         cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: memo.pin)
         if memo.pin == true {
-            mainBackgoundView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+            cell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
             cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
             cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
             cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
             cell.layoutIndicatorButtonAccesory()
         }
         if memo.pin == false {
-            cell.backgroundColor = UIColor.clear
-            cell.titleLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
-            cell.descriptionLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
-            cell.dateLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+//            cell.backgroundColor = UIColor.clear
+//            cell.titleLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+//            cell.descriptionLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+//            cell.dateLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+            cell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 0.8)
+            cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+//            tableView.separatorColor = UIColor.clear
             cell.layoutIndicatorButtonNormal()
         }
         return cell
     }
     
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let addDate = dataSource[indexPath.row]

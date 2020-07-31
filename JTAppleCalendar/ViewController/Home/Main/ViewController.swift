@@ -18,7 +18,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
 //    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak var weekCalendar: FSCalendar!
     @IBOutlet weak var navItem: UINavigationItem!
-    @IBOutlet weak var plusButton: UIBarButtonItem!
 //    @IBOutlet weak var calendarView: UIView!
 //    @IBOutlet weak var noneLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -55,6 +54,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         fpc.set(contentViewController: contentVC)
         fpc.addPanel(toParent: self)
         fpc.track(scrollView: contentVC.tableView)
+        fpc.surfaceView.cornerRadius = 24.0
         contentVC.tableView.delegate = self
         contentVC.tableView.dataSource = self
         contentVC.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
@@ -221,6 +221,18 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             print("過去ではないdate: \(date)")
         }
         return cell
+    }
+    
+    //最上部の余白の高さ
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    //最上部に余白を追加
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let marginView = UIView()
+        marginView.backgroundColor = .clear
+        return marginView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
