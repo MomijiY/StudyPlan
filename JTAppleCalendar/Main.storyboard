@@ -237,9 +237,6 @@
                         <viewLayoutGuide key="safeArea" id="O5C-Ys-zvN"/>
                     </view>
                     <navigationItem key="navigationItem" id="vpW-Rk-aKc">
-                        <barButtonItem key="leftBarButtonItem" title="使い方" image="questionmark.circle" catalog="system" id="yqc-eJ-sge">
-                            <color key="tintColor" red="1" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YWz-YI-vyo">
                             <color key="tintColor" red="1" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
@@ -716,6 +713,5 @@
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="questionmark.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>

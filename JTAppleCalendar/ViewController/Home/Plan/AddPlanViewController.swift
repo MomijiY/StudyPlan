@@ -34,7 +34,6 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         
-//        navItem.title = userdefdate
         self.navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor(red: 0/255, green: 84/255, blue: 147/255, alpha: 1.0)
         ]
@@ -42,12 +41,12 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         
         subjectTextField.delegate = self
         //picker
-        timePicker.datePickerMode = UIDatePicker.Mode.time
+        timePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         timePicker.timeZone = NSTimeZone.local
         timePicker.locale = Locale.current
         timeOneTextField.inputView = timePicker
         
-        timePicker2.datePickerMode = UIDatePicker.Mode.time
+        timePicker2.datePickerMode = UIDatePicker.Mode.dateAndTime
         timePicker2.timeZone = NSTimeZone.local
         timePicker2.locale = Locale.current
         timeTwoTextField.inputView = timePicker2
@@ -123,69 +122,69 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             os_log("setButton")
                    
             // 日付フォーマット
-            let date = Date()
+//            let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .medium
             dateFormatter.dateStyle = .medium
             dateFormatter.locale = Locale(identifier: "ja_JP")
                    
             let otherDate1 = timePicker.date
-            let timeInterval = otherDate1.timeIntervalSince(otherDate1)
-            print("date: \(otherDate1)")
-            print("timeInterval: \(timeInterval)")
+            //   let timeInterval = otherDate1.timeIntervalSince(otherDate1)
+            print("otherDate1: \(otherDate1)")
+            //            print("timeInterval: \(timeInterval)")
             // 通知の時間の設定
-            let date2 = Date(timeInterval: timeInterval, since: otherDate1)
+            //            let date2 = timePicker2.date
             let targetDate = Calendar.current.dateComponents(
                 [.year, .month, .day, .hour, .minute],
-                from: date2)
-                   
-            let dateString = dateFormatter.string(from: date2)
-            print(dateString)
-                   
+                from: otherDate1)
+            print("ターゲットは\(targetDate)")
+            //            let dateString = dateFormatter.string(from: date2)
+            //            print(dateString)
+                               
             // トリガーの作成
             let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
-                   
+                               
             // 通知コンテンツの作成
             let content = UNMutableNotificationContent()
             content.title = "勉強を始める時間です。"
-            content.body = dateString
+            content.body = dateFormatter.string(from: otherDate1)
             content.sound = UNNotificationSound.default
-                   
+                               
             let identifier = UUID().uuidString
             // 通知リクエストの作成
             request = UNNotificationRequest.init(
                     identifier: identifier,
                     content: content,
                     trigger: trigger)
-                   
-            
-                   // 通知リクエストの登録
+                               
+                        
+            // 通知リクエストの登録
             let center = UNUserNotificationCenter.current()
             center.add(request)
-            
+                        
             let otherDate2 = timePicker2.date
-            let timeInterval2 = otherDate2.timeIntervalSince(date)
-            
-            print("date: \(otherDate2)")
-            print("timeInterval: \(timeInterval2)")
+            //let timeInterval2 = otherDate2.timeIntervalSince(date)
+                        
+            print("otherDate2: \(otherDate2)")
+            //            print("timeInterval: \(timeInterval2)")
             // 通知の時間の設定
-            let Finishdate = Date(timeInterval: timeInterval2, since: otherDate2)
+            //            let Finishdate = timePicker2.date
             let FinishtargetDate = Calendar.current.dateComponents(
                 [.year, .month, .day, .hour, .minute],
-                from: Finishdate)
-                   
-            let FinishdateString = dateFormatter.string(from: Finishdate)
-            print(FinishdateString)
-                   
+                from: otherDate2)
+                               
+            //            let FinishdateString = dateFormatter.string(from: Finishdate)
+            //            print(FinishdateString)
+                               
             // トリガーの作成
             let Finisgtrigger = UNCalendarNotificationTrigger.init(dateMatching: FinishtargetDate, repeats: false)
-                   
+                               
             // 通知コンテンツの作成
             let Finishcontent = UNMutableNotificationContent()
             Finishcontent.title = "勉強を終了する時間です。"
-            Finishcontent.body = FinishdateString
+            Finishcontent.body = dateFormatter.string(from: otherDate2)
             Finishcontent.sound = UNNotificationSound.default
-                   
+            
             let finishIdentifier = UUID().uuidString
             // 通知リクエストの作成
             request = UNNotificationRequest.init(

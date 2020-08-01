@@ -44,6 +44,10 @@
                                         <color key="textColor" red="0.11764705882352941" green="0.19215686274509802" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pin.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6S5-wW-kRK">
+                                        <rect key="frame" x="8" y="21.5" width="25" height="25"/>
+                                        <color key="tintColor" red="0.1176470588" green="0.19215686269999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -52,7 +56,11 @@
                                     <constraint firstItem="wb1-FE-7dU" firstAttribute="leading" secondItem="7Nr-O1-3k1" secondAttribute="trailing" constant="8" id="HzF-IK-7Jf"/>
                                     <constraint firstItem="ubV-N6-ZGm" firstAttribute="leading" secondItem="AfX-mE-WDE" secondAttribute="leading" constant="40" id="U0c-gH-ebQ"/>
                                     <constraint firstItem="wb1-FE-7dU" firstAttribute="top" secondItem="ubV-N6-ZGm" secondAttribute="bottom" constant="5" id="UFu-iI-Cs0"/>
+                                    <constraint firstItem="6S5-wW-kRK" firstAttribute="top" secondItem="AfX-mE-WDE" secondAttribute="top" constant="22" id="Uii-BP-pdj"/>
+                                    <constraint firstItem="6S5-wW-kRK" firstAttribute="leading" secondItem="AfX-mE-WDE" secondAttribute="leading" constant="8" id="YF1-AA-RV8"/>
+                                    <constraint firstAttribute="bottom" secondItem="6S5-wW-kRK" secondAttribute="bottom" constant="44.5" id="cQD-r6-dIu"/>
                                     <constraint firstItem="ubV-N6-ZGm" firstAttribute="top" secondItem="AfX-mE-WDE" secondAttribute="top" constant="22" id="nze-JN-bJ7"/>
+                                    <constraint firstItem="ubV-N6-ZGm" firstAttribute="leading" secondItem="6S5-wW-kRK" secondAttribute="trailing" constant="7" id="oIT-KH-hZ7"/>
                                     <constraint firstItem="7Nr-O1-3k1" firstAttribute="leading" secondItem="AfX-mE-WDE" secondAttribute="leading" constant="40" id="ptb-e0-9V2"/>
                                     <constraint firstAttribute="trailing" secondItem="wb1-FE-7dU" secondAttribute="trailing" constant="40" id="rmI-wY-Pzp"/>
                                 </constraints>
@@ -81,9 +89,13 @@
                 <outlet property="cellView" destination="AfX-mE-WDE" id="bkO-yZ-6vM"/>
                 <outlet property="dateLabel" destination="wb1-FE-7dU" id="GaU-qR-Nn4"/>
                 <outlet property="descriptionLabel" destination="7Nr-O1-3k1" id="oXe-cZ-9jU"/>
+                <outlet property="pinImage" destination="6S5-wW-kRK" id="8n8-eP-BUx"/>
                 <outlet property="titleLabel" destination="ubV-N6-ZGm" id="M5c-gP-yRG"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="pin.fill" catalog="system" width="119" height="128"/>
+    </resources>
 </document>

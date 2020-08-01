@@ -103,29 +103,18 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
         cell.selectedBackgroundView = selectionview
         
         cell.cellView.layer.cornerRadius = 20
-//        cell.makeUp()
-//        mainBackgoundView.layer.cornerRadius = 20
-        selectionview.layer.cornerRadius = cell.cellView.frame.height / 2
-//        cell.backgroundView = mainBackgoundView
+        selectionview.layer.cornerRadius = 20
         let memo = dataSource[indexPath.row]
-        cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: memo.pin)
+        cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+        cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+        cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+        cell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
         if memo.pin == true {
-            cell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
-            cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-            cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-            cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: false)
             cell.layoutIndicatorButtonAccesory()
         }
         if memo.pin == false {
-//            cell.backgroundColor = UIColor.clear
-//            cell.titleLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
-//            cell.descriptionLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
-//            cell.dateLabel.textColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
-            cell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 0.8)
-            cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-            cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-            cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-//            tableView.separatorColor = UIColor.clear
+            cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: true)
             cell.layoutIndicatorButtonNormal()
         }
         return cell

@@ -54,6 +54,8 @@ class TableViewCell: UITableViewCell {
         timeTwoLabel.attributedText = attriStrTimeTwo
         subjectLabel.attributedText = attriStrSubject
         contentLabel.attributedText = attriStrContent
+        
+        self.backgroundColor = .clear
     }
     
     func setUpAccessaryCell(timeOne: String, timeTwo: String, subject: String, content: String) {
@@ -62,30 +64,7 @@ class TableViewCell: UITableViewCell {
         subjectLabel.text = subject
         contentLabel.text = content
         
-        let attriStrTimeOne: NSMutableAttributedString = NSMutableAttributedString(string: timeOne)
-        attriStrTimeOne.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                     value: 2,
-                                     range: NSMakeRange(0, attriStrTimeOne.length))
-        
-        let attriStrTimeTwo: NSMutableAttributedString = NSMutableAttributedString(string: timeTwo)
-        attriStrTimeTwo.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                     value: 2,
-                                     range: NSMakeRange(0, attriStrTimeTwo.length))
-        
-        let attriStrSubject: NSMutableAttributedString = NSMutableAttributedString(string: subject)
-        attriStrSubject.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                     value: 2,
-                                     range: NSMakeRange(0, attriStrSubject.length))
-        
-        let attriStrContent: NSMutableAttributedString = NSMutableAttributedString(string: content)
-        attriStrContent.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                     value: 2,
-                                     range: NSMakeRange(0, attriStrContent.length))
-        
-        timeOneLabel.attributedText = attriStrTimeOne
-        timeTwoLabel.attributedText = attriStrTimeTwo
-        subjectLabel.attributedText = attriStrSubject
-        contentLabel.attributedText = attriStrContent
+        self.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
         
     }
     

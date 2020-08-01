@@ -11,6 +11,7 @@ import UIKit
 class ImportantDayTableViewCell: UITableViewCell {
     
     // MARK: IBOutlet
+    @IBOutlet weak var pinImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -40,6 +41,7 @@ class ImportantDayTableViewCell: UITableViewCell {
         titleLabel.text = title
         descriptionLabel.text = content
         dateLabel.text = date
+        pinImage.isHidden = pin
         ImportantDayTableViewCell().makeUp()
     }
     
