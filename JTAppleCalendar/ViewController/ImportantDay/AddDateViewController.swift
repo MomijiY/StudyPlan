@@ -31,6 +31,8 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "datecell")
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "pincell")
         tableView.tableFooterView = UIView()
+        titleTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
+        descriptionTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         dateDone()
     }
     

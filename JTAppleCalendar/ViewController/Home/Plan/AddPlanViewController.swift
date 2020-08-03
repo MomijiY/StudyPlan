@@ -34,6 +34,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timeOneTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
+        timeTwoTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
+        subjectTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
+        contentTextView.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         
@@ -48,6 +52,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         timePicker.timeZone = NSTimeZone.local
         timePicker.locale = Locale.current
         timePicker.date = DateUtils.dateFromString(string: userdefdate, format: "yyyy/MM/dd")
+        timePicker2.addTarget(self, action: #selector(doneDatePicker2(datePicker2:)), for: .valueChanged)
+        timePicker.addTarget(self, action: #selector(doneDatePicker(datePicker:)), for: .valueChanged)
         timeOneTextField.inputView = timePicker
         
         timePicker2.datePickerMode = UIDatePicker.Mode.dateAndTime
@@ -93,14 +99,14 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        if timePicker.date < Date() {
-            alert(title: "今と同じ又は過去の時間を設定することはできません。", message: "今より前の時間を選んでください。")
-        }
         if timeOneTextField.text == "" {
             alert(title: "空欄があります。", message: "勉強を始める時間を入力してください。")
         }
         if timeTwoTextField.text == "" {
             alert(title: "空欄があります。", message: "勉強を終了する時間を入力してください。")
+        }
+        if timePicker.date < Date() {
+            alert(title: "今と同じ又は過去の時間を設定することはできません。", message: "今より前の時間を選んでください。")
         }
         if timeOneTextField.text != "" && timeTwoTextField.text != "" && timePicker.date > Date() {
             items.time1 = timeOneTextField.text!
@@ -201,18 +207,26 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         formatter.dateFormat = "\(userdefdate) HH:mm"
         timeTwoTextField.text = "\(formatter.string(from: timePicker2.date))"
     }
+    
+    @objc func doneDatePicker(datePicker: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "\(userdefdate) HH:mm"
+        timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
+    }
+    
+    @objc func doneDatePicker2(datePicker2: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "\(userdefdate) HH:mm"
+        timeTwoTextField.text = "\(formatter.string(from: timePicker2.date))"
+    }
 
     @objc func done3() {
         contentTextView.endEditing(true)
     }
     
     func alert(title:String, message:String) {
-        alertController = UIAlertController(title: title,
-                                   message: message,
-                                   preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK",
-                                       style: .default,
-                                       handler: nil))
+        alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true)
     }
     

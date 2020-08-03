@@ -15,11 +15,8 @@ import os
 import FloatingPanel
 import QuartzCore
 class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance, UIScrollViewDelegate, UIGestureRecognizerDelegate{
-//    @IBOutlet weak var calendarHeight: NSLayoutConstraint!
     @IBOutlet weak var weekCalendar: FSCalendar!
     @IBOutlet weak var navItem: UINavigationItem!
-//    @IBOutlet weak var calendarView: UIView!
-//    @IBOutlet weak var noneLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
     let cellHeight: CGFloat = 100

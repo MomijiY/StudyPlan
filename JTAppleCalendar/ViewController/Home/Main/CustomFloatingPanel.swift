@@ -25,6 +25,8 @@ class CustomFloatingPanel:  FloatingPanelLayout{
         case .tip:
             ViewController().weekCalendar.scope = .month
             return 216.0
+        case .hidden:
+            return 0.0
         default: return nil
         }
     }
