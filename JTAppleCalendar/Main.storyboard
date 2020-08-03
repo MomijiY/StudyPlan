@@ -196,7 +196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UJw-NK-sSc" customClass="FSCalendar">
-                                <rect key="frame" x="20" y="88" width="374" height="522"/>
+                                <rect key="frame" x="20" y="88" width="374" height="473"/>
                                 <gestureRecognizers/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
@@ -258,7 +258,7 @@
         <!--ホーム-->
         <scene sceneID="BbR-hA-2YK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6HH-g2-fOc" customClass="NavViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="6HH-g2-fOc" customClass="NavViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" id="cWw-vZ-Mb0">
                         <color key="badgeColor" red="1" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>

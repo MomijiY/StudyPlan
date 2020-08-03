@@ -191,8 +191,8 @@ extension ViewController {
         }
         contentVC.tableView.reloadData()
         
-        let dateUdf = UserDefaults.standard.object(forKey: "date")
-        let dateUtils = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
+        let dateUdf = UserDefaults.standard.object(forKey: "date") as! String
+        let dateUtils = DateUtils.dateFromString(string: dateUdf, format: "yyyy/M/d")
         weekCalendar.select(dateUtils)
     }
 }
@@ -214,6 +214,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let date = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
         if date < now {
             cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+            cell.layer.cornerRadius = 20
             print("過去date: \(date)")
             print("過去の日付です。")
         } else {
@@ -251,12 +252,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             let realm = try! Realm()
             try! realm.write {
+                let identifier = AddPlanViewController().identifier
+                let finishIdentifier = AddPlanViewController().finishIdentifier
                 //通知を削除する。
 //                Alarm().stopNotification()
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotification"])
-                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotification"]))
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotificationFinish"])
-                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotificationFinish"]))
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+//                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotification"]))
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [finishIdentifier])
+//                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotificationFinish"]))
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)

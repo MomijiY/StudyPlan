@@ -22,6 +22,9 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
 //    let alarm = Alarm()
 //    let fishishAlarm = FinishAlarm()
     
+    let identifier = UUID().uuidString
+    let finishIdentifier = UUID().uuidString
+    
     var userdefdate = UserDefaults.standard.object(forKey: "date") as! String
     var items = Event()
     var alertController: UIAlertController!
@@ -44,11 +47,13 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         timePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         timePicker.timeZone = NSTimeZone.local
         timePicker.locale = Locale.current
+        timePicker.date = DateUtils.dateFromString(string: userdefdate, format: "yyyy/MM/dd")
         timeOneTextField.inputView = timePicker
         
         timePicker2.datePickerMode = UIDatePicker.Mode.dateAndTime
         timePicker2.timeZone = NSTimeZone.local
         timePicker2.locale = Locale.current
+        timePicker2.date = timePicker.date
         timeTwoTextField.inputView = timePicker2
         
         // 決定バーの生成
@@ -129,17 +134,11 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             dateFormatter.locale = Locale(identifier: "ja_JP")
                    
             let otherDate1 = timePicker.date
-            //   let timeInterval = otherDate1.timeIntervalSince(otherDate1)
             print("otherDate1: \(otherDate1)")
-            //            print("timeInterval: \(timeInterval)")
-            // 通知の時間の設定
-            //            let date2 = timePicker2.date
             let targetDate = Calendar.current.dateComponents(
                 [.year, .month, .day, .hour, .minute],
                 from: otherDate1)
             print("ターゲットは\(targetDate)")
-            //            let dateString = dateFormatter.string(from: date2)
-            //            print(dateString)
                                
             // トリガーの作成
             let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
@@ -150,7 +149,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             content.body = dateFormatter.string(from: otherDate1)
             content.sound = UNNotificationSound.default
                                
-            let identifier = UUID().uuidString
+            
             // 通知リクエストの作成
             request = UNNotificationRequest.init(
                     identifier: identifier,
@@ -163,18 +162,11 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             center.add(request)
                         
             let otherDate2 = timePicker2.date
-            //let timeInterval2 = otherDate2.timeIntervalSince(date)
                         
             print("otherDate2: \(otherDate2)")
-            //            print("timeInterval: \(timeInterval2)")
-            // 通知の時間の設定
-            //            let Finishdate = timePicker2.date
             let FinishtargetDate = Calendar.current.dateComponents(
                 [.year, .month, .day, .hour, .minute],
                 from: otherDate2)
-                               
-            //            let FinishdateString = dateFormatter.string(from: Finishdate)
-            //            print(FinishdateString)
                                
             // トリガーの作成
             let Finisgtrigger = UNCalendarNotificationTrigger.init(dateMatching: FinishtargetDate, repeats: false)
@@ -185,7 +177,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             Finishcontent.body = dateFormatter.string(from: otherDate2)
             Finishcontent.sound = UNNotificationSound.default
             
-            let finishIdentifier = UUID().uuidString
+            
             // 通知リクエストの作成
             request = UNNotificationRequest.init(
                     identifier: finishIdentifier,

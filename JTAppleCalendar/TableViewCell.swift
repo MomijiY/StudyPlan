@@ -10,6 +10,7 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var cellView: UIView!
     @IBOutlet private weak var timeOneLabel: UILabel!
     @IBOutlet private weak var timeTwoLabel: UILabel!
     @IBOutlet private weak var subjectLabel: UILabel!
