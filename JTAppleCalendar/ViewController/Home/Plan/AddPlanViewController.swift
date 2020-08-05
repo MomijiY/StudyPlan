@@ -108,7 +108,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         if timePicker.date < Date() {
             alert(title: "今と同じ又は過去の時間を設定することはできません。", message: "今より前の時間を選んでください。")
         }
-        if timeOneTextField.text != "" && timeTwoTextField.text != "" && timePicker.date > Date() {
+        if timePicker.date > timePicker2.date {
+            alert(title: "勉強を終了する時間を勉強を始める時間より前に設定することはできません。", message: "勉強を終了する時間を勉強を始める時間より後の時間に設定するようにしてください。")
+        }
+        if timeOneTextField.text != "" && timeTwoTextField.text != "" && timePicker.date > Date() && timePicker.date < timePicker2.date {
             items.time1 = timeOneTextField.text!
             items.time2 = timeTwoTextField.text!
             items.subject = subjectTextField.text!
