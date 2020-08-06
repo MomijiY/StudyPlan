@@ -79,6 +79,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
             return
         }
+        let identifier = AddPlanViewController().identifier
+        let finishIdentifier = AddPlanViewController().finishIdentifier
+        print("AddDelegateidentifier: \(identifier)")
+        print("AddDelegatefinishIdentifier: \(finishIdentifier)")
         if #available(iOS 13.0, *) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if  let planDetailVC = storyboard.instantiateViewController(withIdentifier: "pdVC") as? PlanDetailViewController,

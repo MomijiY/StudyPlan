@@ -18,25 +18,25 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/7/31 00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVv-IR-k2K">
-                        <rect key="frame" x="27" y="20" width="126" height="20"/>
+                        <rect key="frame" x="27" y="20" width="126" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="126" id="9tC-Kg-8nr"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                         <color key="textColor" red="0.11764705882352941" green="0.19215686274509802" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Pg-yI-fTU">
-                        <rect key="frame" x="161" y="20" width="11" height="21"/>
+                        <rect key="frame" x="161" y="20" width="11" height="19"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="11" id="CwC-Na-M6X"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
                         <color key="textColor" red="0.11585103566375579" green="0.19195057760658782" blue="0.2468492980238578" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subject" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rP0-Ib-hcg">
-                        <rect key="frame" x="27" y="46" width="279" height="20.5"/>
+                        <rect key="frame" x="27" y="44" width="279" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="279" id="29G-56-Bwd"/>
                         </constraints>
@@ -45,7 +45,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWQ-Yq-3LP">
-                        <rect key="frame" x="27" y="68" width="279" height="20.5"/>
+                        <rect key="frame" x="27" y="66" width="279" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="279" id="AaW-aW-2NM"/>
                         </constraints>
@@ -54,11 +54,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020/7/31 00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymf-R0-ZJy">
-                        <rect key="frame" x="180" y="20" width="126" height="19.5"/>
+                        <rect key="frame" x="180" y="20" width="126" height="18"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="126" id="7Um-S7-r6C"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="16"/>
                         <color key="textColor" red="0.11764705882352941" green="0.19215686274509802" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>

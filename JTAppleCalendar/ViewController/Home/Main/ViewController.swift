@@ -40,8 +40,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         weekCalendar.dataSource = self
         weekCalendar.scope = .month
         weekCalendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        self.weekCalendar.appearance.weekdayFont = UIFont(name: "Futura", size: 18)
-        self.weekCalendar.appearance.titleFont = UIFont(name: "Futura-light", size: 16)
+        self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 18)
+        self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 16)
 //        yoteiTableView.delegate = self
 //        yoteiTableView.dataSource = self
 //        yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
@@ -107,6 +107,12 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         let dateUtils = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
         weekCalendar.select(dateUtils)
         
+        //navigationBarのところに現在の月を表示
+        let currentPageDate = FSCalendar().currentPage
+        let month = Calendar.current.component(.month, from: currentPageDate)
+        //Int to String
+        let stringMonth: String = String(month)
+        navItem.title = "\(stringMonth)月"
     }
     
     override func viewDidLayoutSubviews() {
@@ -191,6 +197,14 @@ extension ViewController {
         let dateUdf = UserDefaults.standard.object(forKey: "date") as! String
         let dateUtils = DateUtils.dateFromString(string: dateUdf, format: "yyyy/M/d")
         weekCalendar.select(dateUtils)
+    }
+    //navigationBarのところに現在の月を表示
+    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
+        let currentPageDate = calendar.currentPage
+        let month = Calendar.current.component(.month, from: currentPageDate)
+        //Int to String
+        let stringMonth: String = String(month)
+        navItem.title = "\(stringMonth)月"
     }
 }
 

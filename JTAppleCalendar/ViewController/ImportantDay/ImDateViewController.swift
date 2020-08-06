@@ -111,11 +111,11 @@ extension ImDateViewController: UITableViewDataSource, UITableViewDelegate {
         cell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
         if memo.pin == true {
             cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: false)
-            cell.layoutIndicatorButtonAccesory()
+//            cell.layoutIndicatorButtonAccesory()
         }
         if memo.pin == false {
             cell.setupCell(title: memo.title, content: memo.content, date: memo.date, pin: true)
-            cell.layoutIndicatorButtonNormal()
+//            cell.layoutIndicatorButtonNormal()
         }
         return cell
     }

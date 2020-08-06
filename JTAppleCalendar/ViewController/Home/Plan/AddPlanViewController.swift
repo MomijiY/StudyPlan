@@ -22,8 +22,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
 //    let alarm = Alarm()
 //    let fishishAlarm = FinishAlarm()
     
-    let identifier = UUID().uuidString
-    let finishIdentifier = UUID().uuidString
+    let identifier = "CalendarIdentifier"
+    let finishIdentifier = "CalendarFinishIdentifier"
     
     var userdefdate = UserDefaults.standard.object(forKey: "date") as! String
     var items = Event()
@@ -192,6 +192,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                     identifier: finishIdentifier,
                     content: Finishcontent,
                     trigger: Finisgtrigger)
+            print(identifier)
+            print(finishIdentifier)
             center.add(request)
             self.dismiss(animated: true, completion: nil)
         }
