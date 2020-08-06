@@ -223,7 +223,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         let now = Date()
         let dateUdf = UserDefaults.standard.object(forKey: "date")
         let date = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
-        if date < now {
+        let nowStr = DateUtils.stringFromDate(date: now, format: "yyyy/M/d")
+        let nowDate = DateUtils.dateFromString(string: nowStr, format: "yyyy/M/d")
+        print("nowDate: \(nowDate)")
+        if date < nowDate {
             cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
             cell.layer.cornerRadius = 20
             print("過去date: \(date)")
