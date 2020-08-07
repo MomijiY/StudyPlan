@@ -31,6 +31,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     var timePicker: UIDatePicker = UIDatePicker()
     var timePicker2: UIDatePicker = UIDatePicker()
     var request:UNNotificationRequest!
+    var finishRequest: UNNotificationRequest!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -188,14 +189,14 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             
             
             // 通知リクエストの作成
-            request = UNNotificationRequest.init(
+            finishRequest = UNNotificationRequest.init(
                     identifier: finishIdentifier,
                     content: Finishcontent,
                     trigger: Finisgtrigger)
             UserDefaults.standard.set(finishIdentifier, forKey: "finishIdentifier")
             print(identifier)
             print(finishIdentifier)
-            center.add(request)
+            center.add(finishRequest)
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -219,6 +220,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         formatter.dateFormat = "\(userdefdate) HH:mm"
         timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
         timeTwoTextField.text = "\(formatter.string(from: timePicker.date))"
+//        timePicker.date = timePicker2.date
     }
     
     @objc func doneDatePicker2(datePicker2: UIDatePicker) {

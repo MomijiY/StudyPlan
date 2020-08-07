@@ -266,16 +266,14 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             let realm = try! Realm()
             try! realm.write {
-                let identifier = AddPlanViewController().identifier
-                let finishIdentifier = AddPlanViewController().finishIdentifier
-                //通知を削除する。
-//                Alarm().stopNotification()
+                let identifier = UserDefaults.standard.object(forKey: "identifier") as! String
+                let finishIdentifier = UserDefaults.standard.object(forKey: "finishIdentifier") as! String
+                
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [finishIdentifier])
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)
-//                alarm.stopNotification()
                 
                 contentVC.tableView.reloadData()
             }
