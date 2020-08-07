@@ -271,9 +271,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 //通知を削除する。
 //                Alarm().stopNotification()
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
-//                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotification"]))
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [finishIdentifier])
-//                print(UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CalendarNotificationFinish"]))
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)

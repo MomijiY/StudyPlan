@@ -14,8 +14,8 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerTransitioningDelegate {
 
     var window: UIWindow?
-
-
+    var notiCount: Int = 0
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let config = Realm.Configuration(
@@ -79,16 +79,24 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
             return
         }
-        let identifier = AddPlanViewController().identifier
-        let finishIdentifier = AddPlanViewController().finishIdentifier
-        print("AddDelegateidentifier: \(identifier)")
-        print("AddDelegatefinishIdentifier: \(finishIdentifier)")
+//        notiCount += 1
         if #available(iOS 13.0, *) {
+//            notiCount += 1
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if  let planDetailVC = storyboard.instantiateViewController(withIdentifier: "pdVC") as? PlanDetailViewController,
                 let tabBarController = rootViewController as? UITabBarController,
-                let navController = tabBarController.selectedViewController as? UINavigationController {
+                let navController = tabBarController.selectedViewController as? UINavigationController, notiCount == 0 {
                     navController.pushViewController(planDetailVC, animated: true)
+                    print("before1: \(notiCount)")
+                    notiCount = 1
+                    print("after1: \(notiCount)")
+            }else if  let HomeVC = storyboard.instantiateViewController(withIdentifier: "Home") as? ViewController,
+                let tabBarController = rootViewController as? UITabBarController,
+                let navController = tabBarController.selectedViewController as? UINavigationController{
+                    navController.pushViewController(HomeVC, animated: true)
+                    print("before0: \(notiCount)")
+                    notiCount = 0
+                    print("after0: \(notiCount)")
             }
         }
         completionHandler()

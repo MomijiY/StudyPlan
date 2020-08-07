@@ -22,8 +22,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
 //    let alarm = Alarm()
 //    let fishishAlarm = FinishAlarm()
     
-    let identifier = "CalendarIdentifier"
-    let finishIdentifier = "CalendarFinishIdentifier"
+    let identifier = UUID().uuidString
+    let finishIdentifier = UUID().uuidString
     
     var userdefdate = UserDefaults.standard.object(forKey: "date") as! String
     var items = Event()
@@ -105,10 +105,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         if timeTwoTextField.text == "" {
             alert(title: "空欄があります。", message: "勉強を終了する時間を入力してください。")
         }
-        if timePicker.date < Date() {
+        if timePicker.date <= Date() {
             alert(title: "今と同じ又は過去の時間を設定することはできません。", message: "今より前の時間を選んでください。")
         }
-        if timePicker.date > timePicker2.date {
+        if timePicker.date >= timePicker2.date {
             alert(title: "勉強を終了する時間を勉強を始める時間より前に設定することはできません。", message: "勉強を終了する時間を勉強を始める時間より後の時間に設定するようにしてください。")
         }
         if timeOneTextField.text != "" && timeTwoTextField.text != "" && timePicker.date > Date() && timePicker.date < timePicker2.date {
@@ -164,7 +164,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                     identifier: identifier,
                     content: content,
                     trigger: trigger)
-                               
+            UserDefaults.standard.set(identifier, forKey: "identifier")
                         
             // 通知リクエストの登録
             let center = UNUserNotificationCenter.current()
@@ -192,6 +192,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                     identifier: finishIdentifier,
                     content: Finishcontent,
                     trigger: Finisgtrigger)
+            UserDefaults.standard.set(finishIdentifier, forKey: "finishIdentifier")
             print(identifier)
             print(finishIdentifier)
             center.add(request)
@@ -217,6 +218,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "\(userdefdate) HH:mm"
         timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
+        timeTwoTextField.text = "\(formatter.string(from: timePicker.date))"
     }
     
     @objc func doneDatePicker2(datePicker2: UIDatePicker) {
@@ -239,5 +241,9 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         subjectTextField.resignFirstResponder()
         
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        timePicker.date = timePicker2.date
     }
 }
