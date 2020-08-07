@@ -109,7 +109,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         if timePicker.date <= Date() {
             alert(title: "今と同じ又は過去の時間を設定することはできません。", message: "今より前の時間を選んでください。")
         }
-        if timePicker.date >= timePicker2.date {
+        if timePicker.date > timePicker2.date {
             alert(title: "勉強を終了する時間を勉強を始める時間より前に設定することはできません。", message: "勉強を終了する時間を勉強を始める時間より後の時間に設定するようにしてください。")
         }
         if timeOneTextField.text != "" && timeTwoTextField.text != "" && timePicker.date > Date() && timePicker.date < timePicker2.date {
@@ -220,7 +220,6 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         formatter.dateFormat = "\(userdefdate) HH:mm"
         timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
         timeTwoTextField.text = "\(formatter.string(from: timePicker.date))"
-//        timePicker.date = timePicker2.date
     }
     
     @objc func doneDatePicker2(datePicker2: UIDatePicker) {
