@@ -337,7 +337,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSj-xL-kf7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3615.8203124999995" y="1839.970717423133"/>
+            <point key="canvasLocation" x="4510" y="1424"/>
         </scene>
         <!--Add Date View Controller-->
         <scene sceneID="Oid-SP-dkk">
@@ -537,7 +537,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKk-lS-g0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4326" y="1840"/>
+            <point key="canvasLocation" x="5387" y="1424"/>
         </scene>
         <!--大事な日-->
         <scene sceneID="IGh-Ns-H8c">
@@ -558,7 +558,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JAc-ph-nOO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2719" y="1840"/>
+            <point key="canvasLocation" x="3614" y="1424"/>
         </scene>
         <!--Plan Detail View Controller-->
         <scene sceneID="ffY-kb-56v">

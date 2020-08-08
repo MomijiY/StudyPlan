@@ -220,12 +220,22 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         formatter.dateFormat = "\(userdefdate) HH:mm"
         timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
         timeTwoTextField.text = "\(formatter.string(from: timePicker.date))"
+        if timeTwoTextField.text == "" {
+            let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/dHH:mm")
+            timePicker2.date = timeTwoTextDate
+        } else if timeTwoTextField.text == timeOneTextField.text{
+            let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/dHH:mm")
+            timePicker2.date = timeTwoTextDate
+        } else {
+            print("none")
+        }
     }
     
     @objc func doneDatePicker2(datePicker2: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateFormat = "\(userdefdate) HH:mm"
         timeTwoTextField.text = "\(formatter.string(from: timePicker2.date))"
+//        textFieldDidBeginEditing(timeTwoTextField)
     }
 
     @objc func done3() {
@@ -244,7 +254,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        timePicker.date = timePicker2.date
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/dHH:mm")
+//        timePicker2.date = timeTwoTextDate
+//    }
 }
