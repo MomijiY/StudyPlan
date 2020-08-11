@@ -14,6 +14,10 @@
 		793331FA24B9990B005AFC0A /* CustomFloatingPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331F924B9990B005AFC0A /* CustomFloatingPanel.swift */; };
 		793331FF24B99E29005AFC0A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331FE24B99E29005AFC0A /* UIColor.swift */; };
 		7933320124B9ADAA005AFC0A /* DateUtls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933320024B9ADAA005AFC0A /* DateUtls.swift */; };
+		793AD86724E177E400A60462 /* AfterPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AD86624E177E400A60462 /* AfterPlan.swift */; };
+		793AD86924E178DE00A60462 /* AfterEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AD86824E178DD00A60462 /* AfterEvent.swift */; };
+		793AD86C24E17CB900A60462 /* AfterStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793AD86A24E17CB900A60462 /* AfterStudyCell.swift */; };
+		793AD86D24E17CB900A60462 /* AfterStudyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793AD86B24E17CB900A60462 /* AfterStudyCell.xib */; };
 		7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */; };
 		794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */; };
 		794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 794DBF6224750FD800C698D5 /* Tutorial.storyboard */; };
@@ -43,6 +47,11 @@
 		797D0583246948C00035B7C8 /* ImportantDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797D0581246948C00035B7C8 /* ImportantDayTableViewCell.swift */; };
 		797D0584246948C00035B7C8 /* ImportantDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 797D0582246948C00035B7C8 /* ImportantDayTableViewCell.xib */; };
 		797D0586246954470035B7C8 /* ImDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 797D0585246954470035B7C8 /* ImDetailViewController.storyboard */; };
+		79AAEC4024DE8B7E0013CA8F /* AfterStudyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AAEC3F24DE8B7E0013CA8F /* AfterStudyViewController.swift */; };
+		79AAEC4224DE8FDA0013CA8F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 79AAEC4124DE8FD90013CA8F /* star.png */; };
+		79AAEC4424DE8FE80013CA8F /* starFill.png in Resources */ = {isa = PBXBuildFile; fileRef = 79AAEC4324DE8FE80013CA8F /* starFill.png */; };
+		79AAEC4924DEBC540013CA8F /* AfterStudyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AAEC4724DEBC540013CA8F /* AfterStudyTableViewCell.swift */; };
+		79AAEC4A24DEBC540013CA8F /* AfterStudyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79AAEC4824DEBC540013CA8F /* AfterStudyTableViewCell.xib */; };
 		79B1F41C24DBD8510098EB5A /* DisclosureIndicator.001.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B1F41B24DBD8500098EB5A /* DisclosureIndicator.001.png */; };
 		79DFBFEB24925808008A995F /* StudyingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFBFEA24925808008A995F /* StudyingTableViewController.swift */; };
 		79DFBFF12493AF87008A995F /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFBFF02493AF87008A995F /* HomeTabViewController.swift */; };
@@ -74,6 +83,10 @@
 		793331F924B9990B005AFC0A /* CustomFloatingPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFloatingPanel.swift; sourceTree = "<group>"; };
 		793331FE24B99E29005AFC0A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		7933320024B9ADAA005AFC0A /* DateUtls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtls.swift; sourceTree = "<group>"; };
+		793AD86624E177E400A60462 /* AfterPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterPlan.swift; sourceTree = "<group>"; };
+		793AD86824E178DD00A60462 /* AfterEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterEvent.swift; sourceTree = "<group>"; };
+		793AD86A24E17CB900A60462 /* AfterStudyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterStudyCell.swift; sourceTree = "<group>"; };
+		793AD86B24E17CB900A60462 /* AfterStudyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AfterStudyCell.xib; sourceTree = "<group>"; };
 		7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceHolderTextView.swift; sourceTree = "<group>"; };
 		794DBF6024750FCC00C698D5 /* TutorialOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialOneViewController.swift; sourceTree = "<group>"; };
 		794DBF6224750FD800C698D5 /* Tutorial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tutorial.storyboard; sourceTree = "<group>"; };
@@ -107,6 +120,11 @@
 		797D0581246948C00035B7C8 /* ImportantDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantDayTableViewCell.swift; sourceTree = "<group>"; };
 		797D0582246948C00035B7C8 /* ImportantDayTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportantDayTableViewCell.xib; sourceTree = "<group>"; };
 		797D0585246954470035B7C8 /* ImDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ImDetailViewController.storyboard; sourceTree = "<group>"; };
+		79AAEC3F24DE8B7E0013CA8F /* AfterStudyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterStudyViewController.swift; sourceTree = "<group>"; };
+		79AAEC4124DE8FD90013CA8F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		79AAEC4324DE8FE80013CA8F /* starFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starFill.png; sourceTree = "<group>"; };
+		79AAEC4724DEBC540013CA8F /* AfterStudyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AfterStudyTableViewCell.swift; sourceTree = "<group>"; };
+		79AAEC4824DEBC540013CA8F /* AfterStudyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AfterStudyTableViewCell.xib; sourceTree = "<group>"; };
 		79B1F41B24DBD8500098EB5A /* DisclosureIndicator.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DisclosureIndicator.001.png; sourceTree = "<group>"; };
 		79DFBFEA24925808008A995F /* StudyingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyingTableViewController.swift; sourceTree = "<group>"; };
 		79DFBFF02493AF87008A995F /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +188,7 @@
 			children = (
 				797D056E24693AEF0035B7C8 /* AddPlanViewController.swift */,
 				7976E2CC24724A87002E5D45 /* PlanDetailViewController.swift */,
+				79AAEC3F24DE8B7E0013CA8F /* AfterStudyViewController.swift */,
 			);
 			path = Plan;
 			sourceTree = "<group>";
@@ -224,11 +243,17 @@
 				797D051C246809D60035B7C8 /* AppDelegate.swift */,
 				797D05612469305D0035B7C8 /* TableViewCell.swift */,
 				797D05622469305D0035B7C8 /* TableViewCell.xib */,
+				79AAEC4724DEBC540013CA8F /* AfterStudyTableViewCell.swift */,
+				79AAEC4824DEBC540013CA8F /* AfterStudyTableViewCell.xib */,
+				793AD86A24E17CB900A60462 /* AfterStudyCell.swift */,
+				793AD86B24E17CB900A60462 /* AfterStudyCell.xib */,
 				797D0580246948AB0035B7C8 /* Cells */,
 				797D057D246947900035B7C8 /* Model */,
 				797D056A24693AC20035B7C8 /* ViewController */,
 				797D054F24680A080035B7C8 /* Main.storyboard */,
 				797D0525246809D70035B7C8 /* Assets.xcassets */,
+				79AAEC4124DE8FD90013CA8F /* star.png */,
+				79AAEC4324DE8FE80013CA8F /* starFill.png */,
 				79B1F41B24DBD8500098EB5A /* DisclosureIndicator.001.png */,
 				797D052A246809D70035B7C8 /* LaunchScreen.storyboard */,
 				797D052D246809D70035B7C8 /* Info.plist */,
@@ -315,8 +340,10 @@
 			isa = PBXGroup;
 			children = (
 				797D057E246947A40035B7C8 /* AddDate.swift */,
-				797D0565246930DB0035B7C8 /* Event.swift */,
 				795BD8AA24697E6C00600D29 /* AddPlan.swift */,
+				793AD86624E177E400A60462 /* AfterPlan.swift */,
+				797D0565246930DB0035B7C8 /* Event.swift */,
+				793AD86824E178DD00A60462 /* AfterEvent.swift */,
 				797D057A246947620035B7C8 /* UserDefalutsModel */,
 			);
 			path = Model;
@@ -454,11 +481,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				797D0586246954470035B7C8 /* ImDetailViewController.storyboard in Resources */,
+				79AAEC4224DE8FDA0013CA8F /* star.png in Resources */,
 				797D052C246809D70035B7C8 /* LaunchScreen.storyboard in Resources */,
 				797D05642469305D0035B7C8 /* TableViewCell.xib in Resources */,
 				797D0529246809D70035B7C8 /* Preview Assets.xcassets in Resources */,
 				797D0584246948C00035B7C8 /* ImportantDayTableViewCell.xib in Resources */,
+				793AD86D24E17CB900A60462 /* AfterStudyCell.xib in Resources */,
+				79AAEC4A24DEBC540013CA8F /* AfterStudyTableViewCell.xib in Resources */,
 				797D0526246809D70035B7C8 /* Assets.xcassets in Resources */,
+				79AAEC4424DE8FE80013CA8F /* starFill.png in Resources */,
 				794DBF6324750FD900C698D5 /* Tutorial.storyboard in Resources */,
 				79B1F41C24DBD8510098EB5A /* DisclosureIndicator.001.png in Resources */,
 				797D055024680A080035B7C8 /* Main.storyboard in Resources */,
@@ -602,14 +633,19 @@
 				7948BB86246D2F58007E717F /* PlaceHolderTextView.swift in Sources */,
 				793331FF24B99E29005AFC0A /* UIColor.swift in Sources */,
 				797D0579246947300035B7C8 /* ImDetailViewController.swift in Sources */,
+				793AD86924E178DE00A60462 /* AfterEvent.swift in Sources */,
 				797D05632469305D0035B7C8 /* TableViewCell.swift in Sources */,
 				795BD8AB24697E6C00600D29 /* AddPlan.swift in Sources */,
+				79AAEC4924DEBC540013CA8F /* AfterStudyTableViewCell.swift in Sources */,
 				797D0583246948C00035B7C8 /* ImportantDayTableViewCell.swift in Sources */,
 				797D0576246947060035B7C8 /* AddDateViewController.swift in Sources */,
 				797D057C246947740035B7C8 /* UserDefalutsModel.swift in Sources */,
+				793AD86C24E17CB900A60462 /* AfterStudyCell.swift in Sources */,
 				793331F824B98523005AFC0A /* ContentViewController.swift in Sources */,
 				7976E2CD24724A87002E5D45 /* PlanDetailViewController.swift in Sources */,
 				797D051D246809D60035B7C8 /* AppDelegate.swift in Sources */,
+				79AAEC4024DE8B7E0013CA8F /* AfterStudyViewController.swift in Sources */,
+				793AD86724E177E400A60462 /* AfterPlan.swift in Sources */,
 				797D0522246809D60035B7C8 /* JTAppleCalendar.xcdatamodeld in Sources */,
 				7966433F2493B25B00711560 /* NavViewController.swift in Sources */,
 				797D0566246930DB0035B7C8 /* Event.swift in Sources */,

@@ -14,4 +14,6 @@ struct AddPlan: Codable{
     let subject: String
     let content: String
     let date: String
+    let identifier: String
+    let finishIdentifier: String
 }

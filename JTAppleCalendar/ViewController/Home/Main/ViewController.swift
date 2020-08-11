@@ -120,6 +120,15 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         
     }
 
+    /// NavigationBarの左にローカライズされたタイトルを表示する
+    func setLeftTitle(_ localizedStringKey: String) {
+        let titleLabel = UILabel(frame: CGRect(x: 4, y: 0, width: view.frame.width, height: 28))
+        titleLabel.text = localizedStringKey.localizedUppercase
+        titleLabel.textAlignment = .left
+        titleLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        titleLabel.textColor = .white
+        navigationItem.titleView = titleLabel
+    }
 }
 
 extension ViewController {
@@ -266,11 +275,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
             let realm = try! Realm()
             try! realm.write {
-                let identifier = UserDefaults.standard.object(forKey: "identifier") as! String
-                let finishIdentifier = UserDefaults.standard.object(forKey: "finishIdentifier") as! String
-                
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [finishIdentifier])
+                let memo = items[indexPath.row]
+                print("identifier: \(memo.identifier)")
+                print("finishIdentifier: \(memo.finishIdentifier)")
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [memo.identifier])
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [memo.finishIdentifier])
                 print("削除")
                 realm.delete(items[indexPath.row])
                 items.remove(at: indexPath.row)
@@ -282,33 +291,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-extension ViewController: FloatingPanelControllerDelegate, FloatingPanelLayout {
-    
+extension ViewController: FloatingPanelControllerDelegate {
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        return ViewController()
-    }
-    var initialPosition: FloatingPanelPosition {
-        return .tip
-    }
-    
-    func insetFor(position: FloatingPanelPosition) -> CGFloat? {
-        switch position {
-        case .full:
-//            self.weekCalendar.setScope(.week, animated: true)
-//            weekCalendar.scope = .week
-            return 16.0
-        case .half:
-//            weekCalendar.scope = .week
-            return 400.0
-        case .tip:
-//            weekCalendar.scope = .month
-            return 216.0
-        default: return nil
-        }
-    }
-    
-    var supportedPositions: Set<FloatingPanelPosition> {
-        return[.full, .half, .tip]
+        return CustomFloatingPanel()
     }
 }
 extension UIView {

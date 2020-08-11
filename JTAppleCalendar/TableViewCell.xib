@@ -44,7 +44,7 @@
                         <color key="textColor" red="0.11764705882352941" green="0.19215686274509802" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWQ-Yq-3LP">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWQ-Yq-3LP">
                         <rect key="frame" x="27" y="66" width="279" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="279" id="AaW-aW-2NM"/>

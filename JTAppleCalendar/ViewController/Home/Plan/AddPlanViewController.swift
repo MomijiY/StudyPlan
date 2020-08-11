@@ -16,7 +16,6 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var timeTwoTextField: UITextField!
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
-//    @IBOutlet weak var navItem: UINavigationItem!
     
     //インスタンスを生成
 //    let alarm = Alarm()
@@ -24,6 +23,9 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     
     let identifier = UUID().uuidString
     let finishIdentifier = UUID().uuidString
+    
+    let content = UNMutableNotificationContent()
+    let Finishcontent = UNMutableNotificationContent()
     
     var userdefdate = UserDefaults.standard.object(forKey: "date") as! String
     var items = Event()
@@ -35,6 +37,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        timeOneTextField.becomeFirstResponder()
         timeOneTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         timeTwoTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         subjectTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
@@ -117,6 +120,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             items.time2 = timeTwoTextField.text!
             items.subject = subjectTextField.text!
             items.content = contentTextView.text!
+            items.identifier = identifier
+            items.finishIdentifier = finishIdentifier
             print("\(items.content), \(contentTextView.text!)")
             let realm = try! Realm()
             try! realm.write{
@@ -124,7 +129,9 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                                             "time2": items.time2,
                                             "subject": items.subject,
                                             "content": contentTextView.text!,
-                                            "date": userdefdate])]
+                                            "date": userdefdate,
+                                            "identifier": identifier,
+                                            "finishIdentifier": finishIdentifier])]
                 UserDefaults.standard.set(items.time1, forKey: "time1")
                 UserDefaults.standard.set(items.time2, forKey: "time2")
                 UserDefaults.standard.set(items.subject, forKey: "subject")
@@ -154,12 +161,12 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
                                
             // 通知コンテンツの作成
-            let content = UNMutableNotificationContent()
+            
             content.title = "勉強を始める時間です。"
             content.body = dateFormatter.string(from: otherDate1)
             content.sound = UNNotificationSound.default
                                
-            
+            print(content.title)
             // 通知リクエストの作成
             request = UNNotificationRequest.init(
                     identifier: identifier,
@@ -182,7 +189,6 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             let Finisgtrigger = UNCalendarNotificationTrigger.init(dateMatching: FinishtargetDate, repeats: false)
                                
             // 通知コンテンツの作成
-            let Finishcontent = UNMutableNotificationContent()
             Finishcontent.title = "勉強を終了する時間です。"
             Finishcontent.body = dateFormatter.string(from: otherDate2)
             Finishcontent.sound = UNNotificationSound.default
@@ -194,8 +200,8 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                     content: Finishcontent,
                     trigger: Finisgtrigger)
             UserDefaults.standard.set(finishIdentifier, forKey: "finishIdentifier")
-            print(identifier)
-            print(finishIdentifier)
+            print("identifier\(items.identifier)")
+            print("finishIdentifier\(items.finishIdentifier)")
             center.add(finishRequest)
             self.dismiss(animated: true, completion: nil)
         }
@@ -221,10 +227,10 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         timeOneTextField.text = "\(formatter.string(from: timePicker.date))"
         timeTwoTextField.text = "\(formatter.string(from: timePicker.date))"
         if timeTwoTextField.text == "" {
-            let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/dHH:mm")
+            let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/d HH:mm")
             timePicker2.date = timeTwoTextDate
         } else if timeTwoTextField.text == timeOneTextField.text{
-            let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/dHH:mm")
+            let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/d HH:mm")
             timePicker2.date = timeTwoTextDate
         } else {
             print("none")
@@ -254,8 +260,4 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        let timeTwoTextDate = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/dHH:mm")
-//        timePicker2.date = timeTwoTextDate
-//    }
 }

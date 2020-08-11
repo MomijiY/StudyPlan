@@ -22,6 +22,7 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleTextField.becomeFirstResponder()
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         titleTextField.delegate = self

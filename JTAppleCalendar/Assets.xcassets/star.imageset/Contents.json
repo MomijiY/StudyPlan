@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "DisclosureIndicator.001.png",
+      "filename" : "star.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "DisclosureIndicator.001-1.png",
+      "filename" : "star-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "DisclosureIndicator.001-2.png",
+      "filename" : "star-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

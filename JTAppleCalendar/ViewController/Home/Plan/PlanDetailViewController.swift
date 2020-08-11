@@ -24,6 +24,9 @@ class PlanDetailViewController: UITableViewController {
         time2Label.text = UserDefaults.standard.object(forKey: "time2") as? String
         subjectLabel.text = UserDefaults.standard.object(forKey: "subject") as? String
         contentLabel.text = UserDefaults.standard.object(forKey: "content") as? String
+        
+        tableView.estimatedRowHeight = 263
+        tableView.rowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
     }
     
