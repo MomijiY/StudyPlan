@@ -17,14 +17,11 @@ class CustomFloatingPanel:  FloatingPanelLayout{
     func insetFor(position: FloatingPanelPosition) -> CGFloat? {
         switch position {
         case .full:
-//            ViewController().weekCalendar.scope = .week
             return 16.0
         case .half:
-//            ViewController().weekCalendar.scope = .week
             return 400.0
         case .tip:
-//            ViewController().weekCalendar.scope = .month
-            return 216.0
+            return 210.0
         default: return nil
         }
     }

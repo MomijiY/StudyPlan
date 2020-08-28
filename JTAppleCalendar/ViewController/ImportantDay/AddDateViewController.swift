@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import os
 
 class AddDateViewController: UITableViewController, UITextFieldDelegate {
 
@@ -19,11 +20,12 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     var isPicker = false
     
     private let model = UserDefaultsModel()
-    
+    let identifier = UUID().uuidString
+    let content = UNMutableNotificationContent()
+    var request:UNNotificationRequest!
     override func viewDidLoad() {
         super.viewDidLoad()
         titleTextField.becomeFirstResponder()
-        //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         titleTextField.delegate = self
         descriptionTextField.delegate = self
@@ -35,6 +37,7 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
         titleTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         descriptionTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         dateDone()
+        datePicker.addTarget(self, action: #selector(doneDatePicker(datePicker:)), for: .valueChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,11 +48,9 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func topSwitchTapped(_ sender: UISwitch) {
         if sender.isOn {
-            //トップに固定する時
             self.pin = true
             UserDefaults.standard.set(pin, forKey: "truePin")
         } else {
-            // トップに固定しない時
             self.pin = false
             UserDefaults.standard.set(pin, forKey: "falsePin")
         }
@@ -57,9 +58,38 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func saveImDate(_ sender: UIBarButtonItem) {
         saveImDate()
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .medium
+        dateFormatter.dateStyle = .medium
+        dateFormatter.locale = Locale(identifier: "ja_JP")
+               
+        let otherDate1 = datePicker.date
+        let targetDate = Calendar.current.dateComponents(
+            [.year, .month, .day],from: otherDate1)
+        let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
+        
+        content.title = "勉強を始める時間です。"
+        content.body = dateFormatter.string(from: otherDate1)
+        content.sound = UNNotificationSound.default
+        
+        request = UNNotificationRequest.init(
+                identifier: identifier,
+                content: content,
+                trigger: trigger)
+        UserDefaults.standard.set(identifier, forKey: "identifier")
+        
+        let center = UNUserNotificationCenter.current()
+        center.add(request)
     }
     
     @IBAction func selectDate(_ sender: Any) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/M/d"
+        dateLabel.text = "\(formatter.string(from: datePicker.date))"
+    }
+    
+    @objc func doneDatePicker(datePicker: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/M/d"
         dateLabel.text = "\(formatter.string(from: datePicker.date))"
@@ -99,8 +129,6 @@ extension AddDateViewController {
     
 }
 
-//MARK: TableViewdelegate, tableViewDataSource
-
 extension AddDateViewController{
     override func numberOfSections(in tableView: UITableView) -> Int {
           return 5
@@ -115,7 +143,6 @@ extension AddDateViewController{
     }
 }
 
-//MARK: Functions
 extension AddDateViewController {
     
     func dateDone() {
@@ -141,14 +168,12 @@ extension AddDateViewController {
                 var newDates = storedDay
                 var flag = false
                 for (i, data) in newDates.enumerated() {
-                    //データのピンが全てtrueだとここで挿入できないのでそのときはvar flagで判断するようにしています。
                     if data.pin == false && self.pin == true {
                         newDates.insert(importantDay, at: i)
                          flag = true
                         break;
                     }
                 }
-                //flag==falseのままとき（上でデータが挿入できなかった時）ここでnewDatesにデータを入れています。
                 if flag == false && self.pin == true {
                     newDates.append(importantDay)
                 }
@@ -159,8 +184,6 @@ extension AddDateViewController {
             } else {
                 model.saveMemos([importantDay])
             }
-            print([importantDay])
-//            navigationController?.popViewController(animated: true)
             self.dismiss(animated: true, completion: nil)
 
         }

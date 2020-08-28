@@ -11,19 +11,16 @@ import RealmSwift
 
 class AfterStudyViewController: UITableViewController {
     
-    //どっちでも使う
     @IBOutlet weak var time1Label: UILabel!
     @IBOutlet weak var time2Label: UILabel!
     
-    //振り返りだけで使う
     @IBOutlet weak var star1: UIButton!
     @IBOutlet weak var star2: UIButton!
     @IBOutlet weak var star3: UIButton!
     @IBOutlet weak var star4: UIButton!
     @IBOutlet weak var star5: UIButton!
     @IBOutlet weak var contentTextView: UITextView!
-
-    //予定の時だけ使う
+    
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     
@@ -47,7 +44,7 @@ class AfterStudyViewController: UITableViewController {
         
         count = 0
         starCount = 0
-        //予定のものは最初はhidden/振り返りで使うものはisHidden = false
+        
         time1Label.isHidden = false
         time2Label.isHidden = false
         
@@ -60,11 +57,9 @@ class AfterStudyViewController: UITableViewController {
         
         subjectLabel.isHidden = true
         contentLabel.isHidden = true
-        //予定のものは最初はhidden/それ以外はisHidden = false
         
         
         tableView.register(UINib(nibName: "AfterStudyTableViewCell", bundle: nil), forCellReuseIdentifier: "contentCell")
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func tappedStar1(_ sender: UIButton) {
@@ -115,7 +110,6 @@ class AfterStudyViewController: UITableViewController {
     @IBAction func tappedChangeButton(_ sender: UIBarButtonItem) {
         count += 1
         if count % 2 == 0 {
-            //振り返り画面を見せる
             time1Label.isHidden = false
             time2Label.isHidden = false
             
@@ -129,7 +123,6 @@ class AfterStudyViewController: UITableViewController {
             subjectLabel.isHidden = true
             contentLabel.isHidden = true
         } else {
-            //予定の画面を見せる
             time1Label.isHidden = false
             time2Label.isHidden = false
             
@@ -159,7 +152,6 @@ class AfterStudyViewController: UITableViewController {
                                              "star": items.star,
                                              "content": items.content])]
             realm.add(events)
-//            UserDefaults.standard.set(Bool.self, forKey: "review")
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -167,12 +159,4 @@ class AfterStudyViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath)
-//        if let c = cell as? AfterStudyTableViewCell {
-//            let content = String.init(repeating: AfterStudyTableViewCell().contentLabel.text!, count: indexPath.row + 1)
-//            c.setUp(content: content)
-//        }
-//        return cell
-//    }
 }

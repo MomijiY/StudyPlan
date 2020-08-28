@@ -17,7 +17,6 @@ class PlanDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         
         time1Label.text = UserDefaults.standard.object(forKey: "time1") as? String
@@ -27,7 +26,6 @@ class PlanDetailViewController: UITableViewController {
         
         tableView.estimatedRowHeight = 263
         tableView.rowHeight = UITableView.automaticDimension
-        // Do any additional setup after loading the view.
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerTransitio
                 if (oldSchemaVersion < 1) {}
         })
         Realm.Configuration.defaultConfiguration = config
-        // 通知許可の取得
+        
         UNUserNotificationCenter.current().requestAuthorization(
                options: [.alert, .sound, .badge]){
                    (granted, _) in
@@ -32,13 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerTransitio
                        UNUserNotificationCenter.current().delegate = self
                 }
         }
-//        UNUserNotificationCenter.current().requestAuthorization(
-//        options: [.alert, .sound, .badge]){
-//            (granted, _) in
-//            if granted{
-//                UNUserNotificationCenter.current().delegate = self
-//            }
-//        }
         
         return true
     }
@@ -69,34 +62,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerTransitio
 extension AppDelegate: UNUserNotificationCenterDelegate {
     //when iPhone was locked or the app was closed...
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        // アプリ起動中でもアラートと音で通知
         completionHandler([.alert, .sound])
         
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        // retrieve the root view controller (which is a tab bar controller)
         guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
             return
         }
-//        notiCount += 1
         if #available(iOS 13.0, *) {
-//            notiCount += 1
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             if  let planDetailVC = storyboard.instantiateViewController(withIdentifier: "pdVC") as? PlanDetailViewController,
                 let tabBarController = rootViewController as? UITabBarController,
-                let navController = tabBarController.selectedViewController as? UINavigationController, notiCount == 0 {
-                    navController.pushViewController(planDetailVC, animated: true)
-                    print("before1: \(notiCount)")
-                    notiCount = 1
-                    print("after1: \(notiCount)")
-            }else if  let HomeVC = storyboard.instantiateViewController(withIdentifier: "Home") as? ViewController,
-                let tabBarController = rootViewController as? UITabBarController,
-                let navController = tabBarController.selectedViewController as? UINavigationController{
-                    navController.pushViewController(HomeVC, animated: true)
-                    print("before0: \(notiCount)")
-                    notiCount = 0
-                    print("after0: \(notiCount)")
+                let navController = tabBarController.selectedViewController as? UINavigationController,
+                notiCount == 0 {
+                navController.pushViewController(planDetailVC, animated: true)
+                print("before1: \(notiCount)")
+                notiCount = 1
+                print("after1: \(notiCount)")
+            }else if let tabBarController = rootViewController as? UITabBarController,
+            let navController = tabBarController.selectedViewController as? UINavigationController{
+                navController.popViewController(animated: true)
+                notiCount = 0
             }
         }
         completionHandler()

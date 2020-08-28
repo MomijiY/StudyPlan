@@ -17,10 +17,6 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
-    //インスタンスを生成
-//    let alarm = Alarm()
-//    let fishishAlarm = FinishAlarm()
-    
     let identifier = UUID().uuidString
     let finishIdentifier = UUID().uuidString
     
@@ -42,7 +38,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         timeTwoTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         subjectTextField.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
         contentTextView.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
-        //status bar
+        
         self.setNeedsStatusBarAppearanceUpdate()
         
         self.navigationController?.navigationBar.titleTextAttributes = [
@@ -51,7 +47,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         items = Event()
         
         subjectTextField.delegate = self
-        //picker
+        
         timePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         timePicker.timeZone = NSTimeZone.local
         timePicker.locale = Locale.current
@@ -66,7 +62,6 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         timePicker2.date = timePicker.date
         timeTwoTextField.inputView = timePicker2
         
-        // 決定バーの生成
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         spacelItem.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
@@ -115,6 +110,9 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         if timePicker.date > timePicker2.date {
             alert(title: "勉強を終了する時間を勉強を始める時間より前に設定することはできません。", message: "勉強を終了する時間を勉強を始める時間より後の時間に設定するようにしてください。")
         }
+        if timeOneTextField.text == timeTwoTextField.text {
+            alert(title: "勉強を終了する時間を始める時間と同じ時間に設定することはできません。", message: "勉強を終了する時間を勉強を始める時間より後の時間に設定するようにしてください。")
+        }
         if timeOneTextField.text != "" && timeTwoTextField.text != "" && timePicker.date > Date() && timePicker.date < timePicker2.date {
             items.time1 = timeOneTextField.text!
             items.time2 = timeTwoTextField.text!
@@ -142,9 +140,7 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             }
             
             os_log("setButton")
-                   
-            // 日付フォーマット
-//            let date = Date()
+            
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .medium
             dateFormatter.dateStyle = .medium
@@ -156,25 +152,18 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                 [.year, .month, .day, .hour, .minute],
                 from: otherDate1)
             print("ターゲットは\(targetDate)")
-                               
-            // トリガーの作成
+            
             let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
-                               
-            // 通知コンテンツの作成
             
             content.title = "勉強を始める時間です。"
             content.body = dateFormatter.string(from: otherDate1)
             content.sound = UNNotificationSound.default
-                               
-            print(content.title)
-            // 通知リクエストの作成
             request = UNNotificationRequest.init(
                     identifier: identifier,
                     content: content,
                     trigger: trigger)
             UserDefaults.standard.set(identifier, forKey: "identifier")
-                        
-            // 通知リクエストの登録
+            UserDefaults.standard.set(content.title, forKey: "notiContent")
             let center = UNUserNotificationCenter.current()
             center.add(request)
                         
@@ -184,24 +173,19 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
             let FinishtargetDate = Calendar.current.dateComponents(
                 [.year, .month, .day, .hour, .minute],
                 from: otherDate2)
-                               
-            // トリガーの作成
             let Finisgtrigger = UNCalendarNotificationTrigger.init(dateMatching: FinishtargetDate, repeats: false)
-                               
-            // 通知コンテンツの作成
             Finishcontent.title = "勉強を終了する時間です。"
             Finishcontent.body = dateFormatter.string(from: otherDate2)
             Finishcontent.sound = UNNotificationSound.default
             
-            
-            // 通知リクエストの作成
             finishRequest = UNNotificationRequest.init(
                     identifier: finishIdentifier,
                     content: Finishcontent,
                     trigger: Finisgtrigger)
             UserDefaults.standard.set(finishIdentifier, forKey: "finishIdentifier")
-            print("identifier\(items.identifier)")
-            print("finishIdentifier\(items.finishIdentifier)")
+            UserDefaults.standard.set(content.title, forKey: "finishNotiContent")
+            print("identifier: \(items.identifier)")
+            print("finishIdentifier: \(items.finishIdentifier)")
             center.add(finishRequest)
             self.dismiss(animated: true, completion: nil)
         }
@@ -241,7 +225,6 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         let formatter = DateFormatter()
         formatter.dateFormat = "\(userdefdate) HH:mm"
         timeTwoTextField.text = "\(formatter.string(from: timePicker2.date))"
-//        textFieldDidBeginEditing(timeTwoTextField)
     }
 
     @objc func done3() {

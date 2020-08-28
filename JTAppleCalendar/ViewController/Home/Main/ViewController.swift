@@ -31,10 +31,8 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //status bar
         self.setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.backgroundImage = UIImage()
-//        UITabBar.appearance().tintColor = .white
         items = [Event]()
         weekCalendar.delegate = self
         weekCalendar.dataSource = self
@@ -42,11 +40,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         weekCalendar.appearance.headerMinimumDissolvedAlpha = 0.0
         self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 18)
         self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 16)
-//        yoteiTableView.delegate = self
-//        yoteiTableView.dataSource = self
-//        yoteiTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
-//        yoteiTableView.tableFooterView = UIView()
-//        yoteiTableView.separatorColor = .white
         fpc.delegate = self
         fpc.set(contentViewController: contentVC)
         fpc.addPanel(toParent: self)
@@ -57,16 +50,13 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         contentVC.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().shadowImage = UIImage()
-        self.navigationController!
-            .navigationBar
-            .setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.white
-        ]
+        self.navigationController?.navigationBar.titleTextAttributes
+            = [.font: UIFont(name: "Arial-BoldMT", size: 20)!,
+               .foregroundColor: UIColor.white
+              ]
         
-        // Realmからデータを取得
-            //タップされた日付を生成してます
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/M/d"
         let date = Date()
@@ -86,7 +76,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            //タップされた日付を生成してます
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/M/d"
         let date = Date()
@@ -106,13 +95,35 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         let dateUdf = UserDefaults.standard.object(forKey: "date")
         let dateUtils = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
         weekCalendar.select(dateUtils)
-        
-        //navigationBarのところに現在の月を表示
         let currentPageDate = FSCalendar().currentPage
         let month = Calendar.current.component(.month, from: currentPageDate)
-        //Int to String
-        let stringMonth: String = String(month)
-        navItem.title = "\(stringMonth)月"
+        var stringMonth: String = String(month)
+        if month == 1 {
+            stringMonth = "January"
+        } else if month == 2 {
+            stringMonth = "February"
+        } else if month == 3 {
+            stringMonth = "March"
+        } else if month == 4 {
+            stringMonth = "April"
+        } else if month == 5 {
+            stringMonth = "May"
+        } else if month == 6 {
+            stringMonth = "June"
+        } else if month == 7 {
+            stringMonth = "July"
+        } else if month == 8 {
+            stringMonth = "August"
+        } else if month == 9 {
+            stringMonth = "September"
+        } else if month == 10 {
+            stringMonth = "October    "
+        } else if month == 11 {
+            stringMonth = "November"
+        } else {
+            stringMonth = "December"
+        }
+        navItem.title = stringMonth
     }
     
     override func viewDidLayoutSubviews() {
@@ -120,7 +131,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         
     }
 
-    /// NavigationBarの左にローカライズされたタイトルを表示する
     func setLeftTitle(_ localizedStringKey: String) {
         let titleLabel = UILabel(frame: CGRect(x: 4, y: 0, width: view.frame.width, height: 28))
         titleLabel.text = localizedStringKey.localizedUppercase
@@ -132,23 +142,16 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
 }
 
 extension ViewController {
-    // 祝日判定を行い結果を返すメソッド(True:祝日)
     func judgeHoliday(_ date : Date) -> Bool {
-        //祝日判定用のカレンダークラスのインスタンス
         let tmpCalendar = Calendar(identifier: .gregorian)
-        // 祝日判定を行う日にちの年、月、日を取得
         let year = tmpCalendar.component(.year, from: date)
         let month = tmpCalendar.component(.month, from: date)
         let day = tmpCalendar.component(.day, from: date)
-            
-        // CalculateCalendarLogic()：祝日判定のインスタンスの生成
         let holiday = CalculateCalendarLogic()
             
         return holiday.judgeJapaneseHoliday(year: year, month: month, day: day)
     }
-
-
-    // date型 -> 年月日をIntで取得
+    
     func getDay(_ date:Date) -> (Int,Int,Int){
         let tmpCalendar = Calendar(identifier: .gregorian)
         let year = tmpCalendar.component(.year, from: date)
@@ -156,17 +159,14 @@ extension ViewController {
         let day = tmpCalendar.component(.day, from: date)
         return (year,month,day)
     }
-        
-    //曜日判定(日曜日:1 〜 土曜日:7)
+    
     func getWeekIdx(_ date: Date) -> Int{
         let tmpCalendar = Calendar(identifier: .gregorian)
         return tmpCalendar.component(.weekday, from: date)
     }
-        
-    // 土日や祝日の日の文字色を変える
+    
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, titleDefaultColorFor date: Date) -> UIColor? {
         if self.judgeHoliday(date){
-//            let appearance = self.weekCalendar.appearance.titleFont = UIFont(name: "Futura-Bold", size: 16)
             return UIColor(red: 238/255, green: 68/255, blue: 81/255, alpha: 1.0)
         }
         return nil
@@ -174,7 +174,6 @@ extension ViewController {
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         print(bounds)
-//        calendarHeight.constant = bounds.height
         self.view.layoutIfNeeded()
     }
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -186,7 +185,6 @@ extension ViewController {
         UserDefaults.standard.set(year, forKey: "year")
         UserDefaults.standard.set(month, forKey: "month")
         UserDefaults.standard.set(day, forKey: "day")
-            //タップされた日付を生成してます
         let formatter = DateFormatter()
         formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/M/d", options: 0, locale: Locale(identifier: "ja_JP"))
         let dateStr = formatter.string(from: date)
@@ -207,13 +205,39 @@ extension ViewController {
         let dateUtils = DateUtils.dateFromString(string: dateUdf, format: "yyyy/M/d")
         weekCalendar.select(dateUtils)
     }
-    //navigationBarのところに現在の月を表示
+    
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
         let currentPageDate = calendar.currentPage
         let month = Calendar.current.component(.month, from: currentPageDate)
-        //Int to String
-        let stringMonth: String = String(month)
-        navItem.title = "\(stringMonth)月"
+        
+        var stringMonth: String = String(month)
+        
+        if month == 1 {
+            stringMonth = "January"
+        } else if month == 2 {
+            stringMonth = "February"
+        } else if month == 3 {
+            stringMonth = "March"
+        } else if month == 4 {
+            stringMonth = "April"
+        } else if month == 5 {
+            stringMonth = "May"
+        } else if month == 6 {
+            stringMonth = "June"
+        } else if month == 7 {
+            stringMonth = "July"
+        } else if month == 8 {
+            stringMonth = "August"
+        } else if month == 9 {
+            stringMonth = "September"
+        } else if month == 10 {
+            stringMonth = "October    "
+        } else if month == 11 {
+            stringMonth = "November"
+        } else {
+            stringMonth = "December"
+        }
+        navItem.title = stringMonth
     }
 }
 
@@ -247,12 +271,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
-    //最上部の余白の高さ
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
-    //最上部に余白を追加
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let marginView = UIView()
         marginView.backgroundColor = .clear
@@ -298,7 +320,6 @@ extension ViewController: FloatingPanelControllerDelegate {
 }
 extension UIView {
     func makeUp(){
-//        self.layer.cornerRadius = 15
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 4, height: 4)
         self.layer.shadowOpacity = 0.4
