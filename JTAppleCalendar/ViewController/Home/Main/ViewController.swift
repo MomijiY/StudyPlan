@@ -117,7 +117,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         } else if month == 9 {
             stringMonth = "September"
         } else if month == 10 {
-            stringMonth = "October    "
+            stringMonth = "October"
         } else if month == 11 {
             stringMonth = "November"
         } else {

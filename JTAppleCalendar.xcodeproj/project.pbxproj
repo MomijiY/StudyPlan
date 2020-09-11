@@ -803,10 +803,9 @@
 			baseConfigurationReference = F6E7902F36DE7C22A35D88E4 /* Pods-JTAppleCalendar.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = JTAppleCalendar/JTAppleCalendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"JTAppleCalendar/Preview Content\"";
-				DEVELOPMENT_TEAM = QG32J57MBX;
+				DEVELOPMENT_TEAM = PS62975MFX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = JTAppleCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -814,9 +813,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JTAppleCalendar;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.STUINDER;
 				PRODUCT_NAME = JTAppleCalendar;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -827,10 +827,9 @@
 			baseConfigurationReference = D137861D5D69152AF2EB9A97 /* Pods-JTAppleCalendar.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = JTAppleCalendar/JTAppleCalendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"JTAppleCalendar/Preview Content\"";
-				DEVELOPMENT_TEAM = QG32J57MBX;
+				DEVELOPMENT_TEAM = PS62975MFX;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = JTAppleCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -838,9 +837,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.litech.JTAppleCalendar;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.litech.STUINDER;
 				PRODUCT_NAME = JTAppleCalendar;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
