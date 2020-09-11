@@ -51,5 +51,11 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>com.litech.STUINDER</string>
+	</array>
 </dict>
 </plist>
