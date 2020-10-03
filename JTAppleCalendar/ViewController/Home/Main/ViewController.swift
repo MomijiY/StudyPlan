@@ -82,7 +82,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         let date = Date()
         let dateStr = formatter.string(from: date)
         dateLabel.text = dateStr
-        UserDefaults.standard.set(dateLabel.text, forKey: "date")
+//        UserDefaults.standard.set(dateLabel.text, forKey: "date")
         let realm = try! Realm()
         let results = realm.objects(Event.self).sorted(byKeyPath: "time1")
         ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateStr).sorted(byKeyPath: "pin", ascending: false)
@@ -100,21 +100,30 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
 //        }
         contentVC.tableView.reloadData()
         
+        let dateUdf = UserDefaults.standard.object(forKey: "date") as! String
+        let dateUtils = DateUtils.dateFromString(string: dateUdf, format: "yyyy/M/d")
+        weekCalendar.select(dateUtils)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let dateUdf = UserDefaults.standard.object(forKey: "date") as? String
+        let dateUtils = DateUtils.dateFromString(string: dateUdf!, format: "yyyy/M/d")
+        weekCalendar.select(dateUtils)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/M/d"
-        let date = Date()
-        let dateStr = formatter.string(from: date)
-        dateLabel.text = dateStr
-        UserDefaults.standard.set(dateLabel.text, forKey: "date")
+//        let date = Date()
+//        let dateStr = formatter.string(from: date)
+        dateLabel.text = dateUdf
+//        UserDefaults.standard.set(dateLabel.text, forKey: "date")
         let realm = try! Realm()
         let results = realm.objects(Event.self).sorted(byKeyPath: "time1")
-        ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateStr).sorted(byKeyPath: "pin", ascending: false)
+        ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateUdf!).sorted(byKeyPath: "pin", ascending: false)
         items = [Event]()
+        sectionName = ["大事な日", "勉強計画"]
         for ev in results {
-            if ev.date == dateStr {
+            if ev.date == dateUdf {
                 items.append(ev)
             }
         }
@@ -124,10 +133,6 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
 //            }
 //        }
         contentVC.tableView.reloadData()
-        
-        let dateUdf = UserDefaults.standard.object(forKey: "date")
-        let dateUtils = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
-        weekCalendar.select(dateUtils)
         let currentPageDate = FSCalendar().currentPage
         let month = Calendar.current.component(.month, from: currentPageDate)
         var stringMonth: String = String(month)
@@ -388,7 +393,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let memo = ImItems[indexPath.row]
             UserDefaults.standard.set(memo.title, forKey: "title")
             UserDefaults.standard.set(memo.dateDescription, forKey: "description")
-            UserDefaults.standard.set(memo.date, forKey: "date")
+            UserDefaults.standard.set(memo.date, forKey: "imDate")
             self.performSegue(withIdentifier: "toImdateDetail", sender: nil)
         } else if indexPath.section == 1 {
             let memo = items[indexPath.row]
