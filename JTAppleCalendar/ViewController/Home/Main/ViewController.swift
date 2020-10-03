@@ -25,15 +25,19 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     
     var Item: Results<Event>!
     var items = [Event]()
+    var imItems = [ImportantDate]()
+    var ImItems: Results<ImportantDate>!
     
+    var sectionName = [String]()
     var fpc = FloatingPanelController()
     let contentVC = ContentViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        print(imItems.count)
         self.setNeedsStatusBarAppearanceUpdate()
         self.tabBarController?.tabBar.backgroundImage = UIImage()
-        items = [Event]()
+//        items = [Event]()
         weekCalendar.delegate = self
         weekCalendar.dataSource = self
         weekCalendar.scope = .month
@@ -48,6 +52,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         contentVC.tableView.delegate = self
         contentVC.tableView.dataSource = self
         contentVC.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
+        contentVC.tableView.register(ImportantDayTableViewCell.nib, forCellReuseIdentifier: ImportantDayTableViewCell.reuseIdentifier)
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().shadowImage = UIImage()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -64,13 +69,20 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         dateLabel.text = dateStr
         UserDefaults.standard.set(dateLabel.text, forKey: "date")
         let realm = try! Realm()
-        let results = realm.objects(Event.self)
+        let results = realm.objects(Event.self).sorted(byKeyPath: "time1")
+        ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateStr).sorted(byKeyPath: "pin", ascending: false)
         items = [Event]()
         for ev in results {
             if ev.date == dateStr {
                 items.append(ev)
             }
         }
+        sectionName = ["大事な日", "勉強計画"]
+//        for imev in imResults {
+//            if imev.date == dateStr {
+//                imItems.append(imev)
+//            }
+//        }
         contentVC.tableView.reloadData()
         
     }
@@ -83,13 +95,19 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         dateLabel.text = dateStr
         UserDefaults.standard.set(dateLabel.text, forKey: "date")
         let realm = try! Realm()
-        let results = realm.objects(Event.self)
+        let results = realm.objects(Event.self).sorted(byKeyPath: "time1")
+        ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateStr).sorted(byKeyPath: "pin", ascending: false)
         items = [Event]()
         for ev in results {
             if ev.date == dateStr {
                 items.append(ev)
             }
         }
+//        for imev in imResults {
+//            if imev.date == dateStr {
+//                imItems.append(imev)
+//            }
+//        }
         contentVC.tableView.reloadData()
         
         let dateUdf = UserDefaults.standard.object(forKey: "date")
@@ -192,13 +210,19 @@ extension ViewController {
         UserDefaults.standard.set(dateLabel.text, forKey: "date")
         print("calendar dateStr: \(dateStr)")
         let realm = try! Realm()
-        let results = realm.objects(Event.self)
+        let results = realm.objects(Event.self).filter("date == %@", dateStr).sorted(byKeyPath: "time1")
+        ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateStr).sorted(byKeyPath: "pin", ascending: false)
         items = [Event]()
         for ev in results {
             if ev.date == dateStr {
                 items.append(ev)
             }
         }
+//        for imev in imResults {
+//            if imev.date == dateStr {
+//                imItems.append(imev)
+//            }
+//        }
         contentVC.tableView.reloadData()
         
         let dateUdf = UserDefaults.standard.object(forKey: "date") as! String
@@ -231,7 +255,7 @@ extension ViewController {
         } else if month == 9 {
             stringMonth = "September"
         } else if month == 10 {
-            stringMonth = "October    "
+            stringMonth = "October"
         } else if month == 11 {
             stringMonth = "November"
         } else {
@@ -243,32 +267,91 @@ extension ViewController {
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return items.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
-        let selectionview = UIView()
-        selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
-        cell.selectedBackgroundView = selectionview
-        let memo = items[indexPath.row]
-        let now = Date()
-        let dateUdf = UserDefaults.standard.object(forKey: "date")
-        let date = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
-        let nowStr = DateUtils.stringFromDate(date: now, format: "yyyy/M/d")
-        let nowDate = DateUtils.dateFromString(string: nowStr, format: "yyyy/M/d")
-        print("nowDate: \(nowDate)")
-        if date < nowDate {
-            cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
-            cell.layer.cornerRadius = 20
-            print("過去date: \(date)")
-            print("過去の日付です。")
+        if section == 0 {
+            if ImItems == nil {
+                return 0
+            } else {
+                return ImItems.count
+            }
+        } else if section == 1 {
+            return items.count
         } else {
-            cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
-            print("過去ではないdate: \(date)")
+            return 0
         }
-        return cell
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionName[section]
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let selectionview = UIView()
+        
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: ImportantDayTableViewCell.reuseIdentifier, for: indexPath) as! ImportantDayTableViewCell
+            let selectionview = UIView()
+            selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
+
+            cell.selectedBackgroundView = selectionview
+
+            cell.cellView.layer.cornerRadius = 20
+            selectionview.layer.cornerRadius = 20
+            let memo = ImItems[indexPath.row]
+            cell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+            cell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+            if memo.pin == true {
+                cell.setupCell(title: self.ImItems[indexPath.row].title, content: self.ImItems[indexPath.row].dateDescription, date: self.ImItems[indexPath.row].date, pin: false)
+            }
+            if memo.pin == false {
+                cell.setupCell(title: self.ImItems[indexPath.row].title, content: self.ImItems[indexPath.row].dateDescription, date: self.ImItems[indexPath.row].date, pin: true)
+            }
+            return cell
+        }else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as! TableViewCell
+            
+            selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
+            cell.selectedBackgroundView = selectionview
+            let memo = items[indexPath.row]
+            let now = Date()
+            let dateUdf = UserDefaults.standard.object(forKey: "date")
+            let date = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
+            let nowStr = DateUtils.stringFromDate(date: now, format: "yyyy/M/d")
+            let nowDate = DateUtils.dateFromString(string: nowStr, format: "yyyy/M/d")
+            print("nowDate: \(nowDate)")
+            if date < nowDate {
+                cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+                cell.layer.cornerRadius = 20
+                print("過去date: \(date)")
+                print("過去の日付です。")
+            } else {
+                cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+                print("過去ではないdate: \(date)")
+            }
+            return cell
+        } else {
+            let cell = UITableViewCell()
+            return cell
+        }
+//        let imCell = tableView.dequeueReusableCell(withIdentifier: ImportantDayTableViewCell.reuseIdentifier, for: indexPath) as! ImportantDayTableViewCell
+//        if indexPath.section == 0 {
+//
+//            let imMemo = imItems[indexPath.row]
+//            imCell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+//            imCell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+//            imCell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+//            imCell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
+//            if imMemo.pin == true {
+//                imCell.setupCell(title: self.imItems[indexPath.row].title, content: self.imItems[indexPath.row].dateDescription, date: self.imItems[indexPath.row].date, pin: false)
+//            }
+//            if imMemo.pin == false {
+//                imCell.setupCell(title: self.imItems[indexPath.row].title, content: self.imItems[indexPath.row].dateDescription, date: self.imItems[indexPath.row].date, pin: true)
+//            }
+//            return imCell
+//        } else if indexPath.section == 1 {
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -286,12 +369,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let memo = items[indexPath.row]
-        UserDefaults.standard.set(memo.time1, forKey: "time1")
-        UserDefaults.standard.set(memo.time2, forKey: "time2")
-        UserDefaults.standard.set(memo.subject, forKey: "subject")
-        UserDefaults.standard.set(memo.content, forKey: "content")
-        self.performSegue(withIdentifier: "toPlanDetail", sender: nil)
+        if indexPath.section == 0 {
+            let memo = ImItems[indexPath.row]
+            UserDefaults.standard.set(memo.title, forKey: "title")
+            UserDefaults.standard.set(memo.dateDescription, forKey: "description")
+            UserDefaults.standard.set(memo.date, forKey: "date")
+            self.performSegue(withIdentifier: "toImdateDetail", sender: nil)
+        } else if indexPath.section == 1 {
+            let memo = items[indexPath.row]
+            UserDefaults.standard.set(memo.time1, forKey: "time1")
+            UserDefaults.standard.set(memo.time2, forKey: "time2")
+            UserDefaults.standard.set(memo.subject, forKey: "subject")
+            UserDefaults.standard.set(memo.content, forKey: "content")
+            self.performSegue(withIdentifier: "toPlanDetail", sender: nil)
+        }
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {

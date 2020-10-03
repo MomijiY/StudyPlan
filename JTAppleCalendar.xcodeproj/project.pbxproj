@@ -10,6 +10,7 @@
 		1714A17B80890194255FD634 /* Pods_JTAppleCalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */; };
 		1D81A493DB931C1784B4BF60 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CFCAD3B558475D0DA5C67B7 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework */; };
 		73E3D9A30FED3ED658AA403D /* Pods_JTAppleCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67E18887C19DF65A374410D5 /* Pods_JTAppleCalendar.framework */; };
+		790FDE1325272C00003C3F0D /* ImportantDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FDE1225272C00003C3F0D /* ImportantDate.swift */; };
 		7918F97524E7FF36009932EE /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7918F97424E7FF36009932EE /* Notification.swift */; };
 		7918F97724E7FF85009932EE /* NotificationObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7918F97624E7FF85009932EE /* NotificationObject.swift */; };
 		793331F824B98523005AFC0A /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793331F724B98523005AFC0A /* ContentViewController.swift */; };
@@ -76,6 +77,7 @@
 		652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67E18887C19DF65A374410D5 /* Pods_JTAppleCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		740F8FC03BD545A0F20B93D0 /* Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig"; path = "Target Support Files/Pods-JTAppleCalendar-JTAppleCalendarUITests/Pods-JTAppleCalendar-JTAppleCalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		790FDE1225272C00003C3F0D /* ImportantDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantDate.swift; sourceTree = "<group>"; };
 		7918F97424E7FF36009932EE /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		7918F97624E7FF85009932EE /* NotificationObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObject.swift; sourceTree = "<group>"; };
 		793331F724B98523005AFC0A /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				793AD86624E177E400A60462 /* AfterPlan.swift */,
 				7918F97424E7FF36009932EE /* Notification.swift */,
 				797D0565246930DB0035B7C8 /* Event.swift */,
+				790FDE1225272C00003C3F0D /* ImportantDate.swift */,
 				793AD86824E178DD00A60462 /* AfterEvent.swift */,
 				7918F97624E7FF85009932EE /* NotificationObject.swift */,
 				797D057A246947620035B7C8 /* UserDefalutsModel */,
@@ -637,6 +640,7 @@
 				7918F97724E7FF85009932EE /* NotificationObject.swift in Sources */,
 				7966433F2493B25B00711560 /* NavViewController.swift in Sources */,
 				797D0566246930DB0035B7C8 /* Event.swift in Sources */,
+				790FDE1325272C00003C3F0D /* ImportantDate.swift in Sources */,
 				794DBF6124750FCC00C698D5 /* TutorialOneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -813,7 +817,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.litech.STUINDER;
 				PRODUCT_NAME = JTAppleCalendar;
 				SUPPORTS_MACCATALYST = NO;
@@ -837,7 +841,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.litech.STUINDER;
 				PRODUCT_NAME = JTAppleCalendar;
 				SUPPORTS_MACCATALYST = NO;

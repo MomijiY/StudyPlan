@@ -51,6 +51,12 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         timePicker.datePickerMode = UIDatePicker.Mode.dateAndTime
         timePicker.timeZone = NSTimeZone.local
         timePicker.locale = Locale.current
+        if #available(iOS 13.4, *) {
+            timePicker.preferredDatePickerStyle = .wheels
+            timePicker2.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         timePicker.date = DateUtils.dateFromString(string: userdefdate, format: "yyyy/MM/dd")
         timePicker2.addTarget(self, action: #selector(doneDatePicker2(datePicker2:)), for: .valueChanged)
         timePicker.addTarget(self, action: #selector(doneDatePicker(datePicker:)), for: .valueChanged)

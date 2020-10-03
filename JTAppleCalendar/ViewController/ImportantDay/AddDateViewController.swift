@@ -8,7 +8,7 @@
 
 import UIKit
 import os
-
+import RealmSwift
 class AddDateViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var titleTextField: UITextField!
@@ -22,9 +22,12 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     private let model = UserDefaultsModel()
     let identifier = UUID().uuidString
     let content = UNMutableNotificationContent()
+    var items = ImportantDate()
     var request:UNNotificationRequest!
     override func viewDidLoad() {
         super.viewDidLoad()
+        items = ImportantDate()
+        
         titleTextField.becomeFirstResponder()
         self.setNeedsStatusBarAppearanceUpdate()
         titleTextField.delegate = self
@@ -59,28 +62,28 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func saveImDate(_ sender: UIBarButtonItem) {
         saveImDate()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .medium
-        dateFormatter.dateStyle = .medium
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-               
-        let otherDate1 = datePicker.date
-        let targetDate = Calendar.current.dateComponents(
-            [.year, .month, .day],from: otherDate1)
-        let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
-        
-        content.title = "勉強を始める時間です。"
-        content.body = dateFormatter.string(from: otherDate1)
-        content.sound = UNNotificationSound.default
-        
-        request = UNNotificationRequest.init(
-                identifier: identifier,
-                content: content,
-                trigger: trigger)
-        UserDefaults.standard.set(identifier, forKey: "identifier")
-        
-        let center = UNUserNotificationCenter.current()
-        center.add(request)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeStyle = .medium
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.locale = Locale(identifier: "ja_JP")
+//
+//        let otherDate1 = datePicker.date
+//        let targetDate = Calendar.current.dateComponents(
+//            [.year, .month, .day],from: otherDate1)
+//        let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
+//
+//        content.title = "勉強を始める時間です。"
+//        content.body = dateFormatter.string(from: otherDate1)
+//        content.sound = UNNotificationSound.default
+//
+//        request = UNNotificationRequest.init(
+//                identifier: identifier,
+//                content: content,
+//                trigger: trigger)
+//        UserDefaults.standard.set(identifier, forKey: "identifier")
+//
+//        let center = UNUserNotificationCenter.current()
+//        center.add(request)
     }
     
     @IBAction func selectDate(_ sender: Any) {
@@ -160,30 +163,46 @@ extension AddDateViewController {
         if titleTextField.text == "" {
             present(alert, animated: true, completion: nil)
         } else {
-            guard let title = titleTextField.text,
-                let description = descriptionTextField.text,
-                let date = dateLabel.text else { return }
-            let importantDay = AddDate(title: title, content: description, date: date, pin: self.pin)
-            if let storedDay = model.loadMemos() {
-                var newDates = storedDay
-                var flag = false
-                for (i, data) in newDates.enumerated() {
-                    if data.pin == false && self.pin == true {
-                        newDates.insert(importantDay, at: i)
-                         flag = true
-                        break;
-                    }
-                }
-                if flag == false && self.pin == true {
-                    newDates.append(importantDay)
-                }
-                if newDates.count == 0 || self.pin == false {
-                    newDates.append(importantDay)
-                }
-                model.saveMemos(newDates)
-            } else {
-                model.saveMemos([importantDay])
+            let event: ImportantDate = ImportantDate()
+            event.title = titleTextField.text!
+            event.dateDescription = descriptionTextField.text!
+            event.date = dateLabel.text!
+            event.pin = self.pin
+            
+            let realm = try! Realm()
+            try! realm.write{
+//                UserDefaults.standard.set(items.title, forKey: "IDTitle")
+//                UserDefaults.standard.set(items.dateDescription, forKey: "IDDescription")
+//                UserDefaults.standard.set(items.date, forKey: "IDDate")
+//                UserDefaults.standard.set(items.pin, forKey: "IDPin")
+                realm.add(event)
+                print("ID書き込み中")
+                print(event)
             }
+//            guard let title = titleTextField.text,
+//                let description = descriptionTextField.text,
+//                let date = dateLabel.text else { return }
+//            let importantDay = AddDate(title: title, content: description, date: date, pin: self.pin)
+//            if let storedDay = model.loadMemos() {
+//                var newDates = storedDay
+//                var flag = false
+//                for (i, data) in newDates.enumerated() {
+//                    if data.pin == false && self.pin == true {
+//                        newDates.insert(importantDay, at: i)
+//                         flag = true
+//                        break;
+//                    }
+//                }
+//                if flag == false && self.pin == true {
+//                    newDates.append(importantDay)
+//                }
+//                if newDates.count == 0 || self.pin == false {
+//                    newDates.append(importantDay)
+//                }
+//                model.saveMemos(newDates)
+//            } else {
+//                model.saveMemos([importantDay])
+//            }
             self.dismiss(animated: true, completion: nil)
 
         }

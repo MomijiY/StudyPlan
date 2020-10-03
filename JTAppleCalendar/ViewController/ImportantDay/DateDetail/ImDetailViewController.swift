@@ -26,7 +26,10 @@ class ImDetailViewController: UITableViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         //status bar
         self.setNeedsStatusBarAppearanceUpdate()
-        configureUI()
+        titleLabel.text = UserDefaults.standard.object(forKey: "title") as? String
+        descriptionLabel.text = UserDefaults.standard.object(forKey: "description") as? String
+        dateLabel.text = UserDefaults.standard.object(forKey: "date") as? String
+//        configureUI()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -35,13 +38,13 @@ class ImDetailViewController: UITableViewController, UICollectionViewDelegate {
     
 }
 
-extension ImDetailViewController {
-    
-    func configureUI() {
-        
-        titleLabel.text = addDate.title
-        descriptionLabel.text = addDate.content
-        dateLabel.text = addDate.date
-        
-    }
-}
+//extension ImDetailViewController {
+//    
+//    func configureUI() {
+//        
+//        titleLabel.text = addDate.title
+//        descriptionLabel.text = addDate.content
+//        dateLabel.text = addDate.date
+//        
+//    }
+//}
