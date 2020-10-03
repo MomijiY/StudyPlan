@@ -696,7 +696,7 @@
         <scene sceneID="XId-gR-UhR">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lxV-aU-apY" customClass="NavViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" id="4sB-iw-1YV">
+                    <tabBarItem key="tabBarItem" title="ホーム" image="house.fill" catalog="system" landscapeImage="house.fill" id="4sB-iw-1YV">
                         <color key="badgeColor" red="1" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -819,7 +819,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hV1-t0-70q"/>
+        <segue reference="nnT-Cg-g2L"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>

@@ -42,8 +42,23 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         weekCalendar.dataSource = self
         weekCalendar.scope = .month
         weekCalendar.appearance.headerMinimumDissolvedAlpha = 0.0
-        self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 18)
-        self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 16)
+        if width <= 414, height <= 736 {
+            self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 16)
+            self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 20)
+            print("width <= 414, height <= 736")
+        } else if width <= 414, height <= 896 {
+            self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 18)
+            self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 22)
+            print("width <= 414, height <= 896")
+        } else if width <= 2048, height <= 2732 {
+            self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 24)
+            self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 28)
+            print("width <= 2048, height <= 2732")
+        } else {
+            self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 16)
+            self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 20)
+            print("else")
+        }
         fpc.delegate = self
         fpc.set(contentViewController: contentVC)
         fpc.addPanel(toParent: self)

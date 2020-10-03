@@ -54,7 +54,7 @@ final class ImDateViewController: UIViewController, UITableViewDataSource, UITab
 //        let dateStr = formatter.string(from: date)
 //        let realm = try! Realm()
         self.items = realm.objects(ImportantDate.self).sorted(byKeyPath: "pin", ascending: false)
-        print(items)
+//        print(items)
         print(items[0].title)
         self.tableView.reloadData()
         
