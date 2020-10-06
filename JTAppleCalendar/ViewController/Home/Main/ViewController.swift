@@ -28,7 +28,7 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
     var imItems = [ImportantDate]()
     var ImItems: Results<ImportantDate>!
     
-    var sectionName = [String]()
+    var sectionName = ["大事な日", "勉強計画"]
     var fpc = FloatingPanelController()
     let contentVC = ContentViewController()
     
@@ -42,6 +42,13 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
         weekCalendar.dataSource = self
         weekCalendar.scope = .month
         weekCalendar.appearance.headerMinimumDissolvedAlpha = 0.0
+        if homeMonday == true {
+            weekCalendar.firstWeekday = 2
+            print("begin from Monday")
+        } else {
+            weekCalendar.firstWeekday = 1
+            print("begin from Sunday")
+        }
         if width <= 414, height <= 736 {
             self.weekCalendar.appearance.weekdayFont = UIFont(name: "Arial", size: 16)
             self.weekCalendar.appearance.titleFont = UIFont(name: "Arial Hebrew Light", size: 20)
@@ -100,33 +107,68 @@ class ViewController: UIViewController,FSCalendarDelegate,FSCalendarDataSource,F
 //        }
         contentVC.tableView.reloadData()
         
-        let dateUdf = UserDefaults.standard.object(forKey: "date") as! String
-        let dateUtils = DateUtils.dateFromString(string: dateUdf, format: "yyyy/M/d")
-        weekCalendar.select(dateUtils)
+        let dateUdf = UserDefaults.standard.object(forKey: "date") as? String
+        
+        if dateUdf != nil {
+            let dateUtils = DateUtils.dateFromString(string: dateUdf!, format: "yyyy/M/d")
+            weekCalendar.select(dateUtils)
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/M/d", options: 0, locale: Locale(identifier: "ja_JP"))
+            let nowDate = DateUtils.dateFromString(string: dateFormatter.string(from: Date()), format: "yyyy/M/d")
+            weekCalendar.select(nowDate)
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        if homeMonday == true {
+            weekCalendar.firstWeekday = 2
+            print("begin from Monday")
+        } else {
+            weekCalendar.firstWeekday = 1
+            print("begin from Sunday")
+        }
         let dateUdf = UserDefaults.standard.object(forKey: "date") as? String
-        let dateUtils = DateUtils.dateFromString(string: dateUdf!, format: "yyyy/M/d")
-        weekCalendar.select(dateUtils)
+        
+        if dateUdf != nil {
+            let dateUtils = DateUtils.dateFromString(string: dateUdf!, format: "yyyy/M/d")
+            weekCalendar.select(dateUtils)
+    //        UserDefaults.standard.set(dateLabel.text, forKey: "date")
+            let realm = try! Realm()
+            let results = realm.objects(Event.self).sorted(byKeyPath: "time1")
+            ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateUdf!).sorted(byKeyPath: "pin", ascending: false)
+            items = [Event]()
+            sectionName = ["大事な日", "勉強計画"]
+            for ev in results {
+                if ev.date == dateUdf {
+                    items.append(ev)
+                }
+            }
+        } else {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/M/d", options: 0, locale: Locale(identifier: "ja_JP"))
+            let nowDate = DateUtils.dateFromString(string: dateFormatter.string(from: Date()), format: "yyyy/M/d")
+            weekCalendar.select(nowDate)
+        }
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/M/d"
 //        let date = Date()
 //        let dateStr = formatter.string(from: date)
-        dateLabel.text = dateUdf
-//        UserDefaults.standard.set(dateLabel.text, forKey: "date")
-        let realm = try! Realm()
-        let results = realm.objects(Event.self).sorted(byKeyPath: "time1")
-        ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateUdf!).sorted(byKeyPath: "pin", ascending: false)
-        items = [Event]()
-        sectionName = ["大事な日", "勉強計画"]
-        for ev in results {
-            if ev.date == dateUdf {
-                items.append(ev)
-            }
-        }
+//        dateLabel.text = dateUdf
+////        UserDefaults.standard.set(dateLabel.text, forKey: "date")
+//        let realm = try! Realm()
+//        let results = realm.objects(Event.self).sorted(byKeyPath: "time1")
+//        ImItems = realm.objects(ImportantDate.self).filter("date == %@", dateUdf!).sorted(byKeyPath: "pin", ascending: false)
+//        items = [Event]()
+////        sectionName = ["大事な日", "勉強計画"]
+//        for ev in results {
+//            if ev.date == dateUdf {
+//                items.append(ev)
+//            }
+//        }
 //        for imev in imResults {
 //            if imev.date == dateStr {
 //                imItems.append(imev)
@@ -302,9 +344,9 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sectionName[section]
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return sectionName[section]
+//    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let selectionview = UIView()
         
@@ -335,17 +377,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             selectionview.backgroundColor = UIColor(red: 127/255, green: 127/255, blue: 127/255, alpha: 0.2)
             cell.selectedBackgroundView = selectionview
             let memo = items[indexPath.row]
-            let now = Date()
-            let dateUdf = UserDefaults.standard.object(forKey: "date")
-            let date = DateUtils.dateFromString(string: dateUdf as! String, format: "yyyy/M/d")
-            let nowStr = DateUtils.stringFromDate(date: now, format: "yyyy/M/d")
-            let nowDate = DateUtils.dateFromString(string: nowStr, format: "yyyy/M/d")
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/M/d HH:mm", options: 0, locale: Locale(identifier: "ja_JP"))
+            let date = DateUtils.dateFromString(string: memo.time2, format: "yyyy/M/d HH:mm")
+            let nowDate = DateUtils.dateFromString(string: dateFormatter.string(from: Date()), format: "yyyy/M/d HH:mm")
             print("nowDate: \(nowDate)")
             if date < nowDate {
                 cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
-                cell.layer.cornerRadius = 20
+//                cell.layer.cornerRadius = 20
                 print("過去date: \(date)")
                 print("過去の日付です。")
+            } else if date == nowDate {
+                cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+//                cell.layer.cornerRadius = 20
             } else {
                 cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
                 print("過去ではないdate: \(date)")
@@ -355,23 +400,6 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = UITableViewCell()
             return cell
         }
-//        let imCell = tableView.dequeueReusableCell(withIdentifier: ImportantDayTableViewCell.reuseIdentifier, for: indexPath) as! ImportantDayTableViewCell
-//        if indexPath.section == 0 {
-//
-//            let imMemo = imItems[indexPath.row]
-//            imCell.titleLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-//            imCell.descriptionLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-//            imCell.dateLabel.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
-//            imCell.cellView.backgroundColor = UIColor(red: 255/255, green: 250/255, blue: 250/255, alpha: 1.0)
-//            if imMemo.pin == true {
-//                imCell.setupCell(title: self.imItems[indexPath.row].title, content: self.imItems[indexPath.row].dateDescription, date: self.imItems[indexPath.row].date, pin: false)
-//            }
-//            if imMemo.pin == false {
-//                imCell.setupCell(title: self.imItems[indexPath.row].title, content: self.imItems[indexPath.row].dateDescription, date: self.imItems[indexPath.row].date, pin: true)
-//            }
-//            return imCell
-//        } else if indexPath.section == 1 {
-//        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -380,7 +408,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let marginView = UIView()
-        marginView.backgroundColor = .clear
+        let label = UILabel()
+        label.text = sectionName[section]
+        label.textColor = UIColor(red: 30/255, green: 49/255, blue: 63/255, alpha: 1.0)
+        label.font = UIFont(name: "Helvetica-Bold", size: 16)
+        label.frame = CGRect(x:20, y: -10, width: 100, height: 100)
+        marginView.addSubview(label)
         return marginView
     }
     

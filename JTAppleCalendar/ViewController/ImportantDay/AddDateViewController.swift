@@ -171,38 +171,10 @@ extension AddDateViewController {
             
             let realm = try! Realm()
             try! realm.write{
-//                UserDefaults.standard.set(items.title, forKey: "IDTitle")
-//                UserDefaults.standard.set(items.dateDescription, forKey: "IDDescription")
-//                UserDefaults.standard.set(items.date, forKey: "IDDate")
-//                UserDefaults.standard.set(items.pin, forKey: "IDPin")
                 realm.add(event)
                 print("ID書き込み中")
                 print(event)
             }
-//            guard let title = titleTextField.text,
-//                let description = descriptionTextField.text,
-//                let date = dateLabel.text else { return }
-//            let importantDay = AddDate(title: title, content: description, date: date, pin: self.pin)
-//            if let storedDay = model.loadMemos() {
-//                var newDates = storedDay
-//                var flag = false
-//                for (i, data) in newDates.enumerated() {
-//                    if data.pin == false && self.pin == true {
-//                        newDates.insert(importantDay, at: i)
-//                         flag = true
-//                        break;
-//                    }
-//                }
-//                if flag == false && self.pin == true {
-//                    newDates.append(importantDay)
-//                }
-//                if newDates.count == 0 || self.pin == false {
-//                    newDates.append(importantDay)
-//                }
-//                model.saveMemos(newDates)
-//            } else {
-//                model.saveMemos([importantDay])
-//            }
             self.dismiss(animated: true, completion: nil)
 
         }

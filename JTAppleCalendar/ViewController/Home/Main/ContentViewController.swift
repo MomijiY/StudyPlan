@@ -12,7 +12,7 @@ import RealmSwift
 class ContentViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let tableView = UITableView()
-   
+    var sectionName = ["大事な日", "勉強計画"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
@@ -45,4 +45,7 @@ class ContentViewController: UIViewController, UITableViewDataSource, UITableVie
         return cell
      }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionName[section]
+    }
 }

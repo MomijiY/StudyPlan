@@ -239,6 +239,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="vpW-Rk-aKc">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="gearshape" catalog="system" id="bxq-kr-EIM">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="sKM-8j-Yzn" kind="show" id="7aE-GP-DfO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YWz-YI-vyo">
                             <color key="tintColor" red="1" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
@@ -541,7 +547,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKk-lS-g0l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5387" y="1637"/>
+            <point key="canvasLocation" x="5386.9565217391309" y="1636.6071428571429"/>
         </scene>
         <!--大事な日-->
         <scene sceneID="IGh-Ns-H8c">
@@ -817,12 +823,74 @@
             </objects>
             <point key="canvasLocation" x="6252" y="1637"/>
         </scene>
+        <!--Settings Table View Controller-->
+        <scene sceneID="iSU-Ut-uf3">
+            <objects>
+                <tableViewController id="sKM-8j-Yzn" customClass="SettingsTableViewController" customModule="JTAppleCalendar" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Wt3-22-IA1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <sections>
+                            <tableViewSection id="NTk-8D-SmC">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WOg-SG-zTe">
+                                        <rect key="frame" x="0.0" y="18" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WOg-SG-zTe" id="uFB-rp-fzR">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="週の始めを月曜日にする" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCv-JI-dRL">
+                                                    <rect key="frame" x="20" y="0.0" width="191" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hiy-Qi-1Pf">
+                                                    <rect key="frame" x="345" y="5.9999999999999982" width="49" height="31.333333333333329"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="47" id="bfT-7a-YXo"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="homeMondaydidChange:" destination="sKM-8j-Yzn" eventType="touchUpInside" id="4Ia-HA-iQf"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="gCv-JI-dRL" secondAttribute="bottom" id="0Jj-bd-qxC"/>
+                                                <constraint firstItem="gCv-JI-dRL" firstAttribute="leading" secondItem="uFB-rp-fzR" secondAttribute="leading" constant="20" id="4B4-VN-1KF"/>
+                                                <constraint firstItem="Hiy-Qi-1Pf" firstAttribute="top" secondItem="uFB-rp-fzR" secondAttribute="top" constant="6" id="KQE-ho-Lsw"/>
+                                                <constraint firstAttribute="bottom" secondItem="Hiy-Qi-1Pf" secondAttribute="bottom" constant="6.6699999999999999" id="bq1-Uu-lhP"/>
+                                                <constraint firstItem="gCv-JI-dRL" firstAttribute="top" secondItem="uFB-rp-fzR" secondAttribute="top" id="cj4-64-X5z"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hiy-Qi-1Pf" secondAttribute="trailing" constant="22" id="qFS-J4-48b"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="sKM-8j-Yzn" id="lyK-qF-Boy"/>
+                            <outlet property="delegate" destination="sKM-8j-Yzn" id="KIG-RW-Iwr"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="byt-Xm-lmt"/>
+                    <connections>
+                        <outlet property="homeMondaySetSwitch" destination="Hiy-Qi-1Pf" id="Jrl-9m-yx8"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hBt-2q-APa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4508.695652173913" y="-394.41964285714283"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="nnT-Cg-g2L"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

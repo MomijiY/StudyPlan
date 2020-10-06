@@ -52,6 +52,7 @@
 		79AAEC4224DE8FDA0013CA8F /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 79AAEC4124DE8FD90013CA8F /* star.png */; };
 		79AAEC4424DE8FE80013CA8F /* starFill.png in Resources */ = {isa = PBXBuildFile; fileRef = 79AAEC4324DE8FE80013CA8F /* starFill.png */; };
 		79B1F41C24DBD8510098EB5A /* DisclosureIndicator.001.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B1F41B24DBD8500098EB5A /* DisclosureIndicator.001.png */; };
+		79DECB252529520500560CCC /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DECB242529520500560CCC /* SettingsTableViewController.swift */; };
 		79DFBFF12493AF87008A995F /* HomeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFBFF02493AF87008A995F /* HomeTabViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		79AAEC4124DE8FD90013CA8F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		79AAEC4324DE8FE80013CA8F /* starFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starFill.png; sourceTree = "<group>"; };
 		79B1F41B24DBD8500098EB5A /* DisclosureIndicator.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DisclosureIndicator.001.png; sourceTree = "<group>"; };
+		79DECB242529520500560CCC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		79DFBFF02493AF87008A995F /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 		7DB285BBC0FC0119624F61EE /* Pods-JTAppleCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTAppleCalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-JTAppleCalendarTests/Pods-JTAppleCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CFCAD3B558475D0DA5C67B7 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendar_JTAppleCalendarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				7966433E2493B25B00711560 /* NavViewController.swift */,
 				79DFBFF02493AF87008A995F /* HomeTabViewController.swift */,
 				7948BB85246D2F58007E717F /* PlaceHolderTextView.swift */,
+				79DECB242529520500560CCC /* SettingsTableViewController.swift */,
 			);
 			path = else;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				797D0579246947300035B7C8 /* ImDetailViewController.swift in Sources */,
 				793AD86924E178DE00A60462 /* AfterEvent.swift in Sources */,
 				797D05632469305D0035B7C8 /* TableViewCell.swift in Sources */,
+				79DECB252529520500560CCC /* SettingsTableViewController.swift in Sources */,
 				795BD8AB24697E6C00600D29 /* AddPlan.swift in Sources */,
 				797D0583246948C00035B7C8 /* ImportantDayTableViewCell.swift in Sources */,
 				797D0576246947060035B7C8 /* AddDateViewController.swift in Sources */,

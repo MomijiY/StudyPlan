@@ -57,7 +57,15 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
         } else {
             // Fallback on earlier versions
         }
-        timePicker.date = DateUtils.dateFromString(string: userdefdate, format: "yyyy/MM/dd")
+        
+        if userdefdate == UserDefaults.standard.object(forKey: "time2Formatter") as? String{
+            timeOneTextField.text = UserDefaults.standard.object(forKey: "time2") as? String
+            timePicker.date = DateUtils.dateFromString(string: timeOneTextField.text!, format: "yyyy/M/d HH:mm")
+        } else {
+            timeOneTextField.text = ""
+            timePicker.date = DateUtils.dateFromString(string: userdefdate, format: "yyyy/MM/dd")
+        }
+//        timePicker.date = DateUtils.dateFromString(string: userdefdate, format: "yyyy/MM/dd")
         timePicker2.addTarget(self, action: #selector(doneDatePicker2(datePicker2:)), for: .valueChanged)
         timePicker.addTarget(self, action: #selector(doneDatePicker(datePicker:)), for: .valueChanged)
         timeOneTextField.inputView = timePicker
@@ -140,6 +148,11 @@ class AddPlanViewController: UITableViewController, UITextFieldDelegate {
                 UserDefaults.standard.set(items.time2, forKey: "time2")
                 UserDefaults.standard.set(items.subject, forKey: "subject")
                 UserDefaults.standard.set(items.content, forKey: "content")
+                
+                let formatter = DateFormatter()
+                var time2Formatter = formatter.dateFormat
+                time2Formatter = "\(userdefdate)"
+                UserDefaults.standard.set(time2Formatter, forKey: "time2Formatter")
                 realm.add(events)
                 print("書き込み中")
                 print(events)
