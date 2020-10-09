@@ -9,154 +9,68 @@
 import UIKit
 import RealmSwift
 
-class AfterStudyViewController: UITableViewController {
+class AfterStudyViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var time1Label: UILabel!
-    @IBOutlet weak var time2Label: UILabel!
+    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var saveButton: UIButton!
     
-    @IBOutlet weak var star1: UIButton!
-    @IBOutlet weak var star2: UIButton!
-    @IBOutlet weak var star3: UIButton!
-    @IBOutlet weak var star4: UIButton!
-    @IBOutlet weak var star5: UIButton!
-    @IBOutlet weak var contentTextView: UITextView!
+    let realm = try! Realm()
+    var item: Results<Event>!
     
-    @IBOutlet weak var subjectLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
-    
-    let starImage = UIImage(named: "star")
-    let starFillImage = UIImage(named: "starFill")
-    var count: Int = 0
-    var starCount: Int = 0
-    var items = AfterEvent()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        star1.setBackgroundImage(starImage, for: .normal)
-        star2.setBackgroundImage(starImage, for: .normal)
-        star3.setBackgroundImage(starImage, for: .normal)
-        star4.setBackgroundImage(starImage, for: .normal)
-        star5.setBackgroundImage(starImage, for: .normal)
+    var starsPicker: UIPickerView = UIPickerView()
+    let stars: [String] = ["全然できなかった", "予定していた勉強ができなかった", "予定通り", "予定していたより勉強ができた", "集中してたくさんの勉強ができた"]
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        item = realm.objects(Event.self)
         
-        time1Label.text = UserDefaults.standard.object(forKey: "time1") as? String
-        time2Label.text = UserDefaults.standard.object(forKey: "time2") as? String
-        subjectLabel.text = UserDefaults.standard.object(forKey: "subject") as? String
-        contentLabel.text = UserDefaults.standard.object(forKey: "content") as? String
+        //pickerの設定
+        starsPicker.delegate = self
+        starsPicker.dataSource = self
+        textField.inputView = starsPicker
         
-        count = 0
-        starCount = 0
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
+        let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        spacelItem.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
+        let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
+        doneItem.tintColor = UIColor(red: 52/255, green: 85/255, blue: 109/255, alpha: 1.0)
+        toolbar.setItems([spacelItem, doneItem], animated: true)
         
-        time1Label.isHidden = false
-        time2Label.isHidden = false
-        
-        star1.isHidden = false
-        star2.isHidden = false
-        star3.isHidden = false
-        star4.isHidden = false
-        star5.isHidden = false
-        contentTextView.isHidden = false
-        
-        subjectLabel.isHidden = true
-        contentLabel.isHidden = true
-        
-        
-        tableView.register(UINib(nibName: "AfterStudyTableViewCell", bundle: nil), forCellReuseIdentifier: "contentCell")
+        textField.inputAccessoryView = toolbar
     }
     
-    @IBAction func tappedStar1(_ sender: UIButton) {
-        star1.setBackgroundImage(starFillImage, for: .normal)
-        star2.setBackgroundImage(starImage, for: .normal)
-        star3.setBackgroundImage(starImage, for: .normal)
-        star4.setBackgroundImage(starImage, for: .normal)
-        star5.setBackgroundImage(starImage, for: .normal)
-        starCount = 1
-    }
-    
-    @IBAction func tappedStar2(_ sender: UIButton) {
-        star1.setBackgroundImage(starFillImage, for: .normal)
-        star2.setBackgroundImage(starFillImage, for: .normal)
-        star3.setBackgroundImage(starImage, for: .normal)
-        star4.setBackgroundImage(starImage, for: .normal)
-        star5.setBackgroundImage(starImage, for: .normal)
-        starCount = 2
-    }
-    
-    @IBAction func tappedStar3(_ sender: UIButton) {
-        star1.setBackgroundImage(starFillImage, for: .normal)
-        star2.setBackgroundImage(starFillImage, for: .normal)
-        star3.setBackgroundImage(starFillImage, for: .normal)
-        star4.setBackgroundImage(starImage, for: .normal)
-        star5.setBackgroundImage(starImage, for: .normal)
-        starCount = 3
-    }
-    
-    @IBAction func tappedStar4(_ sender: UIButton) {
-        star1.setBackgroundImage(starFillImage, for: .normal)
-        star2.setBackgroundImage(starFillImage, for: .normal)
-        star3.setBackgroundImage(starFillImage, for: .normal)
-        star4.setBackgroundImage(starFillImage, for: .normal)
-        star5.setBackgroundImage(starImage, for: .normal)
-        starCount = 4
-    }
-    
-    @IBAction func tappedStar5(_ sender: UIButton) {
-        star1.setBackgroundImage(starFillImage, for: .normal)
-        star2.setBackgroundImage(starFillImage, for: .normal)
-        star3.setBackgroundImage(starFillImage, for: .normal)
-        star4.setBackgroundImage(starFillImage, for: .normal)
-        star5.setBackgroundImage(starFillImage, for: .normal)
-        starCount = 5
-    }
-    
-    @IBAction func tappedChangeButton(_ sender: UIBarButtonItem) {
-        count += 1
-        if count % 2 == 0 {
-            time1Label.isHidden = false
-            time2Label.isHidden = false
+    @IBAction func tappedSaveButton(_ sender: UIBarButtonItem) {
+        print("tappedSaveButton")
+        try! realm.write() {
+            //書き換え完了
+            item[UserDefaults.standard.object(forKey: "itemNum") as! Int].afterStudyStars = textField.text
+            item[UserDefaults.standard.object(forKey: "itemNum") as! Int].afterStudyComment = textView.text
             
-            star1.isHidden = false
-            star2.isHidden = false
-            star3.isHidden = false
-            star4.isHidden = false
-            star5.isHidden = false
-            contentTextView.isHidden = false
-            
-            subjectLabel.isHidden = true
-            contentLabel.isHidden = true
-        } else {
-            time1Label.isHidden = false
-            time2Label.isHidden = false
-            
-            star1.isHidden = true
-            star2.isHidden = true
-            star3.isHidden = true
-            star4.isHidden = true
-            star5.isHidden = true
-            contentTextView.isHidden = true
-            
-            subjectLabel.isHidden = false
-            contentLabel.isHidden = false
+            print(textField.text)
+            print(textView.text)
+            UserDefaults.standard.set("true", forKey: "afterStudyStars")
+            UserDefaults.standard.set("true", forKey: "afterStudyComment")
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func tappedSaveButton(_ sender: UIButton) {
-        count = 0
-        items.time1 = time1Label.text!
-        items.time2 = time2Label.text!
-        items.star = starCount
-        items.content = contentTextView.text!
-        
-        let realm = try! Realm()
-        try! realm.write{
-            let events = [AfterEvent(value: ["time1": items.time1,
-                                             "time2": items.time2,
-                                             "star": items.star,
-                                             "content": items.content])]
-            realm.add(events)
-        }
-        self.dismiss(animated: true, completion: nil)
+    @objc func done() {
+        textField.endEditing(true)
+        textField.text = "\(stars[starsPicker.selectedRow(inComponent: 0)])"
+    }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return stars.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textField.text = stars[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return stars[row]
     }
 }

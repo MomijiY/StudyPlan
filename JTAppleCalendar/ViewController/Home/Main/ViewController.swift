@@ -342,7 +342,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        return 2
     }
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return sectionName[section]
@@ -385,6 +385,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             print("nowDate: \(nowDate)")
             if date < nowDate {
                 cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
+                UserDefaults.standard.set("true", forKey: "pastTrue")
 //                cell.layer.cornerRadius = 20
                 print("過去date: \(date)")
                 print("過去の日付です。")
@@ -392,6 +393,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.setUpAccessaryCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
 //                cell.layer.cornerRadius = 20
             } else {
+                UserDefaults.standard.set("false", forKey: "pastTrue")
                 cell.setUpPlanCell(timeOne: memo.time1, timeTwo: memo.time2, subject: memo.subject, content: memo.content)
                 print("過去ではないdate: \(date)")
             }
@@ -434,6 +436,22 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             UserDefaults.standard.set(memo.time2, forKey: "time2")
             UserDefaults.standard.set(memo.subject, forKey: "subject")
             UserDefaults.standard.set(memo.content, forKey: "content")
+            UserDefaults.standard.set(indexPath.row, forKey: "itemNum")
+            UserDefaults.standard.set(memo.afterStudyStars, forKey: "afterStudyStars")
+            UserDefaults.standard.set(memo.afterStudyComment, forKey: "afterStudyComment")
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy/M/d HH:mm", options: 0, locale: Locale(identifier: "ja_JP"))
+            let date = DateUtils.dateFromString(string: memo.time2, format: "yyyy/M/d HH:mm")
+            let nowDate = DateUtils.dateFromString(string: dateFormatter.string(from: Date()), format: "yyyy/M/d HH:mm")
+            if date < nowDate {
+                UserDefaults.standard.set("true", forKey: "pastTrue")
+            } else if date == nowDate {
+//                cell.layer.cornerRadius = 20
+            } else {
+                UserDefaults.standard.set("false", forKey: "pastTrue")
+                print("過去ではないdate: \(date)")
+            }
             self.performSegue(withIdentifier: "toPlanDetail", sender: nil)
         }
     }
