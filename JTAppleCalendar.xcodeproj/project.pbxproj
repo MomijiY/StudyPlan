@@ -73,6 +73,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		79D0F70425B1972B000148EB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		015B2A1B9210E5E6C4E20FFE /* Pods-JTAppleCalendar-JTAppleCalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTAppleCalendar-JTAppleCalendarUITests.release.xcconfig"; path = "Target Support Files/Pods-JTAppleCalendar-JTAppleCalendarUITests/Pods-JTAppleCalendar-JTAppleCalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
 		652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JTAppleCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +137,8 @@
 		79AAEC4124DE8FD90013CA8F /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		79AAEC4324DE8FE80013CA8F /* starFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starFill.png; sourceTree = "<group>"; };
 		79B1F41B24DBD8500098EB5A /* DisclosureIndicator.001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DisclosureIndicator.001.png; sourceTree = "<group>"; };
+		79D0F6F425B1972A000148EB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		79D0F6F625B1972A000148EB /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		79DECB242529520500560CCC /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		79DFBFF02493AF87008A995F /* HomeTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabViewController.swift; sourceTree = "<group>"; };
 		7DB285BBC0FC0119624F61EE /* Pods-JTAppleCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JTAppleCalendarTests.debug.xcconfig"; path = "Target Support Files/Pods-JTAppleCalendarTests/Pods-JTAppleCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +182,8 @@
 				67E18887C19DF65A374410D5 /* Pods_JTAppleCalendar.framework */,
 				8CFCAD3B558475D0DA5C67B7 /* Pods_JTAppleCalendar_JTAppleCalendarUITests.framework */,
 				652B5163ABC0EBFBFFCC978B /* Pods_JTAppleCalendarTests.framework */,
+				79D0F6F425B1972A000148EB /* WidgetKit.framework */,
+				79D0F6F625B1972A000148EB /* SwiftUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -380,6 +397,7 @@
 				797D0516246809D60035B7C8 /* Frameworks */,
 				797D0517246809D60035B7C8 /* Resources */,
 				B0DC0F36672AFAC70E9179C7 /* [CP] Embed Pods Frameworks */,
+				79D0F70425B1972B000148EB /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -435,7 +453,7 @@
 		797D0511246809D60035B7C8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1230;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = com.litech;
 				TargetAttributes = {

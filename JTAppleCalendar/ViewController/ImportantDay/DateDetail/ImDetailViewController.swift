@@ -28,7 +28,7 @@ class ImDetailViewController: UITableViewController, UICollectionViewDelegate {
         self.setNeedsStatusBarAppearanceUpdate()
         titleLabel.text = UserDefaults.standard.object(forKey: "title") as? String
         descriptionLabel.text = UserDefaults.standard.object(forKey: "description") as? String
-        dateLabel.text = UserDefaults.standard.object(forKey: "imDate") as? String
+        dateLabel.text = UserDefaults.standard.object(forKey: "date") as? String
 //        configureUI()
     }
     

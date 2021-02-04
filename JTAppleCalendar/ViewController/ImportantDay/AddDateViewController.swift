@@ -61,29 +61,6 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func saveImDate(_ sender: UIBarButtonItem) {
         saveImDate()
-        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeStyle = .medium
-//        dateFormatter.dateStyle = .medium
-//        dateFormatter.locale = Locale(identifier: "ja_JP")
-//
-//        let otherDate1 = datePicker.date
-//        let targetDate = Calendar.current.dateComponents(
-//            [.year, .month, .day],from: otherDate1)
-//        let trigger = UNCalendarNotificationTrigger.init(dateMatching: targetDate, repeats: false)
-//
-//        content.title = "勉強を始める時間です。"
-//        content.body = dateFormatter.string(from: otherDate1)
-//        content.sound = UNNotificationSound.default
-//
-//        request = UNNotificationRequest.init(
-//                identifier: identifier,
-//                content: content,
-//                trigger: trigger)
-//        UserDefaults.standard.set(identifier, forKey: "identifier")
-//
-//        let center = UNUserNotificationCenter.current()
-//        center.add(request)
     }
     
     @IBAction func selectDate(_ sender: Any) {
@@ -168,12 +145,21 @@ extension AddDateViewController {
             event.dateDescription = descriptionTextField.text!
             event.date = dateLabel.text!
             event.pin = self.pin
-            
+
             let realm = try! Realm()
             try! realm.write{
                 realm.add(event)
                 print("ID書き込み中")
                 print(event)
+            }
+//
+            let addDate = AddDate(title: titleTextField.text!, content: descriptionTextField.text!, date: dateLabel.text!, pin: self.pin)
+            if let storedAddDate = model.loadMemos() {
+                var newAddDates = storedAddDate
+                newAddDates.append(addDate)
+                model.saveMemos(newAddDates)
+            } else {
+                model.saveMemos([addDate])
             }
             self.dismiss(animated: true, completion: nil)
 

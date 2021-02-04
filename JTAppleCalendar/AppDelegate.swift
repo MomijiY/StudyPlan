@@ -18,10 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerTransitio
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        var memo: AddDate!
         let config = Realm.Configuration(
-            schemaVersion: 4,
+            schemaVersion: 6,
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 1) {}
+                migration.enumerateObjects(ofType: ImportantDate.className()) { oldObject, newObject in
+                    if (oldSchemaVersion < 6) {
+                    }
+                }
         })
         Realm.Configuration.defaultConfiguration = config
         

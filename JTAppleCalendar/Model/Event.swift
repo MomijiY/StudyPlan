@@ -19,6 +19,6 @@ class Event: Object {
     @objc dynamic var identifier: String = ""
     @objc dynamic var finishIdentifier: String = ""
     
-    @objc dynamic var afterStudyStars: String?
-    @objc dynamic var afterStudyComment: String?
+//    @objc dynamic var afterStudyStars: String?
+//    @objc dynamic var afterStudyComment: String?
 }
