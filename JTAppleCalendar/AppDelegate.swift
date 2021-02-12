@@ -19,16 +19,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UIViewControllerTransitio
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         var memo: AddDate!
-        let config = Realm.Configuration(
-            schemaVersion: 6,
+        var config = Realm.Configuration(
+            schemaVersion: 7,
             migrationBlock: { migration, oldSchemaVersion in
                 migration.enumerateObjects(ofType: ImportantDate.className()) { oldObject, newObject in
-                    if (oldSchemaVersion < 6) {
+                    if (oldSchemaVersion < 7) {
+//                        print("memo.title / ImportantDate().title", memo.title, ImportantDate().title)
+//                        memo.title = ImportantDate().title
+//                        memo.content = ImportantDate().dateDescription
+//                        memo.date = ImportantDate().date
+//                        memo.pin = ImportantDate().pin
+//                        UserDefaults.standard.removeObject(forKey: "kStoredMemosKey")
                     }
                 }
         })
         Realm.Configuration.defaultConfiguration = config
-        
+        config.deleteRealmIfMigrationNeeded = true
         UNUserNotificationCenter.current().requestAuthorization(
                options: [.alert, .sound, .badge]){
                    (granted, _) in

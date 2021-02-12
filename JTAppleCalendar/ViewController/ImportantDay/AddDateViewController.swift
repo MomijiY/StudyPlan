@@ -8,7 +8,7 @@
 
 import UIKit
 import os
-import RealmSwift
+//import RealmSwift
 class AddDateViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var titleTextField: UITextField!
@@ -22,11 +22,11 @@ class AddDateViewController: UITableViewController, UITextFieldDelegate {
     private let model = UserDefaultsModel()
     let identifier = UUID().uuidString
     let content = UNMutableNotificationContent()
-    var items = ImportantDate()
+//    var items = ImportantDate()
     var request:UNNotificationRequest!
     override func viewDidLoad() {
         super.viewDidLoad()
-        items = ImportantDate()
+//        items = ImportantDate()
         
         titleTextField.becomeFirstResponder()
         self.setNeedsStatusBarAppearanceUpdate()
@@ -140,18 +140,18 @@ extension AddDateViewController {
         if titleTextField.text == "" {
             present(alert, animated: true, completion: nil)
         } else {
-            let event: ImportantDate = ImportantDate()
-            event.title = titleTextField.text!
-            event.dateDescription = descriptionTextField.text!
-            event.date = dateLabel.text!
-            event.pin = self.pin
-
-            let realm = try! Realm()
-            try! realm.write{
-                realm.add(event)
-                print("ID書き込み中")
-                print(event)
-            }
+//            let event: ImportantDate = ImportantDate()
+//            event.title = titleTextField.text!
+//            event.dateDescription = descriptionTextField.text!
+//            event.date = dateLabel.text!
+//            event.pin = self.pin
+//
+//            let realm = try! Realm()
+//            try! realm.write{
+//                realm.add(event)
+//                print("ID書き込み中")
+//                print(event)
+//            }
 //
             let addDate = AddDate(title: titleTextField.text!, content: descriptionTextField.text!, date: dateLabel.text!, pin: self.pin)
             if let storedAddDate = model.loadMemos() {
